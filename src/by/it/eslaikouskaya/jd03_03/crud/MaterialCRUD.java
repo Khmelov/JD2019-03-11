@@ -1,7 +1,7 @@
 package by.it.eslaikouskaya.jd03_03.crud;
 
 import by.it.eslaikouskaya.jd03_03.beans.Material;
-import by.it.eslaikouskaya.jd03_03.connect.ConnectionCreator;
+import by.it.eslaikouskaya.jd03_03.connection.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

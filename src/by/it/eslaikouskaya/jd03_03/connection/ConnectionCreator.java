@@ -1,4 +1,4 @@
-package by.it.eslaikouskaya.jd03_03.connect;
+package by.it.eslaikouskaya.jd03_03.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
