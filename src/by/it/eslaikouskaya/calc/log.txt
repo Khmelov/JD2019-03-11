@@ -1,0 +1,43 @@
+Sun Apr 28 08:41:54 MSK 2019 Can not create C
+Sun Apr 28 08:42:07 MSK 2019 Невозможно создать C
+Sun Apr 28 08:42:45 MSK 2019 Неподходящий размер
+Sun Apr 28 08:42:54 MSK 2019 Can not create 
+Sun Apr 28 08:42:54 MSK 2019 Incorrect size
+Sun Apr 28 08:53:31 MSK 2019 Can not create A
+Sun Apr 28 08:53:56 MSK 2019 Can not create A
+Sun Apr 28 08:55:19 MSK 2019 Can not create A
+Sun Apr 28 10:08:18 MSK 2019 Division {2.0, 1.0, -0.0} + {1.0, 2.0, 3.0} is impossible
+Sun Apr 28 10:08:26 MSK 2019 Деление {2.0, 1.0, -0.0} + {1.0, 2.0, 3.0} невозможно
+Sun Apr 28 10:55:03 MSK 2019 Can not create 0.0}
+Sun Apr 28 10:55:03 MSK 2019 Невозможно загрузить данные
+Sun Apr 28 10:57:08 MSK 2019 Can not create Q
+Sun Apr 28 11:04:12 MSK 2019 Division {6.0, 6.0, 6.0, 6.0} + {1.0, 2.0, 3.0, 4.0} is impossible
+Sun Apr 28 11:04:20 MSK 2019 Деление {6.0, 6.0, 6.0, 6.0} + {1.0, 2.0, 3.0, 4.0} невозможно
+Sun Apr 28 11:04:25 MSK 2019 除法 {6.0, 6.0, 6.0, 6.0} + {1.0, 2.0, 3.0, 4.0} 不可能
+Sun Apr 28 11:11:52 MSK 2019 Can not create 5.0,
+Sun Apr 28 11:11:52 MSK 2019 Невозможно загрузить данные
+Sun Apr 28 11:13:16 MSK 2019 除法 {{-2.5, -2.0, -1.5}, {-2.5, -2.0, -1.5}} + {1.0, 2.0, 3.0} 不可能
+Sun Apr 28 11:17:02 MSK 2019 Can not create 2.0,
+Sun Apr 28 11:17:02 MSK 2019 Невозможно загрузить данные
+Sun Apr 28 11:26:30 MSK 2019 Невозможно загрузить данные
+Sun Apr 28 11:41:48 MSK 2019 Can not create end
+Sun Apr 28 11:41:48 MSK 2019 Невозможно загрузить данные
+Sun Apr 28 16:01:56 MSK 2019 Can not create end
+Sun Apr 28 16:01:56 MSK 2019 Невозможно загрузить данные
+Sun Apr 28 16:02:02 MSK 2019 У нас проблемы...
+Sun Apr 28 16:02:05 MSK 2019 У нас проблемы...
+Sun Apr 28 16:08:11 MSK 2019 Summarize {1.0, 2.0, 3.0} + {{1.0, 2.0, 3.0}, {5.0, 6.0, 7.0}} is impossible
+Sun Apr 28 16:08:23 MSK 2019 Сложение {1.0, 2.0, 3.0} + {{1.0, 2.0, 3.0}, {5.0, 6.0, 7.0}} невозможно
+Sun Apr 28 16:08:29 MSK 2019 Вычитание {{1.0, 2.0, 3.0}, {5.0, 6.0, 7.0}} + {1.0, 2.0, 3.0} невозможно
+Sun Apr 28 16:08:47 MSK 2019 不能兴办 d
+Sun Apr 28 16:10:04 MSK 2019 Can not create end
+Sun Apr 28 16:10:04 MSK 2019 Невозможно загрузить данные
+Sun Apr 28 16:12:27 MSK 2019 Can not create end
+Sun Apr 28 16:12:27 MSK 2019 Невозможно загрузить данные
+Sun Apr 28 16:14:44 MSK 2019 Can not create end
+Sun Apr 28 16:14:44 MSK 2019 Невозможно загрузить данные
+Sun Apr 28 16:25:41 MSK 2019 Can not create 
+Sun Apr 28 16:53:13 MSK 2019 Can not create endend
+Sun Apr 28 16:54:08 MSK 2019 Can not create Bend
+Sun Apr 28 16:54:22 MSK 2019 Can not create Bend
+Sun Apr 28 16:59:42 MSK 2019 Can not create enf
