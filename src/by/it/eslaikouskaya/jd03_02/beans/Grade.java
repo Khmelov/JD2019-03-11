@@ -42,7 +42,7 @@ public class Grade {
 	public String toString() {
 		return "Grade{" +
 				"id=" + id +
-				", grade='" + grade + '\'' +
+				", Grade='" + grade + '\'' +
 				", categoriesId=" + categoriesId +
 				'}';
 	}
