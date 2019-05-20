@@ -1,5 +1,6 @@
 package by.it.narushevich.jd03_02.crud;
 
+import by.it.narushevich.jd03_02.ConnectionCreator;
 import by.it.narushevich.jd03_02.beans.Width_x_Height;
 
 import java.sql.Connection;

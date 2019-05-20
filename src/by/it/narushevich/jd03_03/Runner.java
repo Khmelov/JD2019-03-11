@@ -1,11 +1,9 @@
-package by.it.narushevich.jd03_02;
+package by.it.narushevich.jd03_03;
 
-import by.it.narushevich.jd03_02.beans.*;
-import by.it.narushevich.jd03_02.crud.*;
+import by.it.narushevich.jd03_03.beans.*;
+import by.it.narushevich.jd03_03.crud.*;
 
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Runner {
     public static void main(String[] args) throws SQLException {
