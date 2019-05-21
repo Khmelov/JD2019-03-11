@@ -15,7 +15,7 @@ public class MaterialCRUD {
 				"INSERT INTO " +
 						"`materials`(`Name`, `Price`, `classes_ID`) " +
 						"VALUES ('%s','%d','%d')",
-				material.getName(), material.getPrice(), material.getGradesId());
+				material.getName(), material.getPrice(), material.getGrades_ID());
 
 		try (
 				Connection connection = ConnectionCreator.get();
@@ -25,7 +25,7 @@ public class MaterialCRUD {
 			if (count == 1) {
 				ResultSet generatedKeys = statement.getGeneratedKeys();
 				if (generatedKeys.next()) {
-					material.setId(generatedKeys.getLong(1));
+					material.setID(generatedKeys.getLong(1));
 					return true;
 				}
 			}
@@ -61,7 +61,7 @@ public class MaterialCRUD {
 				"UPDATE `materials` " +
 						"SET `Name`='%s',`Price`='%d'," +
 						"`classes_ID`='%d' WHERE `id`=%d",
-				material.getName(), material.getPrice(), material.getGradesId(), material.getId()
+				material.getName(), material.getPrice(), material.getGrades_ID(), material.getID()
 		);
 
 		try (
@@ -73,7 +73,7 @@ public class MaterialCRUD {
 	}
 
 	public boolean delete(Material material) throws SQLException {
-		String sql = String.format(Locale.ENGLISH, "DELETE FROM `materials` WHERE `id`=%d", material.getId());
+		String sql = String.format(Locale.ENGLISH, "DELETE FROM `materials` WHERE `id`=%d", material.getID());
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()

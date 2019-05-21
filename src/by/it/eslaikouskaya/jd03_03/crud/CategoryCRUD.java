@@ -26,7 +26,7 @@ public class CategoryCRUD {
 			if (count == 1) {
 				ResultSet generatedKeys = statement.getGeneratedKeys();
 				if (generatedKeys.next()) {
-					category.setId(generatedKeys.getLong(1));
+					category.setID(generatedKeys.getLong(1));
 					return true;
 				}
 			}
@@ -58,7 +58,7 @@ public class CategoryCRUD {
 		String sql = String.format(Locale.ENGLISH,
 				"UPDATE `categories` " +
 						"SET `Category`='%s' WHERE `id`=%d",
-				category.getCategory(), category.getId()
+				category.getCategory(), category.getID()
 		);
 
 		try (
@@ -70,7 +70,7 @@ public class CategoryCRUD {
 	}
 
 	public boolean delete(Category category) throws SQLException {
-		String sql = String.format(Locale.ENGLISH, "DELETE FROM `categories` WHERE `id`=%d", category.getId());
+		String sql = String.format(Locale.ENGLISH, "DELETE FROM `categories` WHERE `id`=%d", category.getID());
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()

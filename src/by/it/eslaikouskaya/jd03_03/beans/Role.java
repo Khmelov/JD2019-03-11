@@ -2,23 +2,23 @@ package by.it.eslaikouskaya.jd03_03.beans;
 
 public class Role {
 
-	private long id;
+	private long ID;
 	private String role;
 
 	public Role() {
 	}
 
 	public Role(long id, String role) {
-		this.id = id;
+		this.ID = id;
 		this.role = role;
 	}
 
-	public long getId() {
-		return id;
+	public long getID() {
+		return ID;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setID(long ID) {
+		this.ID = ID;
 	}
 
 	public String getRole() {
@@ -32,7 +32,7 @@ public class Role {
 	@Override
 	public String toString() {
 		return "Role{" +
-				"id=" + id +
+				"ID=" + ID +
 				", role='" + role + '\'' +
 				'}';
 	}

@@ -2,23 +2,23 @@ package by.it.eslaikouskaya.jd03_03.beans;
 
 public class Category {
 
-	private long id;
+	private long ID;
 	private String category;
 
 	public Category() {
 	}
 
 	public Category(long id, String category) {
-		this.id = id;
+		this.ID = id;
 		this.category = category;
 	}
 
-	public long getId() {
-		return id;
+	public long getID() {
+		return ID;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setID(long ID) {
+		this.ID = ID;
 	}
 
 	public String getCategory() {
@@ -32,7 +32,7 @@ public class Category {
 	@Override
 	public String toString() {
 		return "Category{" +
-				"id=" + id +
+				"ID=" + ID +
 				", category='" + category + '\'' +
 				'}';
 	}

@@ -3,29 +3,29 @@ package by.it.eslaikouskaya.jd03_03.beans;
 
 public class User {
 
-	private long id;
+	private long ID;
 	private String login;
 	private String password;
 	private String email;
-	private long rolesId;
+	private long roles_ID;
 
 	public User() {
 	}
 
 	public User(long id, String login, String password, String email, long rolesId) {
-		this.id = id;
+		this.ID = id;
 		this.login = login;
 		this.password = password;
 		this.email = email;
-		this.rolesId = rolesId;
+		this.roles_ID = rolesId;
 	}
 
-	public long getId() {
-		return id;
+	public long getID() {
+		return ID;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setID(long ID) {
+		this.ID = ID;
 	}
 
 	public String getLogin() {
@@ -52,22 +52,22 @@ public class User {
 		this.email = email;
 	}
 
-	public long getRolesId() {
-		return rolesId;
+	public long getRoles_ID() {
+		return roles_ID;
 	}
 
-	public void setRolesId(long rolesId) {
-		this.rolesId = rolesId;
+	public void setRoles_ID(long roles_ID) {
+		this.roles_ID = roles_ID;
 	}
 
 	@Override
 	public String toString() {
 		return "User{" +
-				"id=" + id +
+				"ID=" + ID +
 				", login='" + login + '\'' +
 				", password='" + password + '\'' +
 				", email='" + email + '\'' +
-				", rolesId=" + rolesId +
+				", roles_ID=" + roles_ID +
 				'}';
 	}
 }

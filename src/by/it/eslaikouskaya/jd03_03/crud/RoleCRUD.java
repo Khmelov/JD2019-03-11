@@ -27,7 +27,7 @@ public class RoleCRUD {
 			if (count == 1) {
 				ResultSet generatedKeys = statement.getGeneratedKeys();
 				if (generatedKeys.next()) {
-					role.setId(generatedKeys.getLong(1));
+					role.setID(generatedKeys.getLong(1));
 					return true;
 				}
 			}
@@ -60,7 +60,7 @@ public class RoleCRUD {
 		String sql = String.format(Locale.ENGLISH,
 				"UPDATE `roles` " +
 						"SET `role`='%s' WHERE `id`=%d",
-				role.getRole(), role.getId()
+				role.getRole(), role.getID()
 		);
 
 		try (
@@ -72,7 +72,7 @@ public class RoleCRUD {
 	}
 
 	public boolean delete(Role role) throws SQLException {
-		String sql = String.format(Locale.ENGLISH, "DELETE FROM `roles` WHERE `id`=%d", role.getId());
+		String sql = String.format(Locale.ENGLISH, "DELETE FROM `roles` WHERE `id`=%d", role.getID());
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()

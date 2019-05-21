@@ -2,43 +2,43 @@ package by.it.eslaikouskaya.jd03_03.beans;
 
 public class Purchase {
 
-	private long id;
-	private long usersId;
-	private long materialsId;
+	private long ID;
+	private long users_ID;
+	private long materials_ID;
 	private int number;
 
 	public Purchase() {
 	}
 
 	public Purchase(long id, long usersId, long materialsId, int number) {
-		this.id = id;
-		this.usersId = usersId;
-		this.materialsId = materialsId;
+		this.ID = id;
+		this.users_ID = usersId;
+		this.materials_ID = materialsId;
 		this.number = number;
 	}
 
-	public long getId() {
-		return id;
+	public long getID() {
+		return ID;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setID(long ID) {
+		this.ID = ID;
 	}
 
-	public long getUsersId() {
-		return usersId;
+	public long getUsers_ID() {
+		return users_ID;
 	}
 
-	public void setUsersId(long usersId) {
-		this.usersId = usersId;
+	public void setUsers_ID(long users_ID) {
+		this.users_ID = users_ID;
 	}
 
-	public long getMaterialsId() {
-		return materialsId;
+	public long getMaterials_ID() {
+		return materials_ID;
 	}
 
-	public void setMaterialsId(long materialsId) {
-		this.materialsId = materialsId;
+	public void setMaterials_ID(long materials_ID) {
+		this.materials_ID = materials_ID;
 	}
 
 	public int getNumber() {
@@ -52,9 +52,9 @@ public class Purchase {
 	@Override
 	public String toString() {
 		return "Purchase{" +
-				"id=" + id +
-				", usersId=" + usersId +
-				", materialsId=" + materialsId +
+				"ID=" + ID +
+				", users_ID=" + users_ID +
+				", materials_ID=" + materials_ID +
 				", number=" + number +
 				'}';
 	}

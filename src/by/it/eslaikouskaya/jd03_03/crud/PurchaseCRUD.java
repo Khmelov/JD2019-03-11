@@ -16,7 +16,7 @@ public class PurchaseCRUD {
 				"INSERT INTO " +
 						"`purchases`(`users_ID`, `materials_ID`, `Number`) " +
 						"VALUES ('%d','%d','%d')",
-				purchase.getUsersId(), purchase.getMaterialsId(), purchase.getNumber());
+				purchase.getUsers_ID(), purchase.getMaterials_ID(), purchase.getNumber());
 
 		try (
 				Connection connection = ConnectionCreator.get();
@@ -26,7 +26,7 @@ public class PurchaseCRUD {
 			if (count == 1) {
 				ResultSet generatedKeys = statement.getGeneratedKeys();
 				if (generatedKeys.next()) {
-					purchase.setId(generatedKeys.getLong(1));
+					purchase.setID(generatedKeys.getLong(1));
 					return true;
 				}
 			}
@@ -63,7 +63,7 @@ public class PurchaseCRUD {
 				"UPDATE `purchases` " +
 						"SET `users_ID`='%d',`materials_ID`='%d'," +
 						"`Number`='%d' WHERE `id`=%d",
-				purchase.getUsersId(), purchase.getMaterialsId(), purchase.getNumber(), purchase.getId()
+				purchase.getUsers_ID(), purchase.getMaterials_ID(), purchase.getNumber(), purchase.getID()
 		);
 
 		try (
@@ -75,7 +75,7 @@ public class PurchaseCRUD {
 	}
 
 	public boolean delete(Purchase purchase) throws SQLException {
-		String sql = String.format(Locale.ENGLISH, "DELETE FROM `purchases` WHERE `id`=%d", purchase.getId());
+		String sql = String.format(Locale.ENGLISH, "DELETE FROM `purchases` WHERE `id`=%d", purchase.getID());
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()

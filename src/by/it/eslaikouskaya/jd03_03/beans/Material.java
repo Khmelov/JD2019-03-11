@@ -2,27 +2,27 @@ package by.it.eslaikouskaya.jd03_03.beans;
 
 public class Material {
 
-	private long id;
+	private long ID;
 	private String name;
 	private int price;
-	private long gradesId;
+	private long grades_ID;
 
 	public Material() {
 	}
 
 	public Material(long id, String name, int price, long classesId) {
-		this.id = id;
+		this.ID = id;
 		this.name = name;
 		this.price = price;
-		this.gradesId = classesId;
+		this.grades_ID = classesId;
 	}
 
-	public long getId() {
-		return id;
+	public long getID() {
+		return ID;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setID(long ID) {
+		this.ID = ID;
 	}
 
 	public String getName() {
@@ -41,21 +41,21 @@ public class Material {
 		this.price = price;
 	}
 
-	public long getGradesId() {
-		return gradesId;
+	public long getGrades_ID() {
+		return grades_ID;
 	}
 
-	public void setGradesId(long gradesId) {
-		this.gradesId = gradesId;
+	public void setGrades_ID(long grades_ID) {
+		this.grades_ID = grades_ID;
 	}
 
 	@Override
 	public String toString() {
 		return "Material{" +
-				"id=" + id +
+				"ID=" + ID +
 				", name='" + name + '\'' +
 				", price='" + price + '\'' +
-				", gradesId=" + gradesId +
+				", grades_ID=" + grades_ID +
 				'}';
 	}
 }

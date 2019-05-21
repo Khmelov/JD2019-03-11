@@ -16,7 +16,7 @@ public class UserCRUD {
 				"INSERT INTO " +
 						"`users`(`login`, `password`, `email`, `roles_id`) " +
 						"VALUES ('%s','%s','%s',%d)",
-				user.getLogin(), user.getPassword(), user.getEmail(), user.getRolesId()
+				user.getLogin(), user.getPassword(), user.getEmail(), user.getRoles_ID()
 		);
 
 		try (
@@ -27,7 +27,7 @@ public class UserCRUD {
 			if (count == 1) {
 				ResultSet generatedKeys = statement.getGeneratedKeys();
 				if (generatedKeys.next()) {
-					user.setId(generatedKeys.getLong(1));
+					user.setID(generatedKeys.getLong(1));
 					return true;
 				}
 			}
@@ -65,7 +65,7 @@ public class UserCRUD {
 						"SET `login`='%s',`password`='%s'," +
 						"`email`='%s',`roles_id`=%d WHERE `id`=%d",
 				user.getLogin(), user.getPassword(),
-				user.getEmail(), user.getRolesId(), user.getId()
+				user.getEmail(), user.getRoles_ID(), user.getID()
 		);
 
 		try (
@@ -77,7 +77,7 @@ public class UserCRUD {
 	}
 
 	public boolean delete(User user) throws SQLException {
-		String sql = String.format(Locale.ENGLISH, "DELETE FROM `users` WHERE `id`=%d", user.getId());
+		String sql = String.format(Locale.ENGLISH, "DELETE FROM `users` WHERE `id`=%d", user.getID());
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()

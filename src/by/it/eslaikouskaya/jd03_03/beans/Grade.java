@@ -1,25 +1,25 @@
 package by.it.eslaikouskaya.jd03_03.beans;
 
 public class Grade {
-	private long id;
+	private long ID;
 	private String grade;
-	private long categoriesId;
+	private long categories_ID;
 
 	public Grade() {
 	}
 
 	public Grade(long id, String grade, long categoriesId) {
-		this.id = id;
+		this.ID = id;
 		this.grade = grade;
-		this.categoriesId = categoriesId;
+		this.categories_ID = categoriesId;
 	}
 
-	public long getId() {
-		return id;
+	public long getID() {
+		return ID;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setID(long ID) {
+		this.ID = ID;
 	}
 
 	public String getGrade() {
@@ -30,20 +30,20 @@ public class Grade {
 		this.grade = grade;
 	}
 
-	public long getCategoriesId() {
-		return categoriesId;
+	public long getCategories_ID() {
+		return categories_ID;
 	}
 
-	public void setCategoriesId(long categoriesId) {
-		this.categoriesId = categoriesId;
+	public void setCategories_ID(long categories_ID) {
+		this.categories_ID = categories_ID;
 	}
 
 	@Override
 	public String toString() {
 		return "Grade{" +
-				"id=" + id +
+				"ID=" + ID +
 				", Grade='" + grade + '\'' +
-				", categoriesId=" + categoriesId +
+				", categories_ID=" + categories_ID +
 				'}';
 	}
 }
