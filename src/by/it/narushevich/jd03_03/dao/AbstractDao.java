@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public abstract class AbstarctDao<TYPE> implements InterfaceDao<TYPE> {
+public abstract class AbstractDao<T> implements InterfaceDao<T> {
 
     protected long executeCreate(String sql) throws SQLException {
         try (Connection connection = ConnectionCreator.get();
@@ -20,7 +20,7 @@ public abstract class AbstarctDao<TYPE> implements InterfaceDao<TYPE> {
                 }
             }
         }
-        throw new SQLException();
+        return -1;
     }
 
     protected boolean executeUpdate(String sql) throws SQLException {

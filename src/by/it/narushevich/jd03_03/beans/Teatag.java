@@ -1,13 +1,19 @@
 package by.it.narushevich.jd03_03.beans;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Teatag {
 
     private long id;
     private long trademark_id;
     private String subtitle;
     private long material_id;
-    private long width_x_height_id;
-    private String in_collection_since;
+    private double width;
+    private double height;
+    private Date in_collection_since;
     private String num_in_catalog;
     private long users_id;
 
@@ -15,14 +21,16 @@ public class Teatag {
     }
 
     public Teatag(long id, long trademark_id, String subtitle,
-                  long material_id, long width_x_height_id,
-                  String in_collection_since, long users_id) {
+                  long material_id, double width, double height,
+                  Date in_collection_since, String num_in_catalog, long users_id) {
         this.id = id;
         this.trademark_id = trademark_id;
         this.subtitle = subtitle;
         this.material_id = material_id;
-        this.width_x_height_id = width_x_height_id;
+        this.width = width;
+        this.height = height;
         this.in_collection_since = in_collection_since;
+        this.num_in_catalog = num_in_catalog;
         this.users_id = users_id;
     }
 
@@ -58,20 +66,30 @@ public class Teatag {
         this.material_id = material_id;
     }
 
-    public long getWidth_x_height_id() {
-        return width_x_height_id;
+    public double getWidth() {
+        return width;
     }
 
-    public void setWidth_x_height_id(long width_x_height_id) {
-        this.width_x_height_id = width_x_height_id;
+    public void setWidth(double width) {
+        this.width = width;
     }
 
-    public String getIn_collection_since() {
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public Date getIn_collection_since() {
         return in_collection_since;
     }
 
-    public void setIn_collection_since(String in_collection_since) {
-        this.in_collection_since = in_collection_since;
+    public void setIn_collection_since(Date in_collection_since) throws ParseException {
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date myDate = (Date) formatter.parse(in_collection_since.toString());
+        this.in_collection_since = new Date(myDate.getTime());
     }
 
     public String getNum_in_catalog() {
@@ -93,14 +111,14 @@ public class Teatag {
     @Override
     public String toString() {
         return "Teatag{" +
-                "id=" + id +
-                ", trademark_id=" + trademark_id +
-                ", subtitle='" + subtitle + '\'' +
-                ", material_id=" + material_id +
-                ", width_x_height='" + width_x_height_id + '\'' +
-                ", in_collection_since=" + in_collection_since +
-                ", num_in_catalog=" + num_in_catalog +
-                ", users_id=" + users_id +
+                "id = " + id +
+                ", trademark id = " + trademark_id +
+                ", subtitle ='" + subtitle + '\'' +
+                ", material_id = " + material_id +
+                ", width x height = " + width + " x "+ height +
+                ", in collection since = " + in_collection_since +
+                ", num in catalog = '" + num_in_catalog + '\'' +
+                ", users id = " + users_id +
                 '}';
     }
 }

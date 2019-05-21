@@ -14,9 +14,9 @@ public class UserCRUD {
     public boolean create(User user) throws SQLException {
         String sql = String.format(Locale.ENGLISH,
                 "INSERT INTO `users`" +
-                        "(`nickname`, `login`, `password`, `email`, `roles_id`) " +
-                        "VALUES ('%s','%s','%s','%s',%d)",
-                user.getNickname(),user.getLogin(),user.getPassword(),user.getEmail(),user.getRoles_id());
+                        "(`login`, `password`, `email`, `roles_id`) " +
+                        "VALUES ('%s','%s','%s',%d)",
+                user.getLogin(),user.getPassword(),user.getEmail(),user.getRoles_id());
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
@@ -44,7 +44,6 @@ public class UserCRUD {
             if (resultSet.next()) {
                 return new User(
                         resultSet.getLong("id"),
-                        resultSet.getString("nickname"),
                         resultSet.getString("login"),
                         resultSet.getString("password"),
                         resultSet.getString("email"),
@@ -57,9 +56,9 @@ public class UserCRUD {
     public boolean update(User user) throws SQLException {
         String sql = String.format(Locale.ENGLISH,
                 "UPDATE `users` " +
-                        "SET `nickname`='%s',`login`='%s',`password`='%s'," +
+                        "SET `login`='%s',`password`='%s'," +
                         "`email`='%s',`roles_id`=%d WHERE `id`=%d",
-                user.getNickname(), user.getLogin(), user.getPassword(),
+                user.getLogin(), user.getPassword(),
                 user.getEmail(), user.getRoles_id(), user.getId());
         try (
                 Connection connection = ConnectionCreator.get();
