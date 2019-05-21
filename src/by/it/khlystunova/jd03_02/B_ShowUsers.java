@@ -32,8 +32,9 @@ public class B_ShowUsers {
                                     resultSet.getString(i) + "\t"
                     );
                     System.out.println();
-                    countUsers++;
                 }
+                countUsers++;
+
             }
             ResultSet result = statement.executeQuery("SELECT * FROM roles");
             while (result.next()) {

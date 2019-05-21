@@ -1,7 +1,7 @@
-package by.it.khlystunova.jd03_03.crud;
+package by.it.akhmelev.jd03_03.crud;
 
-
-import by.it.khlystunova.jd03_03.beans.Role;
+import by.it.akhmelev.jd03_03.beans.Role;
+import by.it.khlystunova.jd03_03.connect.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,7 +12,6 @@ import java.util.Locale;
 public class RoleCRUD {
 
     public boolean create(Role role) throws SQLException {
-        //Возвращает отформатированную строку, используя указанную строку формата и аргументы.
         String sql = String.format(Locale.ENGLISH,
                 "INSERT INTO " +
                         "`roles`(`role`) " +
@@ -22,9 +21,9 @@ public class RoleCRUD {
 
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement()
+                Statement statement = connection.createStatement();
         ) {
-            int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);//RETURN_GENERATED_KEYS указывает что автоматически сгенерированные ключи должны быть дотсупны для поиска
+            int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
@@ -43,19 +42,22 @@ public class RoleCRUD {
 
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement()
+                Statement statement = connection.createStatement();
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
-
-                return new Role(
+                Role role = new Role(
                         resultSet.getLong("id"),
                         resultSet.getString("role")
                 );
+
+                return role;
             }
         }
         return null;
     }
+
+
     public boolean update(Role role) throws SQLException {
         String sql = String.format(Locale.ENGLISH,
                 "UPDATE `roles` " +
@@ -65,7 +67,7 @@ public class RoleCRUD {
 
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement()
+                Statement statement = connection.createStatement();
         ) {
             return (1 == statement.executeUpdate(sql));
         }
@@ -75,11 +77,10 @@ public class RoleCRUD {
         String sql = String.format(Locale.ENGLISH, "DELETE FROM `roles` WHERE `id`=%d", role.getId());
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement()
+                Statement statement = connection.createStatement();
         ) {
             return (1 == statement.executeUpdate(sql));
         }
     }
-
 
 }

@@ -92,7 +92,7 @@ public class CoffemachineCRUD {
         }
     }
     public boolean delete(Coffemachine coffemachine) throws SQLException {
-        String sql = String.format(Locale.ENGLISH, "DELETE FROM `requests` WHERE `id`=%d", coffemachine.getId());
+        String sql = String.format(Locale.ENGLISH, "DELETE FROM `coffemachines` WHERE `id`=%d", coffemachine.getId());
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()

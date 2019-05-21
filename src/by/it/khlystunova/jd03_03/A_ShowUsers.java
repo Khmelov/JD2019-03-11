@@ -1,11 +1,11 @@
 package by.it.khlystunova.jd03_03;
 
 
-import by.it.khlystunova.jd03_03.crud.ConnectionCreator;
+import by.it.khlystunova.jd03_03.connect.ConnectionCreator;
 
 import java.sql.*;
 
-public class B_ShowUsers {
+public class A_ShowUsers {
 
 //    static {
 //        try {
@@ -32,8 +32,8 @@ public class B_ShowUsers {
                                     resultSet.getString(i) + "\t"
                     );
                     System.out.println();
-                    countUsers++;
                 }
+                countUsers++;
             }
             ResultSet result = statement.executeQuery("SELECT * FROM roles");
             while (result.next()) {
