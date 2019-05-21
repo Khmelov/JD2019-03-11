@@ -9,18 +9,14 @@ public class Dao {
     public UserDao user;
     public TrademarkDao trademark;
     public MaterialDao material;
-    public TeatagDao teatag;
-
-    public void resetDataBase() throws SQLException {
-        C_init.main(new String[]{});
-    }
+    public TeatagDaoUniversal teatag;
 
     private Dao() {
         role=new RoleDao();
         user=new UserDao();
         trademark = new TrademarkDao();
         material = new MaterialDao();
-        teatag = new TeatagDao();
+        teatag = new TeatagDaoUniversal();
     }
 
     public static Dao getDao(){

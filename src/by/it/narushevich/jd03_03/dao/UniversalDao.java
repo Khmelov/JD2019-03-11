@@ -1,7 +1,6 @@
 package by.it.narushevich.jd03_03.dao;
 
-import by.it.akhmelev.jd03_03.connect.ConnectionCreator;
-import by.it.akhmelev.jd03_03.dao.InterfaceDao;
+import by.it.narushevich.jd03_03.connect.ConnectionCreator;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -10,85 +9,63 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-// Изучите чуть более сложный пример с Generics.
-// Потенциально способен обработать произольный bean со стандартными полями.
-// Ограничение. Первым полем в bean должен быть id.
+public class UniversalDao<TYPE> implements InterfaceDao<TYPE> {
 
-// Код написал для примера и сильно не проверял, так что к прямому использованию он точно не готов,
-// просто давайте повторим generics.
+    private TYPE bean;
+    private String table;
+    private Field[] fields;
 
-//  нет потокобезопасности, совсем, т.к. это только пример, иначе код заметно усложнится.
-//  Поэтому - никакого реального применения, используйте сие только в учебных целях!
-
-public class UniversalDao<TypeBean> implements InterfaceDao<TypeBean> {
-
-    private TypeBean bean; //это некий неизвестный bean
-    private String table; //это его таблица в базе
-    private Field[] fields; //это поля bean
-
-    //конструктор DAO
-    public UniversalDao(TypeBean bean, String sqlTableName) {
+    public UniversalDao(TYPE bean, String sqlTableName) {
         this.bean = bean;
         this.table = sqlTableName;
         this.fields = bean.getClass().getDeclaredFields();
     }
 
-    //=======================================================================================================
-    public List<TypeBean> getAll(String WHERE) throws SQLException {
-        List<TypeBean> beans = new ArrayList<>();
-        String sql = "SELECT * FROM " + table + " " + WHERE + " ;";
+    public List<TYPE> getAll(String condition) throws SQLException {
+        List<TYPE> beans = new ArrayList<>();
+        String sql = String.format("SELECT * FROM %s %s ;",table,condition);
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
         ) {
-            ResultSet rs = statement.executeQuery(sql);
-            //            for (int i = 0; i < fields.length; i++) {
-            //                System.out.println(fields[i]+":"+fields[i].getType());}
-            while (rs.next()) {
-                //создаем копию бина, в который будем складывать запись из Recordset
-                TypeBean newBean = newBean();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                TYPE newBean = newBean();
                 for (int i = 1; i < fields.length + 1; i++) {
-                    //перебирая поля бина по очереди извлекаем значения в соответствии с их типом
-                    Field f = fields[i - 1];
-                    f.setAccessible(true);
+                    Field field = fields[i - 1];
+                    field.setAccessible(true);
                     try {
-                        if (f.getType() == Boolean.class || f.getType()==boolean.class)
-                            f.set(newBean, rs.getBoolean(f.getName()));
-                        if (f.getType() == Byte.class || f.getType()==byte.class)
-                            f.set(newBean, rs.getByte(f.getName()));
-                        if (f.getType() == Integer.class || f.getType()==int.class)
-                            f.set(newBean, rs.getInt(f.getName()));
-                        if (f.getType() == Double.class || f.getType()==double.class)
-                            f.set(newBean, rs.getDouble(f.getName()));
-                        if (f.getType() == Float.class || f.getType()==float.class)
-                            f.set(newBean, rs.getFloat(f.getName()));
-                        if (f.getType() == Long.class || f.getType()==long.class)
-                            f.set(newBean, rs.getLong(f.getName()));
-                        if (f.getType() == Short.class || f.getType()==short.class)
-                            f.set(newBean, rs.getShort(f.getName()));
-                        if (f.getType() == String.class)
-                            f.set(newBean, rs.getString(f.getName()));
-                        if (f.getType() == Timestamp.class)
-                            f.set(newBean, rs.getTimestamp(f.getName()));
-                        if (f.getType() == Date.class)
-                            f.set(newBean, rs.getDate(f.getName()));
-                        //... и т.д. Но учтите, что протестированы только String int и Integer
-                    } catch (IllegalAccessException e) {
+                        if (field.getType().equals(Boolean.class)|| field.getType().equals(boolean.class))
+                            field.set(newBean, resultSet.getBoolean(field.getName()));
+                        if (field.getType().equals(Byte.class)|| field.getType().equals(byte.class))
+                            field.set(newBean, resultSet.getByte(field.getName()));
+                        if (field.getType().equals(Short.class)|| field.getType().equals(short.class))
+                            field.set(newBean, resultSet.getShort(field.getName()));
+                        if (field.getType().equals(Integer.class)|| field.getType().equals(int.class))
+                            field.set(newBean, resultSet.getInt(field.getName()));
+                        if (field.getType().equals(Long.class) || field.getType().equals(long.class))
+                            field.set(newBean, resultSet.getLong(field.getName()));
+                        if (field.getType().equals(Float.class)|| field.getType().equals(float.class))
+                            field.set(newBean, resultSet.getFloat(field.getName()));
+                        if (field.getType().equals(Double.class)|| field.getType().equals(double.class))
+                            field.set(newBean, resultSet.getDouble(field.getName()));
+                        if (field.getType().equals(String.class))
+                            field.set(newBean, resultSet.getString(field.getName()));
+                        if (field.getType().equals(Date.class))
+                            field.set(newBean, resultSet.getDate(field.getName()));
+                    } catch (IllegalArgumentException | IllegalAccessException | SQLException e) {
                         e.printStackTrace();
                     }
                 }
                 beans.add(newBean);
             }
-        } catch (SQLException e) {
-            throw new SQLException(e);
         }
         return beans;
     }
 
-    //=======================================================================================================
-    //метод чтения по ID делает выборку получая все, но с условием.
-    public TypeBean read(long id) throws SQLException {
-        List<TypeBean> beans = getAll("WHERE ID=" + id + " LIMIT 0,1");
+    public TYPE read(long id) throws SQLException {
+        String sql = String.format("WHERE id=%d LIMIT 0,1",id);
+        List<TYPE> beans = getAll(sql);
         if (beans.size() > 0) {
             return beans.get(0);
         } else
@@ -96,59 +73,47 @@ public class UniversalDao<TypeBean> implements InterfaceDao<TypeBean> {
     }
 
     @Override
-    public List<TypeBean> getAll() throws SQLException {
+    public List<TYPE> getAll() throws SQLException {
         return getAll("");
     }
 
-
-    //=======================================================================================================
-    //команда обновления
-    public boolean update(TypeBean bean) throws SQLException {
-        // собираем SQL по шаблону
-        // "UPDATE `users` SET
-        // `Login` = '%s', `Password` = '%s', `Email` = '%s', `FK_Role` = '%d'
-        // WHERE `users`.`ID` = %d",
-        String sql = "UPDATE `" + table + "` SET ";
-        String delimiter = "";
+    public boolean update(TYPE bean) throws SQLException {
+        StringBuilder sql = new StringBuilder("UPDATE ").append(table).append(" SET ");
         try {
-            for (int i = 1; i < fields.length; i++) { //начинаем со второго поля
-                Field f = fields[i];
-                f.setAccessible(true);
-                //добавляем `FieldName` = 'Value', в цикле
-                sql = sql.concat(delimiter + "`" + f.getName() + "` = '" + f.get(bean) + "'");
-                delimiter = ", "; //добавим запятую перед каждым последующим полем
+            for (int i = 1; i < fields.length; i++) {
+                Field field = fields[i];
+                field.setAccessible(true);
+                sql.append(field.getName()).append('=').
+                        append('\'').append(field.get(bean)).append('\'');
+                if (i!=fields.length-1) sql.append(',');
             }
-            fields[0].setAccessible(true);
-            sql = sql.concat(" WHERE `" + fields[0].getName() + "` = '" + fields[0].get(bean) + "'");
+            sql.append(" WHERE ").append(fields[0].getName()).append('=').
+                    append('\'').append(fields[0].get(bean)).append('\'');
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        //System.out.println(sql);
-        return (0 < executeUpdate(sql, false));
+        return (0 < executeUpdate(sql.toString()));
     }
 
-    //=======================================================================================================
-    public boolean create(TypeBean bean) throws SQLException {
-        // собираем SQL по шаблону
-        // insert INTO users(Login,Password,Email,FK_Role)
-        // values('%s','%s','%s',%d)
-        String names = "";
-        String values = "";
-        String delimiter = "";
+    public boolean create(TYPE bean) throws SQLException {
+        StringBuilder sql = new StringBuilder("INSERT INTO ").append(table);
+        StringBuilder columns = new StringBuilder();
+        StringBuilder values = new StringBuilder();
         try {
-            for (int i = 1; i < fields.length; i++) { //начинаем со второго поля
-                Field f = fields[i];
-                f.setAccessible(true);
-                names = names.concat(delimiter + f.getName());
-                values = values.concat(delimiter + "'" + f.get(bean) + "'");
-                delimiter = ", "; //добавим запятую перед каждым последующим полем
+            for (int i = 1; i < fields.length; i++) {
+                Field field = fields[i];
+                field.setAccessible(true);
+                columns.append(field.getName());
+                if (i!=fields.length-1) columns.append(',');
+
+                values.append('\'').append(field.get(bean)).append('\'');
+                if (i!=fields.length-1) values.append(',');
             }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        String sql = "insert INTO " + table + " (" + names + ") values(" + values + ")";
-        //System.out.println(sql);
-        int id = executeUpdate(sql, true);
+        sql.append(" (").append(columns).append(") VALUES (").append(values).append(')');
+        int id = executeUpdate(sql.toString());
         if (id > 0) try {
             fields[0].setAccessible(true);
             fields[0].set(bean, id);
@@ -158,53 +123,39 @@ public class UniversalDao<TypeBean> implements InterfaceDao<TypeBean> {
         return (id > 0);
     }
 
-    //=======================================================================================================
-    public boolean delete(TypeBean bean) throws SQLException {
-        String sql = null;
+    public boolean delete(TYPE bean) throws SQLException {
+        StringBuilder sql = new StringBuilder("DELETE FROM ");
         try {
-            sql = "DELETE FROM `" + table + "` WHERE `" + table + "`.`ID` = '" + fields[0].get(bean) + "'";
+            sql.append(table).append(" WHERE ").append(table).append(".id=").
+                    append('\'').append(fields[0].get(bean)).append('\'');
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        return (0 < executeUpdate(sql, false));
+        return (0 < executeUpdate(sql.toString()));
     }
 
-
-    //=======================================================================================================
-    //т.к. в Generics невозможно сделать new TypeBean(), а новые объекты нужны,
-    //создадим объект и приведем его тип к TypeBean "вручную"
-    @SuppressWarnings("unchecked") //подавление warning-а
-    private TypeBean newBean() {
+    @SuppressWarnings("unchecked") //class with generic type haven't got constructor, it can't be created by new
+    private TYPE newBean() {
         try {
-            return (TypeBean) bean.getClass().getConstructor().newInstance();
-        } catch (InstantiationException |
-                IllegalAccessException |
-                NoSuchMethodException |
-                InvocationTargetException e
-                ) {
+            return (TYPE) bean.getClass().getConstructor().newInstance();
+        } catch (InstantiationException | InvocationTargetException |
+                NoSuchMethodException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        return null; //если не создался вернем null
+        return null;
     }
 
-    //=======================================================================================================
-    //общая команда для Create Update Delete
-    private static int executeUpdate(String sql, boolean returnLastID) throws SQLException {
+    private static int executeUpdate(String sql) throws SQLException {
         int result;
         try (Connection connection = ConnectionCreator.get();
              Statement statement = connection.createStatement()) {
             result = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
-            //получим ID, если это требуется извне.
-            if (result > 0 && returnLastID) {
-                //в MySQL можно так .executeQuery("SELECT LAST_INSERT_ID();");
-                //но этот способ надежнее (не зависит от базы данных и безопаснее)
-                ResultSet resultSet = statement.getGeneratedKeys();
-                if (resultSet.next()) result = resultSet.getInt(1);
+            if (result > 0) {
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+                if (generatedKeys.next())
+                    return generatedKeys.getInt(1);
             }
-        } catch (SQLException e) {
-            throw new SQLException(e);
         }
         return result;
     }
-
 }
