@@ -1,7 +1,5 @@
 package by.it.narushevich.jd03_03.dao;
 
-import java.sql.SQLException;
-
 public class Dao {
     private static volatile Dao instance;
 
