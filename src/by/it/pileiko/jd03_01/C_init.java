@@ -8,7 +8,8 @@ import java.sql.Statement;
 
 public class C_init {
 
-    private static final String URL = "jdbc:mysql://127.0.0.1:2016/";
+    private static final String URL = "jdbc:mysql://127.0.0.1:2016/pileiko?"+
+            ;
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
@@ -63,6 +64,13 @@ public class C_init {
                     "    ON DELETE CASCADE\n" +
                     "    ON UPDATE CASCADE)\n" +
                     "ENGINE = InnoDB;");
+
+            statement.executeUpdate("INSERT INTO `pileiko`.`roles` (`ID`, `Role`) VALUES (DEFAULT, 'Administrator');");
+            statement.executeUpdate("INSERT INTO `pileiko`.`roles` (`ID`, `Role`) VALUES (DEFAULT, 'User');");
+            statement.executeUpdate("INSERT INTO `pileiko`.`roles` (`ID`, `Role`) VALUES (DEFAULT, 'Guest');");
+            statement.executeUpdate("INSERT INTO `pileiko`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'admin', 'gfhjkm', 'admin@gmail.com', 1);");
+            statement.executeUpdate("INSERT INTO `pileiko`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'user', 'uspass', 'us@mail.ru', 2);");
+
 
         }
 
