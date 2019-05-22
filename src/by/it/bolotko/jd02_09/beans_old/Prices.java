@@ -6,7 +6,7 @@
 //
 
 
-package by.it.bolotko.jd02_09.beans;
+package by.it.bolotko.jd02_09.beans_old;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,16 +17,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Cars complex type.
+ * <p>Java class for Prices complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Cars">
+ * &lt;complexType name="Prices">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="car" type="{http://beans.jd02_09.bolotko.it.by/}Car" maxOccurs="unbounded"/>
+ *         &lt;element name="price" type="{http://beans.jd02_09.bolotko.it.by/}Price" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,47 +36,47 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Cars", propOrder = {
-    "car"
+@XmlType(name = "Prices", propOrder = {
+    "price"
 })
-public class Cars {
+public class Prices {
 
     @XmlElement(required = true)
-    protected List<Car> car;
+    protected List<Price> price;
 
     /**
-     * Gets the value of the car property.
+     * Gets the value of the price property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the car property.
+     * This is why there is not a <CODE>set</CODE> method for the price property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCar().add(newItem);
+     *    getPrice().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Car }
+     * {@link Price }
      * 
      * 
      */
-    public List<Car> getCar() {
-        if (car == null) {
-            car = new ArrayList<Car>();
+    public List<Price> getPrice() {
+        if (price == null) {
+            price = new ArrayList<Price>();
         }
-        return this.car;
+        return this.price;
     }
 
     @Override
     public String toString() {
-        return "Cars{" +
-                "car=" + car +
+        return "Prices{" +
+                "price=" + price +
                 '}';
     }
 }

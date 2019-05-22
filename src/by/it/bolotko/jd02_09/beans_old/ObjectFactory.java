@@ -6,7 +6,7 @@
 //
 
 
-package by.it.bolotko.jd02_09.beans;
+package by.it.bolotko.jd02_09.beans_old;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
