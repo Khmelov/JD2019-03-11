@@ -19,7 +19,7 @@ public class TeatagDao extends AbstractDao<Teatag> {
                 "INSERT INTO `teatags`(`trademark_id`, `subtitle`, `material_id`,"  +
                         " `width`, `height`,`in_collection_since`,"  +
                         "`num_in_catalog`, `users_id`) " +
-                        "VALUES (%d,'%s',%d,%f,%f,'%tF','%s',%d)",
+                        "VALUES (%d,'%s',%d,%f,%f,'%s','%s',%d)",
                 teatag.getTrademark_id(),teatag.getSubtitle(),teatag.getMaterial_id(),
                 teatag.getWidth(),teatag.getHeight(),teatag.getIn_collection_since(),
                 teatag.getNum_in_catalog(),teatag.getUsers_id());
@@ -58,7 +58,6 @@ public class TeatagDao extends AbstractDao<Teatag> {
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
         ) {
-            System.out.println(sql);
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 Teatag teatag = new Teatag(

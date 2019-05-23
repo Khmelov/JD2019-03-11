@@ -2,6 +2,7 @@ package by.it.narushevich.jd03_03.dao;
 
 import by.it.narushevich.jd03_03.beans.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -87,25 +88,26 @@ public class Printer {
         for (Trademark current : trademarks) System.out.println(current);
     }
 
-//    public static void print_teatag_dao(Dao dao) throws SQLException {
-//        List<Teatag> teatags = dao.teatag.getAll();
-//        System.out.println("\nВсе экземпляры коллекции:");
-//        for (Teatag current : teatags) System.out.println(current);
-//        Teatag teatag = new Teatag(0,13,"Yellow label",1,25,28,2018.04.07,"02-11-4",3);
-//        dao.teatag.create(teatag);
-//        teatag=dao.teatag.read(teatag.getId());
-//        System.out.println("\nНовый экземпляр:");
-//        System.out.println(teatag);
-//        teatag.setSubtitle("Very tasty tea");
-//        dao.teatag.update(teatag);
-//        teatag=dao.teatag.read(teatag.getId());
-//        System.out.println("\nЗамена подзаголовка:");
-//        System.out.println(teatag);
-//        dao.teatag.delete(teatag);
-//        teatags = dao.teatag.getAll();
-//        System.out.println("\nВсе экземпляры коллекции:");
-//        for (Teatag current : teatags) System.out.println(current);
-//    }
+    public static void print_teatag_dao(Dao dao) throws SQLException {
+        List<Teatag> teatags = dao.teatag.getAll();
+        System.out.println("\nВсе экземпляры коллекции:");
+        for (Teatag current : teatags) System.out.println(current);
+        Teatag teatag = new Teatag(0,13,"Yellow label",1,25,28,null,"02-11-4",3);
+        teatag.setIn_collection_since("2018-04-07");
+        dao.teatag.create(teatag);
+        teatag=dao.teatag.read(teatag.getId());
+        System.out.println("\nНовый экземпляр:");
+        System.out.println(teatag);
+        teatag.setSubtitle("Very tasty tea");
+        dao.teatag.update(teatag);
+        teatag=dao.teatag.read(teatag.getId());
+        System.out.println("\nЗамена подзаголовка:");
+        System.out.println(teatag);
+        dao.teatag.delete(teatag);
+        teatags = dao.teatag.getAll();
+        System.out.println("\nВсе экземпляры коллекции:");
+        for (Teatag current : teatags) System.out.println(current);
+    }
 
 
 }

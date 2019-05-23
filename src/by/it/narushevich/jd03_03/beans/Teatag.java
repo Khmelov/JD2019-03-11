@@ -1,6 +1,10 @@
 package by.it.narushevich.jd03_03.beans;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 
 public class Teatag {
 
@@ -87,10 +91,15 @@ public class Teatag {
         this.in_collection_since = in_collection_since;
     }
 
-    public void setIn_collection_since(String in_collection_since) { // создать преобразование из стринг в дату
-        //this.in_collection_since = in_collection_since;
+    public void setIn_collection_since(String in_collection_since) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            java.util.Date utilDate = df.parse(in_collection_since);
+            this.in_collection_since = new Date(utilDate.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
-
 
 
     public String getNum_in_catalog() {
@@ -111,15 +120,13 @@ public class Teatag {
 
     @Override
     public String toString() {
-        return "Teatag{" +
-                "id = " + id +
-                ", trademark id = " + trademark_id +
-                ", subtitle ='" + subtitle + '\'' +
-                ", material_id = " + material_id +
-                ", width x height = " + width + " x "+ height +
-                ", in collection since = " + in_collection_since +
-                ", num in catalog = '" + num_in_catalog + '\'' +
-                ", users id = " + users_id +
-                '}';
+        return "id=" + id +
+                ", trademark id=" + trademark_id +
+                ", subtitle='" + subtitle + '\'' +
+                ", material_id=" + material_id +
+                ", width x height = " + width + " mm x "+ height +
+                " mm, in collection since " + in_collection_since +
+                ", num in catalog = " + num_in_catalog +
+                ", users id=" + users_id;
     }
 }

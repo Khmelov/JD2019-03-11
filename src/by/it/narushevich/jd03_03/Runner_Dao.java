@@ -21,7 +21,7 @@ public class Runner_Dao {
 
         Printer.print_trademark_dao(dao);
 
-        //Printer.print_teatag_dao(dao);
+        Printer.print_teatag_dao(dao);
     }
 
     private static void resetDataBase() throws SQLException {

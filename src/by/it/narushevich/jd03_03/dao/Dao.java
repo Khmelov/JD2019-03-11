@@ -7,14 +7,14 @@ public class Dao {
     public UserDao user;
     public TrademarkDao trademark;
     public MaterialDao material;
-    public TeatagDaoUniversal teatag;
+    public TeatagDao teatag;
 
     private Dao() {
         role=new RoleDao();
         user=new UserDao();
         trademark = new TrademarkDao();
         material = new MaterialDao();
-        teatag = new TeatagDaoUniversal();
+        teatag = new TeatagDao();
     }
 
     public static Dao getDao(){
