@@ -43,8 +43,8 @@ public class ModDao extends AbstractDao<Mod> {
     }
 
     @Override
-    public boolean delete(Mod role) throws SQLException {
-        String sql = String.format(Locale.ENGLISH, "DELETE FROM `mods` WHERE `id`=%d", role.getId());
+    public boolean delete(Mod mod) throws SQLException {
+        String sql = String.format(Locale.ENGLISH, "DELETE FROM `mods` WHERE `id`=%d", mod.getId());
         return executeUpdate(sql);
     }
 
@@ -81,9 +81,9 @@ public class ModDao extends AbstractDao<Mod> {
     @Override
     public Mod read(long id) throws SQLException {
         String where=String.format(" WHERE `id`='%d' LIMIT 0,1", id);
-        List<Mod> roles = getAll(where);
-        if (roles.size() == 1)
-            return roles.get(0);
+        List<Mod> mods = getAll(where);
+        if (mods.size() == 1)
+            return mods.get(0);
         else
             return null;
     }

@@ -1,5 +1,6 @@
 package by.it.bildziuh.jd03_03;
 
+import by.it.bildziuh.jd03_03.beans.Message;
 import by.it.bildziuh.jd03_03.beans.Mod;
 import by.it.bildziuh.jd03_03.beans.Role;
 import by.it.bildziuh.jd03_03.beans.User;
@@ -10,26 +11,6 @@ import java.sql.SQLException;
 
 public class Runner {
     public static void main(String[] args) throws SQLException {
-
-  /*      Mod mod=new Mod();
-        mod.setGame("Skyrim");
-        mod.setGroup("Global improvements");
-        mod.setName("New Skyrim");
-        mod.setDescription("best description ever");
-        mod.setSize(400);
-        mod.setLink("gdrive");
-        mod.setUsers_id(3);
-        ModCRUD modCRUD =new ModCRUD();
-        modCRUD.create(mod);
-        mod= modCRUD.read(mod.getId());
-        System.out.println(mod);
-        mod.setName("Newest Skyrim");
-        mod.setDescription("even better description for mod");
-        modCRUD.update(mod);
-        mod= modCRUD.read(mod.getId());
-        System.out.println(mod);
-        modCRUD.delete(mod);*/
-
 
 //    dao.resetDataBase();
 
@@ -56,9 +37,6 @@ public class Runner {
         dao.role.delete(role);
 
         Mod mod = new Mod(0,"Skyrim","Global improvements","New Skyrim","best description ever",400,"gdrive",3);
-        ModCRUD modCRUD =new ModCRUD();
-        modCRUD.create(mod);
-
         dao.mod.create(mod);
         mod = dao.mod.read(mod.getId());
         System.out.println(mod);
@@ -69,6 +47,15 @@ public class Runner {
         System.out.println(mod);
         dao.mod.delete(mod);
 
+        Message message = new Message(0,1,"Test message",2);
+        dao.message.create(message);
+        message = dao.message.read(message.getId());
+        System.out.println(message);
+        message.setText("Test success");
+        dao.message.update(message);
+        message = dao.message.read(message.getId());
+        System.out.println(message);
+        dao.message.delete(message);
 
     }
 }

@@ -50,6 +50,19 @@ public class C_Init {
                     "    ON DELETE CASCADE\n" +
                     "    ON UPDATE CASCADE)\n" +
                     "ENGINE = InnoDB;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bildziuh`.`messages` (\n" +
+
+                    "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `users_id` INT NOT NULL,\n" +
+                    "  `text` VARCHAR(5000) NULL,\n" +
+                    "  `mods_id` INT NOT NULL,\n" +
+                    "  PRIMARY KEY (`id`),\n" +
+                    "  CONSTRAINT `fk_messages_mods1`\n" +
+                    "    FOREIGN KEY (`mods_id`)\n" +
+                    "    REFERENCES `bildziuh`.`mods` (`id`)\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE)\n" +
+                    "ENGINE = InnoDB;");
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'administrator');");
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'moderator');");
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
@@ -59,6 +72,7 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `bildziuh`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'user2', 'user2', 'user2@mail.ru', 3);\n");
             statement.executeUpdate("INSERT INTO `bildziuh`.`mods` (`ID`, `Game`, `Group`, `Name`, `Description`, `Size`, `Link`, `users_ID`) VALUES (DEFAULT, 'Skyrim', 'User interface', 'Better UI', 'Improve ur interface w/o registration and for free', 42, 'gdisk', 2);\n");
             statement.executeUpdate("INSERT INTO `bildziuh`.`mods` (`ID`, `Game`, `Group`, `Name`, `Description`, `Size`, `Link`, `users_ID`) VALUES (DEFAULT, 'Witcher 3', 'Animations', 'Killing spree', 'New animations', 84, 'gdisk', 3);\n");
+            statement.executeUpdate("INSERT INTO `bildziuh`.`messages` (`ID`, `users_ID`, `text`, `mods_ID`) VALUES (DEFAULT, '2', 'Awesome mod!!111oneone', '2');\n");
         }
     }
 }

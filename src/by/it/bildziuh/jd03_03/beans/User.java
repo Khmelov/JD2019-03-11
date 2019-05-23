@@ -6,7 +6,7 @@ public class User {
     private String login;
     private String password;
     private String email;
-    private long rolesId;
+    private long roles_id;
 
     public User() {
     }
@@ -16,7 +16,7 @@ public class User {
         this.login = login;
         this.password = password;
         this.email = email;
-        this.rolesId = rolesId;
+        this.roles_id = rolesId;
     }
 
     public long getId() {
@@ -52,11 +52,11 @@ public class User {
     }
 
     public long getRolesId() {
-        return rolesId;
+        return roles_id;
     }
 
     public void setRolesId(long rolesId) {
-        this.rolesId = rolesId;
+        this.roles_id = rolesId;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", rolesId=" + rolesId +
+                ", rolesId=" + roles_id +
                 '}';
     }
 }

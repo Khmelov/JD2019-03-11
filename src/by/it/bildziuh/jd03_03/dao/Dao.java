@@ -9,6 +9,7 @@ public class Dao {
     public RoleDao role;
     public UserDao user;
     public ModDao mod;
+    public MessageDao message;
 
     public void resetDataBase() throws SQLException {
         C_Init.main(new String[]{});
@@ -22,6 +23,7 @@ public class Dao {
         role=new RoleDao();
         user=new UserDao();
         mod=new ModDao();
+        message=new MessageDao();
     }
 
     public static Dao getDao(){

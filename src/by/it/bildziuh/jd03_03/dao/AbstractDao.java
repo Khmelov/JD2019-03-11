@@ -28,7 +28,7 @@ public abstract class AbstractDao<TYPE> implements InterfaceDao<TYPE>{
     protected boolean executeUpdate(String sql) throws SQLException{
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             return (1 == statement.executeUpdate(sql));
         }
