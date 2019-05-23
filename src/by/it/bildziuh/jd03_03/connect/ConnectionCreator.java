@@ -1,4 +1,4 @@
-package by.it.bildziuh.jd03_03.crud;
+package by.it.bildziuh.jd03_03.connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -4,37 +4,14 @@ import by.it.bildziuh.jd03_03.beans.Mod;
 import by.it.bildziuh.jd03_03.beans.Role;
 import by.it.bildziuh.jd03_03.beans.User;
 import by.it.bildziuh.jd03_03.crud.ModCRUD;
-import by.it.bildziuh.jd03_03.crud.RoleCRUD;
-import by.it.bildziuh.jd03_03.crud.UserCRUD;
+import by.it.bildziuh.jd03_03.dao.Dao;
 
 import java.sql.SQLException;
 
 public class Runner {
     public static void main(String[] args) throws SQLException {
 
-        User user=new User(0,"TestUser","qwerty","test@test.com",2);
-        UserCRUD userCRUD=new UserCRUD();
-        userCRUD.create(user);
-        user=userCRUD.read(user.getId());
-        System.out.println(user);
-        user.setLogin("TestSuccess");
-        userCRUD.update(user);
-        user=userCRUD.read(user.getId());
-        System.out.println(user);
-        userCRUD.delete(user);
-        
-        Role role=new Role(0,"Moderaptor");
-        RoleCRUD roleCRUD=new RoleCRUD();
-        roleCRUD.create(role);
-        role=roleCRUD.read(role.getId());
-        System.out.println(role);
-        role.setRole("Moderator");
-        roleCRUD.update(role);
-        role=roleCRUD.read(role.getId());
-        System.out.println(role);
-        roleCRUD.delete(role);
-
-        Mod mod=new Mod();
+  /*      Mod mod=new Mod();
         mod.setGame("Skyrim");
         mod.setGroup("Global improvements");
         mod.setName("New Skyrim");
@@ -51,6 +28,47 @@ public class Runner {
         modCRUD.update(mod);
         mod= modCRUD.read(mod.getId());
         System.out.println(mod);
-        modCRUD.delete(mod);
+        modCRUD.delete(mod);*/
+
+
+//    dao.resetDataBase();
+
+        Dao dao = Dao.getDao();
+
+        User user = new User(0, "TestUser", "qwerty", "test@test.com", 2);
+        dao.user.create(user);
+        user = dao.user.read(user.getId());
+        System.out.println(user);
+        user.setLogin("TestSuccess");
+        dao.user.update(user);
+        user = dao.user.read(user.getId());
+        System.out.println(user);
+        dao.user.delete(user);
+
+        Role role = new Role(0, "Moderaptor");
+        dao.role.create(role);
+        role = dao.role.read(role.getId());
+        System.out.println(role);
+        role.setRole("Moderator");
+        dao.role.update(role);
+        role = dao.role.read(role.getId());
+        System.out.println(role);
+        dao.role.delete(role);
+
+        Mod mod = new Mod(0,"Skyrim","Global improvements","New Skyrim","best description ever",400,"gdrive",3);
+        ModCRUD modCRUD =new ModCRUD();
+        modCRUD.create(mod);
+
+        dao.mod.create(mod);
+        mod = dao.mod.read(mod.getId());
+        System.out.println(mod);
+        mod.setName("Newest Skyrim");
+        mod.setDescription("even better description for mod");
+        dao.mod.update(mod);
+        mod = dao.mod.read(mod.getId());
+        System.out.println(mod);
+        dao.mod.delete(mod);
+
+
     }
 }

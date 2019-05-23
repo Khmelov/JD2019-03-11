@@ -1,14 +1,14 @@
-package by.it.bildziuh.jd03_03;
+package by.it.bildziuh.jd03_03.dao;
 
 
-import by.it.bildziuh.jd03_03.crud.ConnectionCreator;
+import by.it.bildziuh.jd03_03.connect.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 
-public class TaskB {
+public class ShowUsers {
 
     public static void main(String[] args) {
         try (
