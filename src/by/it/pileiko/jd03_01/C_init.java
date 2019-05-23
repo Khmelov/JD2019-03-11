@@ -8,8 +8,12 @@ import java.sql.Statement;
 
 public class C_init {
 
-    private static final String URL = "jdbc:mysql://127.0.0.1:2016/pileiko?"+
-            ;
+    private static final String URL = "jdbc:mysql://127.0.0.1:2016/?"+
+            "useUnicode=true&" +
+            "characterEncoding=UTF-8&" +
+            "useJDBCCompliantTimezoneShift=true&" +
+            "useLegacyDatetimeCode=false&" +
+            "serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
@@ -70,7 +74,8 @@ public class C_init {
             statement.executeUpdate("INSERT INTO `pileiko`.`roles` (`ID`, `Role`) VALUES (DEFAULT, 'Guest');");
             statement.executeUpdate("INSERT INTO `pileiko`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'admin', 'gfhjkm', 'admin@gmail.com', 1);");
             statement.executeUpdate("INSERT INTO `pileiko`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'user', 'uspass', 'us@mail.ru', 2);");
-
+            statement.executeUpdate("INSERT INTO `pileiko`.`cars` (`ID`, `brand`, `model`, `engine`, `price`, `year`, `description`, `users_ID`) VALUES (DEFAULT, 'Audi', 'A6', 1800, 5500, 2001, 'norm avto', 2);");
+            statement.executeUpdate("INSERT INTO `pileiko`.`cars` (`ID`, `brand`, `model`, `engine`, `price`, `year`, `description`, `users_ID`) VALUES (DEFAULT, 'Fiat', 'a500', 800, 8050, 2014, 'small and pretty', 1);");
 
         }
 

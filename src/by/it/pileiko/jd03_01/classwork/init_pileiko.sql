@@ -18,8 +18,6 @@ USE `pileiko` ;
 -- -----------------------------------------------------
 -- Table `pileiko`.`roles`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pileiko`.`roles` ;
-
 CREATE TABLE IF NOT EXISTS `pileiko`.`roles` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `Role` VARCHAR(50) NULL,
@@ -30,8 +28,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `pileiko`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pileiko`.`users` ;
-
 CREATE TABLE IF NOT EXISTS `pileiko`.`users` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `Login` VARCHAR(45) NULL,
@@ -50,8 +46,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `pileiko`.`cars`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pileiko`.`cars` ;
-
 CREATE TABLE IF NOT EXISTS `pileiko`.`cars` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `brand` VARCHAR(45) NULL,
