@@ -17,10 +17,9 @@ public enum Actions {
     static Cmd defineCommand(HttpServletRequest req) {
         String nameCommand = req.getParameter("command").toUpperCase();
         try {
-            Cmd command = Actions.valueOf(nameCommand).command;
+            return Actions.valueOf(nameCommand).command;
         } catch (IllegalArgumentException e) {
             return Actions.ERROR.command;
         }
-        return null;
     }
 }

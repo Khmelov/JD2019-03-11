@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class CmdSignup extends Cmd{
     @Override
-    public Cmd execute(HttpServletRequest req) throws Exception {
+    public Cmd execute(HttpServletRequest req){
         return Actions.SIGNUP.command;
     }
 }

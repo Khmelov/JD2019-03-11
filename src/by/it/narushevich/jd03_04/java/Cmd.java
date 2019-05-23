@@ -10,6 +10,11 @@ public abstract class Cmd {
         return this
                 .getClass()
                 .getSimpleName()
-                .replace("cmd", "");
+                .toLowerCase()
+                .replace("cmd","");
+    }
+
+    public String getJsp(){
+        return "/"+this.toString()+".jsp";
     }
 }
