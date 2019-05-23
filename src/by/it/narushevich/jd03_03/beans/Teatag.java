@@ -1,9 +1,6 @@
 package by.it.narushevich.jd03_03.beans;
 
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class Teatag {
 
@@ -86,11 +83,15 @@ public class Teatag {
         return in_collection_since;
     }
 
-    public void setIn_collection_since(Date in_collection_since) throws ParseException {
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date myDate = (Date) formatter.parse(in_collection_since.toString());
-        this.in_collection_since = new Date(myDate.getTime());
+    public void setIn_collection_since(Date in_collection_since) {
+        this.in_collection_since = in_collection_since;
     }
+
+    public void setIn_collection_since(String in_collection_since) { // создать преобразование из стринг в дату
+        //this.in_collection_since = in_collection_since;
+    }
+
+
 
     public String getNum_in_catalog() {
         return num_in_catalog;

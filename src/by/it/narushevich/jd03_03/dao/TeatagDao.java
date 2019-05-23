@@ -58,6 +58,7 @@ public class TeatagDao extends AbstractDao<Teatag> {
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
         ) {
+            System.out.println(sql);
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 Teatag teatag = new Teatag(
