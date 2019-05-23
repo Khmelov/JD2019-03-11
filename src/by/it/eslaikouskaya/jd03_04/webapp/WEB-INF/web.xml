@@ -10,5 +10,14 @@
     Важно чтобы внутри каждого из этих тегов были теги servlet-name
     и имя сервлета в них было одинаковым!!! Здесь это имя HelloWorld
     -->
+    <servlet>
+        <servlet-name>FrontController</servlet-name>
+        <servlet-class>by.it.eslaikouskaya.jd03_04.java.FrontController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FrontController</servlet-name>
+        <url-pattern>/do</url-pattern>
+    </servlet-mapping>
 
 </web-app>
