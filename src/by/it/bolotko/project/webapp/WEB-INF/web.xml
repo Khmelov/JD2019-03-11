@@ -8,7 +8,7 @@
     <!--
     Для любого сервлета нужно определить два тега servlet и servlet-mapping.
     Важно чтобы внутри каждого из этих тегов были теги servlet-name
-    и имя сервлета в них было одинаковым!!! Здесь это имя HelloWorld
+    и имя сервлета в них было одинаковым!!!
     -->
     <servlet>
         <servlet-name>FrontController</servlet-name>

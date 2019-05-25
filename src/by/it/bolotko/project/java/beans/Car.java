@@ -91,15 +91,15 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
+        return "Car(" +
                 "id=" + id +
-                ", car_type='" + car_type + '\'' +
-                ", fuel_type='" + fuel_type + '\'' +
-                ", mark='" + mark + '\'' +
-                ", model='" + model + '\'' +
-                ", price='" + price + '\'' +
-                ", year_of_issue='" + year_of_issue + '\'' +
+                ", car_type=" + car_type +
+                ", fuel_type=" + fuel_type +
+                ", mark=" + mark +
+                ", model=" + model +
+                ", price=" + price +
+                ", year_of_issue=" + year_of_issue +
                 ", users_id=" + users_id +
-                '}';
+                ')';
     }
 }

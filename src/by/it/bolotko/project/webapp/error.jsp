@@ -3,7 +3,7 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.htm" %>
-    <p>ERROR: ${message}</p>
+    <p>Error: ${Error}</p>
 </div>
 </body>
 </html>

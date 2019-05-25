@@ -1,41 +1,30 @@
 package by.it.bolotko.project.java;
 
+import javax.servlet.http.HttpServletRequest;
 
-import by.it.bolotko.project.java.ActionCommand;
-import by.it.bolotko.project.java.CommandLogin;
-import by.it.bolotko.project.java.CommandLogout;
-import by.it.bolotko.project.java.CommandSignUp;
+public enum Actions {
 
-enum Actions {
-//    SIGNUP {
-//        {
-//            this.command = new CommandSignUp();
-//            this.jsp ="/signup.jsp";
-//        }
-//    },
-//    LOGIN {
-//        {
-//            this.command = new CommandLogin();
-//            this.jsp ="/login.jsp";
-//        }
-//    },
-//    LOGOUT {
-//        {
-//            this.command = new CommandLogout();
-//            this.jsp ="/logout.jsp";
-//        }
-//    },
-//    ERROR {
-//        {
-//            this.command = new CommandLogout();
-//        }
-//    };
-//    public String jsp ="/error.jsp";
-//    public ActionCommand command;
-//
-//    public ActionCommand getCurrentCommand() {
-//        return command;
-//    }
+    INDEX(new CmdIndex()),
+    RESETDB(new CmdResetDB()),
+    LOGIN(new CmdLogin()),
+    LOGOUT(new CmdLogout()),
+    SIGNUP(new CmdSignup()),
+    ERROR(new CmdError()),
+    CREATECAR(new CmdCreateCar());
 
+    public Cmd command;
+
+    Actions(Cmd command) {
+        this.command = command;
+    }
+
+    static Cmd defineCommand(HttpServletRequest req) {
+        String nameCommand = req.getParameter("command").toUpperCase();
+        try {
+            return Actions.valueOf(nameCommand).command;
+        } catch (IllegalArgumentException e) {
+            return Actions.ERROR.command;
+        }
+    }
 
 }
