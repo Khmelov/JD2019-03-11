@@ -1,4 +1,7 @@
-package by.it.khlystunova.jd03_04.java;
+package by.it.khlystunova.project.java;
+
+import by.it.khlystunova.project.java.Actions;
+import by.it.khlystunova.project.java.Cmd;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +27,7 @@ public class FrontController extends HttpServlet {
         try {
             resp.setHeader("Cache-Control","private, no-store, no-cache, must-revalidate");
             resp.setHeader("Pragma","no-cache");
-            Cmd cmd = Actions.defineCommand(req);
+            by.it.khlystunova.project.java.Cmd cmd = Actions.defineCommand(req);
             Cmd next = cmd.execute(req);
             if (next==cmd || next==null){
                 getServletContext().
@@ -40,5 +43,14 @@ public class FrontController extends HttpServlet {
         }
 
 
+    }
+
+    public static void main(String[] args) {
+        try{
+            throw new Exception("some");
+        }catch (Exception e){
+            System.out.println( e.toString());
+
+        }
     }
 }

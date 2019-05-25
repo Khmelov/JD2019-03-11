@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd03_04.java;
+package by.it.khlystunova.project.java;
 
 import javax.servlet.http.HttpServletRequest;
 

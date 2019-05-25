@@ -1,4 +1,10 @@
-package by.it.khlystunova.jd03_04.java;
+package by.it.khlystunova.project.java;
+
+import by.it.khlystunova.project.java.Cmd;
+import by.it.khlystunova.project.java.CmdError;
+import by.it.khlystunova.project.java.CmdLogin;
+import by.it.khlystunova.project.java.CmdLogout;
+import by.it.khlystunova.project.java.CmdSignup;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +18,7 @@ public enum Actions {
 
     public Cmd command;
 
-    Actions(Cmd command){
+    Actions(by.it.khlystunova.project.java.Cmd command){
         this.command=command;
     }
     static Cmd defineCommand(HttpServletRequest req) {
