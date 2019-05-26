@@ -37,12 +37,12 @@
     <complexType name="TypeOfAd">
         <all>
             <element name="description" type="string" />
-            <element name="address" type="string" />
-            <element name="floor" type="integer" />
-            <element name="floors" type="positiveInteger" />
-            <element name="rooms" type="positiveInteger" />
-            <element name="comfort" type="positiveInteger"/>
-            <element name="price" type="my:TypeOfPrice" />
+            <element name="deadline" type="string" />
+            <element name="Editor" type="integer" />
+            <element name="Creator" type="positiveInteger" />
+            <element name="logger" type="positiveInteger" />
+            <element name="regularity" type="positiveInteger"/>
+            <element name="project_tasks" type="my:TypeOfPrice" />
         </all>
     </complexType>
 

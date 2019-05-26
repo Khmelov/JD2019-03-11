@@ -1,0 +1,4 @@
+message.welcome=Добры дзень!
+message.question=Усе добра?
+person.firstName=Вадзим
+person.lastName=Василюк
