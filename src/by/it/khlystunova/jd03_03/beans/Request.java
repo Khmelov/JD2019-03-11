@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd03_02.beans;
+package by.it.khlystunova.jd03_03.beans;
 
 public class Request {
 

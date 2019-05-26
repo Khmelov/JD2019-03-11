@@ -1,6 +1,6 @@
-package by.it.akhmelev.jd03_03.dao;
+package by.it.khlystunova.jd03_03.dao;
 
-import by.it.akhmelev.jd03_03.beans.User;
+import by.it.khlystunova.jd03_03.beans.User;
 import by.it.khlystunova.jd03_03.connect.ConnectionCreator;
 
 import java.sql.Connection;
@@ -18,7 +18,8 @@ public class UserDao extends AbstractDao<User> {
                 "INSERT INTO " +
                         "`users`(`login`, `password`, `email`, `roles_id`) " +
                         "VALUES ('%s','%s','%s',%d)",
-                user.getLogin(), user.getPassword(), user.getEmail(), user.getRoles_id()
+                user.getLogin(), user.getPassword(),
+                user.getEmail(), user.getRoles_ID()
         );
         long id = executeCreate(sql);
         if (id > 0)
@@ -33,7 +34,7 @@ public class UserDao extends AbstractDao<User> {
                         "SET `login`='%s',`password`='%s'," +
                         "`email`='%s',`roles_id`=%d WHERE `id`=%d",
                 user.getLogin(), user.getPassword(),
-                user.getEmail(), user.getRoles_id(), user.getId()
+                user.getEmail(), user.getRoles_ID(), user.getId()
         );
         return executeUpdate(sql);
     }
@@ -41,7 +42,7 @@ public class UserDao extends AbstractDao<User> {
     @Override
     public boolean delete(User user) throws SQLException {
         String sql = String.format(Locale.ENGLISH, "DELETE FROM `users` WHERE `id`=%d", user.getId());
-        return executeUpdate(sql);
+         return executeUpdate(sql);
     }
 
     @Override
@@ -53,7 +54,7 @@ public class UserDao extends AbstractDao<User> {
 
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
@@ -72,17 +73,18 @@ public class UserDao extends AbstractDao<User> {
     }
 
     @Override
+    public List<User> getAll() throws SQLException {
+       return getAll("");
+    }
+
+    @Override
     public User read(long id) throws SQLException {
         String where=String.format(" WHERE `id`='%d' LIMIT 0,1", id);
-        List<User> users = getAll(where);
-        if (users.size() == 1)
-            return users.get(0);
+        List<User> roles = getAll(where);
+        if (roles.size() == 1)
+            return roles.get(0);
         else
             return null;
     }
 
-    @Override
-    public List<User> getAll() throws SQLException {
-        return getAll("");
-    }
 }

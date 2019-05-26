@@ -1,4 +1,5 @@
-package by.it.akhmelev.jd03_03.dao;
+package by.it.khlystunova.jd03_03.dao;
+
 
 import by.it.khlystunova.jd03_03.connect.ConnectionCreator;
 
@@ -7,9 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-abstract class AbstractDao<T> implements InterfaceDao<T>{
+public abstract class AbstractDao<TYPE> implements InterfaceDao<TYPE>{
 
-    long executeCreate(String sql) throws SQLException {
+    protected long executeCreate(String sql) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
@@ -25,7 +26,7 @@ abstract class AbstractDao<T> implements InterfaceDao<T>{
         return -1;
     }
 
-    boolean executeUpdate(String sql) throws SQLException{
+    protected boolean executeUpdate(String sql) throws SQLException{
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()

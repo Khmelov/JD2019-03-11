@@ -1,6 +1,6 @@
-package by.it.akhmelev.jd03_03.dao;
+package by.it.khlystunova.jd03_03.dao;
 
-import by.it.akhmelev.jd03_03.beans.Role;
+import by.it.khlystunova.jd03_03.beans.Role;
 import by.it.khlystunova.jd03_03.connect.ConnectionCreator;
 
 import java.sql.Connection;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class RoleDao extends AbstractDao<Role> {
+public class RoleDao extends  AbstractDao<Role> {
     @Override
     public boolean create(Role role) throws SQLException {
         String sql = String.format(Locale.ENGLISH,
@@ -38,8 +38,16 @@ public class RoleDao extends AbstractDao<Role> {
 
     @Override
     public boolean delete(Role role) throws SQLException {
-        String sql = String.format(Locale.ENGLISH, "DELETE FROM `roles` WHERE `id`=%d", role.getId());
+        String sql = String.format(Locale.ENGLISH,
+                "DELETE FROM `roles` WHERE `id`=%d",
+                role.getId());
         return executeUpdate(sql);
+    }
+
+
+    @Override
+    public List<Role> getAll() throws SQLException {
+        return  getAll("");
     }
 
     @Override
@@ -51,7 +59,7 @@ public class RoleDao extends AbstractDao<Role> {
 
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
@@ -74,10 +82,5 @@ public class RoleDao extends AbstractDao<Role> {
             return roles.get(0);
         else
             return null;
-    }
-
-    @Override
-    public List<Role> getAll() throws SQLException {
-        return getAll("");
     }
 }
