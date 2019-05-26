@@ -3,14 +3,17 @@ package by.it.pileiko.jd03_02.beans;
 public class User {
 
     private long id;
-    private String lodin;
+    private String login;
     private String password;
     private String email;
     private long rolesId;  //  нарушен код ковекшин
 
-    public User(long id, String lodin, String password, String email, long rolesId) {
+    public User() {
+    }
+
+    public User(long id, String login, String password, String email, long rolesId) {
         this.id = id;
-        this.lodin = lodin;
+        this.login = login;
         this.password = password;
         this.email = email;
         this.rolesId = rolesId;
@@ -24,12 +27,12 @@ public class User {
         this.id = id;
     }
 
-    public String getLodin() {
-        return lodin;
+    public String getLogin() {
+        return login;
     }
 
-    public void setLodin(String lodin) {
-        this.lodin = lodin;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -56,8 +59,14 @@ public class User {
         this.rolesId = rolesId;
     }
 
-    public User() {
-
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", rolesId=" + rolesId +
+                '}';
     }
 }
