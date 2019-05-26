@@ -1,6 +1,7 @@
-package by.it.akhmelev.jd03_03.dao;
+package by.it.akhmelev.project05.java.dao;
 
-import by.it.akhmelev.jd03_03.beans.Ad;
+
+import by.it.akhmelev.project05.java.beans.Ad;
 
 /**
  * instance in singleton
