@@ -54,10 +54,10 @@ CREATE TABLE IF NOT EXISTS `pileiko`.`cars` (
   `price` DOUBLE NULL,
   `year` INT NULL,
   `description` VARCHAR(5000) NULL,
-  `usersId` INT NOT NULL,
+  `users_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
   CONSTRAINT `fk_cars_users1`
-    FOREIGN KEY (`usersId`)
+    FOREIGN KEY (`users_ID`)
     REFERENCES `pileiko`.`users` (`ID`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
@@ -96,8 +96,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `pileiko`;
-INSERT INTO `pileiko`.`cars` (`ID`, `brand`, `model`, `engine`, `price`, `year`, `description`, `usersId`) VALUES (DEFAULT, 'Audi', 'A6', 1800, 5500, 2001, 'norm avto', 2);
-INSERT INTO `pileiko`.`cars` (`ID`, `brand`, `model`, `engine`, `price`, `year`, `description`, `usersId`) VALUES (DEFAULT, 'Fiat', 'a500', 800, 8050, 2014, 'small and pretty', 1);
+INSERT INTO `pileiko`.`cars` (`ID`, `brand`, `model`, `engine`, `price`, `year`, `description`, `users_ID`) VALUES (DEFAULT, 'Audi', 'A6', 1800, 5500, 2001, 'norm avto', 2);
+INSERT INTO `pileiko`.`cars` (`ID`, `brand`, `model`, `engine`, `price`, `year`, `description`, `users_ID`) VALUES (DEFAULT, 'Fiat', 'a500', 800, 8050, 2014, 'small and pretty', 1);
 
 COMMIT;
 

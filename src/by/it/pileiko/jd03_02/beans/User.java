@@ -8,10 +8,11 @@ public class User {
     private String email;
     private long rolesId;  //  нарушен код ковекшин
 
+
     public User() {
     }
 
-    public User(long id, String login, String password, String email, long rolesId) {
+    public User (long id, String login, String password, String email, long rolesId) {
         this.id = id;
         this.login = login;
         this.password = password;

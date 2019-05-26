@@ -1,6 +1,8 @@
 package by.it.pileiko.jd03_02.crud;
 
-import by.it.bolotko.jd03_02.beans.Role;
+
+import by.it.pileiko.jd03_02.beans.Role;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
