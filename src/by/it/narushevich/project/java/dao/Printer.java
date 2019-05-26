@@ -1,8 +1,11 @@
 package by.it.narushevich.project.java.dao;
 
 import by.it.narushevich.project.java.beans.*;
+import by.it.narushevich.project.java.util.Patterns;
+import by.it.narushevich.project.java.util.Validator;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 
 public class Printer {
@@ -88,11 +91,37 @@ public class Printer {
     }
 
     public static void print_teatag_dao(Dao dao) throws SQLException {
+        long trademark_id = 0;
+        long material_id = 0;
+
         List<Teatag> teatags = dao.teatag.getAll();
         System.out.println("\nВсе экземпляры коллекции:");
         for (Teatag current : teatags) System.out.println(current);
-        Teatag teatag = new Teatag(0,13,"Yellow label",1,25,28,null,"02-11-4",3);
-        teatag.setIn_collection_since("2018-04-07");
+        Teatag teatag = new Teatag();
+
+        List<Trademark> trademarks = dao.trademark.getAll(
+                "WHERE trademark='Wisotzky tea'");
+        Iterator<Trademark> it = trademarks.iterator();
+        if (it.hasNext()) {
+            trademark_id = it.next().getId();
+        }
+        teatag.setTrademark_id(trademark_id);
+
+        List<Material> materials = dao.material.getAll(
+                "WHERE material='cardboard'");
+        Iterator<Material> it2 = materials.iterator();
+        if (it2.hasNext()) {
+            material_id = it2.next().getId();
+        }
+
+        teatag.setMaterial_id(material_id);
+        teatag.setSubtitle("Subtitle");
+        teatag.setWidth(25);
+        teatag.setHeight(28);
+        teatag.setIn_collection_since("2018-07-04");
+        teatag.setNum_in_catalog("02-04-6");
+        teatag.setUser_id(3);
+
         dao.teatag.create(teatag);
         teatag=dao.teatag.read(teatag.getId());
         System.out.println("\nНовый экземпляр:");

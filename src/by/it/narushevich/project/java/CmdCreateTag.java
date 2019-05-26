@@ -3,7 +3,7 @@ package by.it.narushevich.project.java;
 import by.it.narushevich.project.java.beans.Material;
 import by.it.narushevich.project.java.beans.Teatag;
 import by.it.narushevich.project.java.beans.Trademark;
-import by.it.narushevich.project.java.beans.User;
+// import by.it.narushevich.project.java.beans.User;
 import by.it.narushevich.project.java.dao.Dao;
 import by.it.narushevich.project.java.util.FormHelper;
 import by.it.narushevich.project.java.util.Patterns;
@@ -23,8 +23,9 @@ public class CmdCreateTag extends Cmd {
 
         if (FormHelper.isPost(req)) {
             Teatag teatag = new Teatag();
+
             List<Trademark> trademarks = dao.trademark.getAll(
-                    "WHERE trademark='" + req.getParameter("Trademark list") + "'");
+                    "WHERE trademark='" + req.getParameter("Trademark") + "'");
             Iterator<Trademark> it = trademarks.iterator();
             if (it.hasNext()) {
                 trademark_id = it.next().getId();
@@ -47,22 +48,23 @@ public class CmdCreateTag extends Cmd {
             teatag.setSubtitle(
                     Validator.getString(req, "Subtitle", Patterns.SUBTITLE));
             teatag.setWidth(
-                    Validator.getInt(req, "Width, mm"));
+                    Validator.getDouble(req, "Width, mm"));
             teatag.setHeight(
-                    Validator.getInt(req, "Height, mm"));
+                    Validator.getDouble(req, "Height, mm"));
             teatag.setIn_collection_since(
-                    Validator.getString(req, "In collection since", Patterns.DATE));
+                    Validator.getDate(req, "In collection since"));
             teatag.setNum_in_catalog(
                     Validator.getString(req, "Number in catalog", Patterns.NUMBER_IN_CATALOG));
 
-            String userName = req.getRemoteUser();
-            String where = String.format("WHERE login='%s'", userName);
-            List<User> users = dao.user.getAll(where);
-            Iterator<User> it3 = users.iterator();
-            if (it3.hasNext()) {
-                user_id = it3.next().getId();
-            }
-            teatag.setUser_id(user_id);
+//            String userName = req.getRemoteUser();
+//            String where = String.format("WHERE login='%s'", userName);
+//            List<User> users = dao.user.getAll(where);
+//            Iterator<User> it3 = users.iterator();
+//            if (it3.hasNext()) {
+//                user_id = it3.next().getId();
+//            }
+//            teatag.setUser_id(user_id);
+            teatag.setUser_id(3);
 
             if (dao.teatag.create(teatag)) {
                 return Actions.USERCOLLECTION.command;

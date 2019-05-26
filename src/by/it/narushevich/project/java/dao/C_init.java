@@ -27,8 +27,8 @@ public class C_init {
                     "  `email` VARCHAR(45) NULL,\n" +
                     "  `role_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
-                    "  UNIQUE `login_UNIQUE` (`login` ASC),\n" +
-                    "  UNIQUE `email_UNIQUE` (`email` ASC),\n" +
+                    "  UNIQUE  `login_UNIQUE` (`login` ASC) ,\n" +
+                    "  UNIQUE  `email_UNIQUE` (`email` ASC) ,\n" +
                     "  CONSTRAINT `fk_users_roles`\n" +
                     "    FOREIGN KEY (`role_id`)\n" +
                     "    REFERENCES `narushevich`.`roles` (`id`)\n" +
@@ -43,7 +43,8 @@ public class C_init {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `narushevich`.`trademark` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `trademark` VARCHAR(45) NULL,\n" +
-                    "  PRIMARY KEY (`id`))\n" +
+                    "  PRIMARY KEY (`id`),\n" +
+                    "  UNIQUE  `trademark_UNIQUE` (`trademark` ASC) )\n" +
                     "ENGINE = InnoDB;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `narushevich`.`teatags` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
