@@ -1,4 +1,3 @@
-
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -16,26 +15,26 @@
   <label class="col-md-4 control-label" for="login">Login</label>
   <div class="col-md-4">
   <input id="login" name="login" value="testUser" type="text" placeholder="" class="form-control input-md" required="">
-  <span class="help-block">any simbols [a-zA-Z]</span>
+  <span class="help-block">any symbols [a-zA-Z0-9._], length from 8 to 15</span>
   </div>
 </div>
 
 <!-- Password input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="email">E-mail</label>
+  <label class="col-md-4 control-label" for="password">Password</label>
   <div class="col-md-4">
-    <input id="email" name="email" value="user@tut.by" type="password" placeholder="" class="form-control input-md" required="">
-    <span class="help-block">your e-mail</span>
-  </div>
+    <input id="password" name="password" value="testPassword" type="password" placeholder="" class="form-control input-md" required="">
+      <span class="help-block">min length 8 symbols</span>
+      </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="password">Password</label>
+  <label class="col-md-4 control-label" for="e-mail">E-mail</label>
   <div class="col-md-4">
-  <input id="password" name="password" value="testPassword" type="text" placeholder="" class="form-control input-md" required="">
-  <span class="help-block">min length 8 symbols</span>
-  </div>
+    <input id="email" name="email" value="user@tut.by" type="text" placeholder="" class="form-control input-md" required="">
+        <span class="help-block">your e-mail</span>
+      </div>
 </div>
 
 <!-- Button -->

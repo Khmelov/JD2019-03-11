@@ -10,6 +10,14 @@ public class ConnectionCreator {
 
     private static volatile Connection connection = null;
 
+    static {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public static Connection get() throws SQLException {
         if (connection == null || connection.isClosed()) {
             DriverManager.registerDriver(new FabricMySQLDriver());

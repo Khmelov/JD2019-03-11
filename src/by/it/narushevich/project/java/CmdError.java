@@ -5,7 +5,7 @@ import by.it.narushevich.project.java.Cmd;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class CmdError extends by.it.narushevich.project.java.Cmd {
+public class CmdError extends Cmd {
     @Override
     public Cmd execute(HttpServletRequest req){
         return Actions.ERROR.command;

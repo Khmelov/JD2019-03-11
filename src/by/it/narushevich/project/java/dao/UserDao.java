@@ -14,9 +14,9 @@ public class UserDao extends AbstractDao<User> {
     public boolean create(User user) throws SQLException {
         String sql = String.format(Locale.ENGLISH,
                 "INSERT INTO `users`" +
-                        "(`login`, `password`, `email`, `roles_id`) " +
+                        "(`login`, `password`, `email`, `role_id`) " +
                         "VALUES ('%s','%s','%s',%d)",
-                user.getLogin(), user.getPassword(), user.getEmail(), user.getRoles_id());
+                user.getLogin(), user.getPassword(), user.getEmail(), user.getRole_id());
         long id = executeCreate(sql);
         if (id > 0) {
             user.setId(id);
@@ -29,9 +29,9 @@ public class UserDao extends AbstractDao<User> {
         String sql = String.format(Locale.ENGLISH,
                 "UPDATE `users` " +
                         "SET `login`='%s',`password`='%s'," +
-                        "`email`='%s',`roles_id`=%d WHERE `id`=%d",
+                        "`email`='%s',`role_id`=%d WHERE `id`=%d",
                 user.getLogin(), user.getPassword(),
-                user.getEmail(), user.getRoles_id(), user.getId());
+                user.getEmail(), user.getRole_id(), user.getId());
 
         return executeUpdate(sql);
     }
@@ -58,7 +58,7 @@ public class UserDao extends AbstractDao<User> {
                         resultSet.getString("login"),
                         resultSet.getString("password"),
                         resultSet.getString("email"),
-                        resultSet.getLong("roles_id")
+                        resultSet.getLong("role_id")
                 );
                 users.add(user);
             }

@@ -18,11 +18,11 @@ public class TeatagDao extends AbstractDao<Teatag> {
         String sql = String.format(Locale.ENGLISH,
                 "INSERT INTO `teatags`(`trademark_id`, `subtitle`, `material_id`,"  +
                         " `width`, `height`,`in_collection_since`,"  +
-                        "`num_in_catalog`, `users_id`) " +
+                        "`num_in_catalog`, `user_id`) " +
                         "VALUES (%d,'%s',%d,%f,%f,'%s','%s',%d)",
                 teatag.getTrademark_id(),teatag.getSubtitle(),teatag.getMaterial_id(),
                 teatag.getWidth(),teatag.getHeight(),teatag.getIn_collection_since(),
-                teatag.getNum_in_catalog(),teatag.getUsers_id());
+                teatag.getNum_in_catalog(),teatag.getUser_id());
         long id = executeCreate(sql);
         if (id > 0){
             teatag.setId(id);
@@ -36,10 +36,10 @@ public class TeatagDao extends AbstractDao<Teatag> {
                 "UPDATE `teatags` " +
                         "SET `trademark_id`=%d,`subtitle`='%s',`material_id`=%d," +
                         "`width`=%f, `height`=%f,`in_collection_since`='%s'," +
-                        "`num_in_catalog`='%s',`users_id`=%d WHERE `id`=%d",
+                        "`num_in_catalog`='%s',`user_id`=%d WHERE `id`=%d",
                 teatag.getTrademark_id(),teatag.getSubtitle(),teatag.getMaterial_id(),
                 teatag.getWidth(),teatag.getHeight(),teatag.getIn_collection_since(),
-                teatag.getNum_in_catalog(),teatag.getUsers_id(),teatag.getId());
+                teatag.getNum_in_catalog(),teatag.getUser_id(),teatag.getId());
         return executeUpdate(sql);
     }
 
@@ -69,7 +69,7 @@ public class TeatagDao extends AbstractDao<Teatag> {
                         resultSet.getDouble("height"),
                         resultSet.getDate("in_collection_since"),
                         resultSet.getString("num_in_catalog"),
-                        resultSet.getInt("users_id"));
+                        resultSet.getInt("user_id"));
                 teatags.add(teatag);
             }
         }

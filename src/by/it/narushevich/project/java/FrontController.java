@@ -38,9 +38,12 @@ public class FrontController extends HttpServlet {
     }
 
     public static String getErrorTxt(Exception e) {
-        StringBuilder error = new StringBuilder();
+        StringBuilder error = new StringBuilder("<b>"+e.toString()+"</b><br><br>");
         StackTraceElement[] stackTrace = e.getStackTrace();
         for (StackTraceElement element : stackTrace) {
+            if (element.toString().contains(".HttpServlet.")){
+                break;
+            }
             error.append(element.toString()).append("<br>\n");
         }
         return error.toString();

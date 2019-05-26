@@ -6,11 +6,18 @@ public enum Actions {
     LOGIN (new CmdLogin()),
     LOGOUT (new CmdLogout()),
     SIGNUP (new CmdSignup()),
-    ERROR (new CmdError());
+    ERROR (new CmdError()),
+    INDEX (new CmdIndex()),
+    CATALOG(new CmdCatalog()),
+    SEARCH(new CmdSearch()),
+    PROFILE(new CmdProfile()),
+    DELETEUSER(new CmdDeleteUser()),
+    CREATETAG(new CmdCreateTag()),
+    USERCOLLECTION(new CmdUserCollection());
 
-    public by.it.narushevich.project.java.Cmd command;
+    public Cmd command;
 
-    Actions(by.it.narushevich.project.java.Cmd command) {
+    Actions(Cmd command) {
         this.command = command;
     }
 

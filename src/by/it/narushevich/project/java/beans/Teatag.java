@@ -16,14 +16,14 @@ public class Teatag {
     private double height;
     private Date in_collection_since;
     private String num_in_catalog;
-    private long users_id;
+    private long user_id;
 
     public Teatag() {
     }
 
     public Teatag(long id, long trademark_id, String subtitle,
                   long material_id, double width, double height,
-                  Date in_collection_since, String num_in_catalog, long users_id) {
+                  Date in_collection_since, String num_in_catalog, long user_id) {
         this.id = id;
         this.trademark_id = trademark_id;
         this.subtitle = subtitle;
@@ -32,7 +32,7 @@ public class Teatag {
         this.height = height;
         this.in_collection_since = in_collection_since;
         this.num_in_catalog = num_in_catalog;
-        this.users_id = users_id;
+        this.user_id = user_id;
     }
 
     public long getId() {
@@ -110,12 +110,12 @@ public class Teatag {
         this.num_in_catalog = num_in_catalog;
     }
 
-    public long getUsers_id() {
-        return users_id;
+    public long getUser_id() {
+        return user_id;
     }
 
-    public void setUsers_id(long users_id) {
-        this.users_id = users_id;
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
     }
 
     @Override
@@ -127,6 +127,6 @@ public class Teatag {
                 ", width x height = " + width + " mm x "+ height +
                 " mm, in collection since " + in_collection_since +
                 ", num in catalog = " + num_in_catalog +
-                ", users id=" + users_id;
+                ", user id=" + user_id;
     }
 }
