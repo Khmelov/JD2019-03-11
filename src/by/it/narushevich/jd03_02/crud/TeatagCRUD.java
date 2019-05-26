@@ -1,5 +1,6 @@
 package by.it.narushevich.jd03_02.crud;
 
+import by.it.narushevich.jd03_02.ConnectionCreator;
 import by.it.narushevich.jd03_02.beans.Teatag;
 
 import java.sql.Connection;
@@ -12,12 +13,13 @@ public class TeatagCRUD {
 
     public boolean create(Teatag teatag) throws SQLException {
         String sql = String.format(Locale.ENGLISH,
-                "INSERT INTO `teatags`(`trademark_id`, `subtitle`,"  +
-                        "`material_id`, `width_x_height_id`, " +
-                        "`in_collection_since`, `users_id`) " +
-                        "VALUES (%d,'%s',%d,%d,'%s',%d)",
+                "INSERT INTO `teatags`(`trademark_id`, `subtitle`, `material_id`,"  +
+                        " `width`, `height`,`in_collection_since`,"  +
+                        "`num_in_catalog`, `users_id`) " +
+                        "VALUES (%d,'%s',%d,%f,%f,'%tF','%s',%d)",
                 teatag.getTrademark_id(),teatag.getSubtitle(),teatag.getMaterial_id(),
-                teatag.getWidth_x_height_id(),teatag.getIn_collection_since(),teatag.getUsers_id());
+                teatag.getWidth(),teatag.getHeight(),teatag.getIn_collection_since(),
+                teatag.getNum_in_catalog(),teatag.getUsers_id());
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
@@ -44,13 +46,15 @@ public class TeatagCRUD {
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
                 return new Teatag(
-                        resultSet.getLong("id"),
-                        resultSet.getLong("trademark_id"),
+                        resultSet.getInt("id"),
+                        resultSet.getInt("trademark_id"),
                         resultSet.getString("subtitle"),
-                        resultSet.getLong("material_id"),
-                        resultSet.getLong("width_x_height_id"),
-                        resultSet.getString("in_collection_since"),
-                        resultSet.getLong("users_id"));
+                        resultSet.getInt("material_id"),
+                        resultSet.getDouble("width"),
+                        resultSet.getDouble("height"),
+                        resultSet.getDate("in_collection_since"),
+                        resultSet.getString("num_in_catalog"),
+                        resultSet.getInt("users_id"));
             }
         }
         return null;
@@ -60,9 +64,11 @@ public class TeatagCRUD {
         String sql = String.format(Locale.ENGLISH,
                 "UPDATE `teatags` " +
                         "SET `trademark_id`=%d,`subtitle`='%s',`material_id`=%d," +
-                        "`width_x_height_id`=%d,`in_collection_since`='%s',`users_id`=%d WHERE `id`=%d",
+                        "`width`=%f, `height`=%f,`in_collection_since`='%s'," +
+                        "`num_in_catalog`='%s',`users_id`=%d WHERE `id`=%d",
                 teatag.getTrademark_id(),teatag.getSubtitle(),teatag.getMaterial_id(),
-                teatag.getWidth_x_height_id(),teatag.getIn_collection_since(),teatag.getUsers_id(),teatag.getId());
+                teatag.getWidth(),teatag.getHeight(),teatag.getIn_collection_since(),
+                teatag.getNum_in_catalog(),teatag.getUsers_id(),teatag.getId());
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
