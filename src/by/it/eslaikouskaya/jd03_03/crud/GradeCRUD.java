@@ -1,6 +1,7 @@
-package by.it.eslaikouskaya.jd03_02.crud;
+package by.it.eslaikouskaya.jd03_03.crud;
 
-import by.it.eslaikouskaya.jd03_02.beans.Grade;
+import by.it.eslaikouskaya.jd03_03.beans.Grade;
+import by.it.eslaikouskaya.jd03_03.connection.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,7 +15,7 @@ public class GradeCRUD {
 				"INSERT INTO " +
 						"`grades`(`Grade`, `categories_ID`) " +
 						"VALUES ('%s','%d')",
-				grade.getGrade(), grade.getCategoriesId());
+				grade.getGrade(), grade.getCategories_ID());
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()
@@ -23,7 +24,7 @@ public class GradeCRUD {
 			if (count == 1) {
 				ResultSet generatedKeys = statement.getGeneratedKeys();
 				if (generatedKeys.next()) {
-					grade.setId(generatedKeys.getLong(1));
+					grade.setID(generatedKeys.getLong(1));
 					return true;
 				}
 			}
@@ -57,7 +58,7 @@ public class GradeCRUD {
 				"UPDATE `grades` " +
 						"SET `Grade`='%s',`categories_ID`='%d' " +
 						"WHERE `id`=%d",
-				grade.getGrade(), grade.getCategoriesId(), grade.getId()
+				grade.getGrade(), grade.getCategories_ID(), grade.getID()
 		);
 
 		try (
@@ -69,7 +70,7 @@ public class GradeCRUD {
 	}
 
 	public boolean delete(Grade grade) throws SQLException {
-		String sql = String.format(Locale.ENGLISH, "DELETE FROM `grades` WHERE `id`=%d", grade.getId());
+		String sql = String.format(Locale.ENGLISH, "DELETE FROM `grades` WHERE `id`=%d", grade.getID());
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()

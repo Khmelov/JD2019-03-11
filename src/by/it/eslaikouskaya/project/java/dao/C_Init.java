@@ -1,4 +1,4 @@
-package by.it.eslaikouskaya.jd03_03.dao;
+package by.it.eslaikouskaya.project.java.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

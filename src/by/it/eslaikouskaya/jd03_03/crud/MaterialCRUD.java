@@ -1,6 +1,7 @@
-package by.it.eslaikouskaya.jd03_02.crud;
+package by.it.eslaikouskaya.jd03_03.crud;
 
-import by.it.eslaikouskaya.jd03_02.beans.Grade;
+import by.it.eslaikouskaya.jd03_03.beans.Material;
+import by.it.eslaikouskaya.jd03_03.connection.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,13 +9,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Locale;
 
-public class GradeCRUD {
-	public boolean create(Grade grade) throws SQLException {
+public class MaterialCRUD {
+	public boolean create(Material material) throws SQLException {
 		String sql = String.format(Locale.ENGLISH,
 				"INSERT INTO " +
-						"`grades`(`Grade`, `categories_ID`) " +
-						"VALUES ('%s','%d')",
-				grade.getGrade(), grade.getCategoriesId());
+						"`materials`(`Name`, `Price`, `classes_ID`) " +
+						"VALUES ('%s','%d','%d')",
+				material.getName(), material.getPrice(), material.getGrades_ID());
+
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()
@@ -23,7 +25,7 @@ public class GradeCRUD {
 			if (count == 1) {
 				ResultSet generatedKeys = statement.getGeneratedKeys();
 				if (generatedKeys.next()) {
-					grade.setId(generatedKeys.getLong(1));
+					material.setID(generatedKeys.getLong(1));
 					return true;
 				}
 			}
@@ -31,9 +33,9 @@ public class GradeCRUD {
 		return false;
 	}
 
-	public Grade read(long id) throws SQLException {
+	public Material read(long id) throws SQLException {
 		String sql = String.format(Locale.ENGLISH,
-				"SELECT * FROM `grades` WHERE `id`=%d", id
+				"SELECT * FROM `materials` WHERE `id`=%d", id
 		);
 
 		try (
@@ -42,22 +44,24 @@ public class GradeCRUD {
 		) {
 			ResultSet resultSet = statement.executeQuery(sql);
 			if (resultSet.next()) {
-				return new Grade(
+
+				return new Material(
 						resultSet.getLong("ID"),
-						resultSet.getString("Grade"),
-						resultSet.getLong("categories_ID")
+						resultSet.getString("Name"),
+						resultSet.getInt("Price"),
+						resultSet.getLong("classes_ID")
 				);
 			}
 		}
 		return null;
 	}
 
-	public boolean update(Grade grade) throws SQLException {
+	public boolean update(Material material) throws SQLException {
 		String sql = String.format(Locale.ENGLISH,
-				"UPDATE `grades` " +
-						"SET `Grade`='%s',`categories_ID`='%d' " +
-						"WHERE `id`=%d",
-				grade.getGrade(), grade.getCategoriesId(), grade.getId()
+				"UPDATE `materials` " +
+						"SET `Name`='%s',`Price`='%d'," +
+						"`classes_ID`='%d' WHERE `id`=%d",
+				material.getName(), material.getPrice(), material.getGrades_ID(), material.getID()
 		);
 
 		try (
@@ -68,8 +72,8 @@ public class GradeCRUD {
 		}
 	}
 
-	public boolean delete(Grade grade) throws SQLException {
-		String sql = String.format(Locale.ENGLISH, "DELETE FROM `grades` WHERE `id`=%d", grade.getId());
+	public boolean delete(Material material) throws SQLException {
+		String sql = String.format(Locale.ENGLISH, "DELETE FROM `materials` WHERE `id`=%d", material.getID());
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()
