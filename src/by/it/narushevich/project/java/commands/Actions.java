@@ -1,4 +1,4 @@
-package by.it.narushevich.project.java;
+package by.it.narushevich.project.java.commands;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,7 +21,7 @@ public enum Actions {
         this.command = command;
     }
 
-    static Cmd defineCommand(HttpServletRequest req) {
+    public static Cmd defineCommand(HttpServletRequest req) {
         String nameCommand = req.getParameter("command").toUpperCase();
         try {
             return Actions.valueOf(nameCommand).command;

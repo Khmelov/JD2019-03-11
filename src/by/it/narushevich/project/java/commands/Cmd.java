@@ -1,9 +1,9 @@
-package by.it.narushevich.project.java;
+package by.it.narushevich.project.java.commands;
 
 import javax.servlet.http.HttpServletRequest;
 
 public abstract class Cmd {
-    abstract Cmd execute(HttpServletRequest req) throws Exception;
+    public abstract Cmd execute(HttpServletRequest req) throws Exception;
 
     @Override
     public String toString() {

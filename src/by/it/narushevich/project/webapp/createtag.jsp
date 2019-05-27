@@ -1,3 +1,7 @@
+<%@ page contentType="text/html;
+    charset=UTF-8"
+    language="java"
+    pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -9,29 +13,29 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Create new item in your collection</legend>
+<legend>Создание элемента для вашей коллекции</legend>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Trademark</label>
+  <label class="col-md-4 control-label" for="trademark">Торговая марка</label>
   <div class="col-md-4">
-  <input id="trademark" name="Trademark" type="text" value="Wisotzky tea" placeholder="" class="form-control input-md">
+  <input id="trademark" name="trademark" type="text" value="Wisotzky tea" placeholder="" class="form-control input-md">
   <span class="help-block">enter trademark here if it is not listed</span>
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Subtitle</label>
+  <label class="col-md-4 control-label" for="subtitle">Подзаголовок</label>
   <div class="col-md-4">
-  <input id="textinput" name="Subtitle" type="text" value="Very taste tea" placeholder="" class="form-control input-md">
+  <input id="subtitle" name="subtitle" type="text" value="Very taste tea" placeholder="" class="form-control input-md">
   <span class="help-block">what is writing on tag else</span>
   </div>
 </div>
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="selectbasic">Material</label>
+  <label class="col-md-4 control-label" for="material">Материал</label>
   <div class="col-md-4">
     <select id="material" name="material" class="form-control">
       <option value="1">cardboard</option>
@@ -43,53 +47,53 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Width, mm</label>
+  <label class="col-md-4 control-label" for="width">Ширина, мм</label>
   <div class="col-md-4">
-  <input id="textinput" name="Width, mm" type="text" value="25" placeholder="" class="form-control input-md">
+  <input id="width" name="width" type="text" value="25" placeholder="" class="form-control input-md">
   <span class="help-block">Width in mm of your tag</span>
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Height, mm</label>
+  <label class="col-md-4 control-label" for="height">Высота, мм</label>
   <div class="col-md-4">
-  <input id="textinput" name="Height, mm" type="text" value="28" placeholder="" class="form-control input-md">
+  <input id="height" name="Height, mm" type="text" value="28" placeholder="" class="form-control input-md">
   <span class="help-block">Height in mm of your tag</span>
   </div>
 </div>
 
 <!-- Date input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">In collection since</label>
+  <label class="col-md-4 control-label" for="in collection">В коллекции с</label>
   <div class="col-md-4">
-  <input id="textinput" name="In collection since" type="text" value="2005-07-04" placeholder="" class="form-control input-md">
+  <input id="in collection" name="in collection" type="text" value="2005-07-04" placeholder="" class="form-control input-md">
     <span class="help-block">Date in format yyyy-mm-dd</span>
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Number in catalog</label>
+  <label class="col-md-4 control-label" for="number in catalog">Номер в каталоге</label>
   <div class="col-md-4">
-  <input id="textinput" name="Number in catalog" type="text" value="02-05-4" placeholder="" class="form-control input-md">
+  <input id="number in catalog" name="number in catalog" type="text" value="02-05-4" placeholder="" class="form-control input-md">
 
   </div>
 </div>
 
 <!-- File Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="filebutton">Picture</label>
+  <label class="col-md-4 control-label" for="picture">Изображение</label>
   <div class="col-md-4">
-    <input id="filebutton" name="filebutton" class="input-file" type="file">
+    <input id="picture" name="picture" class="input-file" type="file">
   </div>
 </div>
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <label class="col-md-4 control-label" for="create"></label>
   <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-success">Create</button>
+    <button id="create" name="create" class="btn btn-primary">Создать элемент</button>
   </div>
 </div>
 

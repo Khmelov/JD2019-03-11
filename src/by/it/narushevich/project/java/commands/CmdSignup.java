@@ -1,4 +1,4 @@
-package by.it.narushevich.project.java;
+package by.it.narushevich.project.java.commands;
 
 import by.it.narushevich.project.java.beans.User;
 import by.it.narushevich.project.java.dao.Dao;

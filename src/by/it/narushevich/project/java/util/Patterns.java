@@ -9,4 +9,5 @@ public class Patterns {
     public static String SUBTITLE = "[\\w\\s']+";
     public static String DATE = "\\d{4}-\\d{2}-\\d{2}";
     public static String NUMBER_IN_CATALOG = "[\\d]{2}-[\\d]{2}-\\d";
+    public static String ALL = ".*";
 }

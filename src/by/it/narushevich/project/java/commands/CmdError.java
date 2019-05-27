@@ -1,7 +1,4 @@
-package by.it.narushevich.project.java;
-
-import by.it.narushevich.project.java.Actions;
-import by.it.narushevich.project.java.Cmd;
+package by.it.narushevich.project.java.commands;
 
 import javax.servlet.http.HttpServletRequest;
 
