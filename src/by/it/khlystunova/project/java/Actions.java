@@ -1,30 +1,30 @@
 package by.it.khlystunova.project.java;
 
-import by.it.khlystunova.project.java.Cmd;
-import by.it.khlystunova.project.java.CmdError;
-import by.it.khlystunova.project.java.CmdLogin;
-import by.it.khlystunova.project.java.CmdLogout;
-import by.it.khlystunova.project.java.CmdSignup;
+
 
 import javax.servlet.http.HttpServletRequest;
 
 public enum Actions {
 
     LOGIN(new CmdLogin()),
+    INDEX(new CmdIndex()),
     LOGOUT(new CmdLogout()),
     SIGNUP(new CmdSignup()),
-    ERROR(new CmdError());
+    CREATEREQUEST(new CmdCreateRequest()),
+    ERROR(new CmdError()),
+    RESETDB(new CmdResetDB());
 
 
     public Cmd command;
 
-    Actions(by.it.khlystunova.project.java.Cmd command){
+    Actions(Cmd command){
         this.command=command;
     }
+
     static Cmd defineCommand(HttpServletRequest req) {
         String nameCommand = req.getParameter("command").toUpperCase();
         try {
-            return Actions.valueOf(nameCommand).command;
+            return Actions.valueOf(nameCommand).command;//Возвращает константу перечисления указанного типа перечисления с указанным именем.
         } catch (IllegalArgumentException e) {
             return Actions.ERROR.command;
         }

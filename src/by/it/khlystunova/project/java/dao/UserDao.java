@@ -7,9 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class UserDao extends AbstractDao<User> {
     @Override
@@ -74,7 +72,20 @@ public class UserDao extends AbstractDao<User> {
 
     @Override
     public List<User> getAll() throws SQLException {
-       return getAll("");
+        return getAll("");
+    }
+
+
+    public Set<String> getAllLogins() throws SQLException {
+        Set<String> logins = new HashSet<String>();
+        List<User> users = getAll();
+        Iterator<User> iterator = users.iterator();
+        while (iterator.hasNext()){
+            User next = iterator.next();
+            String login = next.getLogin();
+            logins.add(login);
+        }
+        return logins;
     }
 
     @Override
@@ -86,5 +97,4 @@ public class UserDao extends AbstractDao<User> {
         else
             return null;
     }
-
 }

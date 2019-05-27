@@ -2,8 +2,8 @@
 <%@ include file="include/head.htm" %>
 <body>
 <div class="container">
-  <%@ include file="include/menu.htm" %>
-  <p>ERROR: ${message}</p>
+    <%@ include file="include/menu.htm" %>
+    <p>Error: ${Error}</p>
 </div>
 </body>
 </html>

@@ -1,6 +1,17 @@
 package by.it.khlystunova.project.java.beans;
 
+import by.it.khlystunova.project.java.dao.Dao;
+import by.it.khlystunova.project.java.dao.UserDao;
+import by.it.khlystunova.project.java.exceptions.WebsiteException;
+
+import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
 public class User {
+
 
     private long id;
     private String login;
@@ -22,7 +33,8 @@ public class User {
         return id;
     }
 
-    public String getLogin() {
+    public String getLogin()  {
+
         return login;
     }
 
@@ -42,8 +54,14 @@ public class User {
         this.id = id;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(String login) throws SQLException,WebsiteException {
+        UserDao userDao = new UserDao();
+        Set<String> allLogins = userDao.getAllLogins();
+        if(allLogins.contains(login))
+            throw new WebsiteException("This login already exist.Please, change login");
+        else
         this.login = login;
+
     }
 
     public void setPassword(String password) {
@@ -68,4 +86,5 @@ public class User {
                 ", roles_ID='" + roles_ID + '\'' +
                 '}';
     }
+
 }

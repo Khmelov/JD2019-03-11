@@ -25,6 +25,7 @@ public class ConnectionCreator {
             "useJDBCCompliantTimezoneShift=true&" +
             "useLegacyDatetimeCode=false&" +
             "serverTimezone=UTC";
+
     private static final String USER = "root";
     private static final String PASSWORD = "";
 

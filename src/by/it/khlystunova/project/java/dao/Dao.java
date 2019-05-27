@@ -4,6 +4,8 @@ package by.it.khlystunova.project.java.dao;
 
 //import java.sql.SQLException;
 
+import java.sql.SQLException;
+
 public class Dao {
 
     private static volatile Dao instance;
@@ -17,9 +19,9 @@ public class Dao {
     public CoffemachineDao coffemachine;
 
 
-    //public void resetDataBase() throws SQLException {
-    //    C_Init.main(new String[]{});
-    //}
+    public void resetDataBase() throws SQLException {
+        C_Init.main(new String[]{});
+    }
 
     private Dao() {
         role=new RoleDao();
