@@ -12,7 +12,7 @@ public class GradeCRUD {
 	public boolean create(Grade grade) throws SQLException {
 		String sql = String.format(Locale.ENGLISH,
 				"INSERT INTO " +
-						"`classes`(`Class`, `categories_ID`) " +
+						"`grades`(`Grade`, `categories_ID`) " +
 						"VALUES ('%s','%d')",
 				grade.getGrade(), grade.getCategoriesId());
 		try (
@@ -33,7 +33,7 @@ public class GradeCRUD {
 
 	public Grade read(long id) throws SQLException {
 		String sql = String.format(Locale.ENGLISH,
-				"SELECT * FROM `materials` WHERE `id`=%d", id
+				"SELECT * FROM `grades` WHERE `id`=%d", id
 		);
 
 		try (
@@ -42,10 +42,9 @@ public class GradeCRUD {
 		) {
 			ResultSet resultSet = statement.executeQuery(sql);
 			if (resultSet.next()) {
-
 				return new Grade(
 						resultSet.getLong("ID"),
-						resultSet.getString("Class"),
+						resultSet.getString("Grade"),
 						resultSet.getLong("categories_ID")
 				);
 			}
@@ -56,7 +55,7 @@ public class GradeCRUD {
 	public boolean update(Grade grade) throws SQLException {
 		String sql = String.format(Locale.ENGLISH,
 				"UPDATE `grades` " +
-						"SET `Class`='%s',`categories_ID`='%d' " +
+						"SET `Grade`='%s',`categories_ID`='%d' " +
 						"WHERE `id`=%d",
 				grade.getGrade(), grade.getCategoriesId(), grade.getId()
 		);

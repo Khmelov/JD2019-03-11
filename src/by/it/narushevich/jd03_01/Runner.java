@@ -18,11 +18,11 @@ public class Runner {
              Statement statement = connection.createStatement()
         ) {
             CheckConnection.check(connection);
-            A_Init.createSchema(statement);
-            B_AddRoles.createRoles(statement);
-            A_AddUser.createUsers(statement);
-            A_AddData.createCollection(statement);
-            B_ShowUsers.show(statement);
+//            A_Init.createSchema(statement);
+//            B_AddRoles.createRoles(statement);
+//            A_AddUser.createUsers(statement);
+//            A_AddData.createCollection(statement);
+//            B_ShowUsers.show(statement);
             C_init.createFullDataBase(statement);
             //C_reset.resetDataBase(statement);
         }
