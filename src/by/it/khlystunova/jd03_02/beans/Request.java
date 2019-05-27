@@ -31,7 +31,7 @@ public class Request {
         return contact;
     }
 
-    public String getDeliveryAdress() {
+    public String getDeliveryAddress() {
         return deliveryAddress;
     }
 
