@@ -9,12 +9,12 @@ public class Car {
     private double price;
     private int year;
     private String description;
-    private long usersId;
+    private long usersID;
 
     public Car() {
     }
 
-    public Car(long id, String brand, String model, int engine, double price, int year, String description, long usersId)
+    public Car(long id, String brand, String model, int engine, double price, int year, String description, long usersID)
        {
         this.id = id;
         this.brand = brand;
@@ -23,7 +23,7 @@ public class Car {
         this.price = price;
         this.year = year;
         this.description = description;
-        this.usersId = usersId;
+        this.usersID = usersID;
     }
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
@@ -39,8 +39,8 @@ public class Car {
     public void setYear(int year) { this.year = year; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-    public long getUsersId() {return usersId; }
-    public void setUsersId(long usersId) { this.usersId = usersId; }
+    public long getUsersId() {return usersID; }
+    public void setUsersId(long usersID) { this.usersID = usersID; }
 
     @Override
     public String toString() {
@@ -52,7 +52,7 @@ public class Car {
                 ", price=" + price +
                 ", year=" + year +
                 ", description='" + description + '\'' +
-                ", usersId=" + usersId +
+                ", usersID=" + usersID +
                 '}';
     }
 }

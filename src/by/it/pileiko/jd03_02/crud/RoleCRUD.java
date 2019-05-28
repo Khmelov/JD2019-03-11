@@ -54,8 +54,8 @@ public class RoleCRUD {
 
     public boolean update (Role role) throws SQLException {
         String sql = String.format(Locale.ENGLISH,
-                "UPDATE `cars` SET" +
-                        " `role`='%s' WHERE id=%d",
+                "UPDATE `roles` SET" +
+                        " `Role`='%s' WHERE id=%d",
                 role.getRole(), role.getId());
 
         try (

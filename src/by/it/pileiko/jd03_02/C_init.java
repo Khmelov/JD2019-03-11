@@ -1,4 +1,4 @@
-package by.it.pileiko.jd03_01;
+package by.it.pileiko.jd03_02;
 
 
 import java.sql.Connection;

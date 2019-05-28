@@ -52,7 +52,7 @@ public class CarCRUD {
                         resultSet.getDouble("price"),
                         resultSet.getInt("year"),
                         resultSet.getString("description"),
-                        resultSet.getLong("userId")
+                        resultSet.getLong("users_ID")
                 );
                 return car;
             }
@@ -65,9 +65,9 @@ public class CarCRUD {
                 "UPDATE `cars` SET" +
                         " `brand`='%s', `model`='%s', " +
                         "`engine`=%d, `price`=%f, `year`=%d, " +
-                        "`description`='%s', `users_ID`=%d WHERE id=%d",
+                        "`description`='%s', `users_ID`=%d WHERE `id`=%d",
                 car.getBrand(), car.getModel(), car.getEngine(),
-                car.getPrice(), car.getYear(), car.getDescription(), car.getUsersId());
+                car.getPrice(), car.getYear(), car.getDescription(), car.getUsersId(), car.getId());
 
         try (
                 Connection connection = ConnectionCreator.get();
