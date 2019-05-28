@@ -1,6 +1,6 @@
 package by.it.bolotko.jd02_09;
 
-import by.it.bolotko.jd02_09.beans.Parkings;
+import by.it.bolotko.jd02_09.beans_old.Parkings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
