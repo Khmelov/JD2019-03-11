@@ -1,4 +1,4 @@
-package by.it.eslaikouskaya.project.java;
+package by.it.eslaikouskaya.project.java.controllers;
 
 import by.it.eslaikouskaya.project.java.beans.Category;
 import by.it.eslaikouskaya.project.java.dao.Dao;

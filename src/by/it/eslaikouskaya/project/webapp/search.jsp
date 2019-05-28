@@ -1,19 +1,20 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
 <div class="container">
 <%@ include file="include/menu.htm" %>
-<p><form class="form-horizontal">
+<form class="form-horizontal" action="do?command=Search" method="post">
    <fieldset>
 
    <!-- Form Name -->
-   <legend>Search</legend>
+   <legend>Поиск</legend>
 
    <!-- Text input-->
    <div class="form-group">
-     <label class="col-md-4 control-label" for="name">Material name</label>
+     <label class="col-md-4 control-label" for="name">Наименование материала</label>
      <div class="col-md-4">
-     <input id="name" name="name" type="text" placeholder="Write material name" class="form-control input-md" required="">
+     <input id="name" name="name" value="Кирпич" type="text" placeholder="" class="form-control input-md" required="">
 
      </div>
    </div>
@@ -22,12 +23,13 @@
    <div class="form-group">
      <label class="col-md-4 control-label" for="button"></label>
      <div class="col-md-4">
-       <button id="button" name="button" class="btn btn-primary">Search</button>
+       <button id="search" name="search" class="btn btn-primary">Поиск</button>
      </div>
    </div>
 
    </fieldset>
-   </form></p>
+   </form>
+   <p>Результаты поиска: ${materials}</p>
 </div>
 </body>
 </html>

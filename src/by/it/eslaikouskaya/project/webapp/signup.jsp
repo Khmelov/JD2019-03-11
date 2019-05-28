@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -8,14 +9,14 @@
         <fieldset>
 
             <!-- Form Name -->
-            <legend>Sign Up</legend>
+            <legend>Регистрация</legend>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="login">Login</label>
+                <label class="col-md-4 control-label" for="login">Логин</label>
                 <div class="col-md-4">
-                    <input id="login" name="login" value="testUser" type="text" placeholder="" class="form-control input-md" required="">
-                    <span class="help-block">any symbols [a-z0-9]</span>
+                    <input id="login" name="login" value="testUser" type="text" placeholder="Придумайте логин" class="form-control input-md" required="">
+                    <span class="help-block">только латинские буквы и цифры</span>
                 </div>
             </div>
 
@@ -23,17 +24,16 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="email">E-mail</label>
                 <div class="col-md-4">
-                    <input id="email" name="email" value="test@email.com" type="text" placeholder="login@postserver.com" class="form-control input-md" required="">
-                    <span class="help-block">Your e-mail</span>
+                    <input id="email" name="email" value="test@email.com" type="text" placeholder="example@mail.ru" class="form-control input-md" required="">
                 </div>
             </div>
 
             <!-- Password input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="password">Password</label>
+                <label class="col-md-4 control-label" for="password">Пароль</label>
                 <div class="col-md-4">
-                    <input id="password" name="password" value="testPassword" type="password" placeholder="" class="form-control input-md" required="">
-                    <span class="help-block">min length 8 symols</span>
+                    <input id="password" name="password" value="testPassword" type="password" placeholder="Придумайте пароль" class="form-control input-md" required="">
+                    <span class="help-block">минимум 8 символов</span>
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="signup"></label>
                 <div class="col-md-4">
-                    <button id="signup" name="signup" class="btn btn-success">Sign Up</button>
+                    <button id="signup" name="signup" class="btn btn-success">Готово</button>
                 </div>
             </div>
 

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -7,13 +8,13 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Create category</legend>
+<legend>Создать категорию</legend>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="category">Category name</label>
+  <label class="col-md-4 control-label" for="category">Имя категории</label>
   <div class="col-md-4">
-  <input id="category" name="category" type="text" placeholder="Write category name" class="form-control input-md" required="">
+  <input id="category" name="category" value="дерево" type="text" placeholder="Напишите имя категории" class="form-control input-md" required="">
 
   </div>
 </div>
@@ -22,7 +23,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="button"></label>
   <div class="col-md-4">
-    <button id="button" name="button" class="btn btn-primary">Create</button>
+    <button id="button" name="button" class="btn btn-primary">Создать</button>
   </div>
 </div>
 

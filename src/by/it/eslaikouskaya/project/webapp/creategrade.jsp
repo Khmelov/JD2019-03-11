@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -7,22 +8,22 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Create grade</legend>
+<legend>Создать класс</legend>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="grade">Grade name</label>
+  <label class="col-md-4 control-label" for="grade">Имя класса</label>
   <div class="col-md-4">
-  <input id="grade" name="grade" type="text" placeholder="Write grade name" class="form-control input-md" required="">
+  <input id="grade" name="grade" value="вентили" type="text" placeholder="Напишите имя класса" class="form-control input-md" required="">
 
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="categories_ID">Category number</label>
+  <label class="col-md-4 control-label" for="categories_ID">Номер категории</label>
   <div class="col-md-4">
-  <input id="categories_ID" name="categories_ID" type="text" placeholder="Write category number" class="form-control input-md" required="">
+  <input id="categories_ID" name="categories_ID" value="2" type="text" placeholder="Напишите соответствующий номер категории" class="form-control input-md" required="">
 
   </div>
 </div>
@@ -31,7 +32,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="button"></label>
   <div class="col-md-4">
-    <button id="button" name="button" class="btn btn-primary">Create</button>
+    <button id="button" name="button" class="btn btn-primary">Создать</button>
   </div>
 </div>
 

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -7,25 +8,23 @@
         <fieldset>
 
             <!-- Form Name -->
-            <legend>Login</legend>
+            <legend>Вход</legend>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="login">Login</label>
+                <label class="col-md-4 control-label" for="login">Логин</label>
                 <div class="col-md-4">
-                    <input id="login" name="login" value="testUser" type="text" placeholder=""
+                    <input id="login" name="login" value="Lily_33" type="text" placeholder="Введите ваш логин"
                            class="form-control input-md" required="">
-                    <span class="help-block">any symbols [a-z0-9]</span>
                 </div>
             </div>
 
             <!-- Password input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="password">Password</label>
+                <label class="col-md-4 control-label" for="password">Пароль</label>
                 <div class="col-md-4">
-                    <input id="password" name="password" value="testPassword" type="password" placeholder=""
+                    <input id="password" name="password" value="qazwsx" type="password" placeholder="Введите пароль"
                            class="form-control input-md" required="">
-                    <span class="help-block">min length 8 symols</span>
                 </div>
             </div>
 
@@ -33,7 +32,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="signup"></label>
                 <div class="col-md-4">
-                    <button id="signup" name="signup" class="btn btn-success">Login</button>
+                    <button id="signup" name="signup" class="btn btn-success">Войти</button>
                 </div>
             </div>
 

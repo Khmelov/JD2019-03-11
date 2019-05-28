@@ -1,4 +1,4 @@
-package by.it.eslaikouskaya.project.java;
+package by.it.eslaikouskaya.project.java.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +13,7 @@ public enum Actions {
 	INDEX(new CmdIndex()),
 	RESETDB(new CmdResetDB()),
 	LOGIN(new CmdLogin()),
-	LOGOUT(new CmdLogout()),
+	BASKET(new CmdBasket()),
 	SIGNUP(new CmdSignup()),
 	ERROR(new CmdError());
 

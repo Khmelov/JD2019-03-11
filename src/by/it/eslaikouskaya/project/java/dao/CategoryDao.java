@@ -79,4 +79,6 @@ public class CategoryDao extends AbstractDao<Category> {
 	public List<Category> getAll() throws SQLException {
 		return getAll("");
 	}
+
+
 }

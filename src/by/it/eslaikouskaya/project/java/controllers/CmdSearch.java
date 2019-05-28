@@ -1,4 +1,4 @@
-package by.it.eslaikouskaya.project.java;
+package by.it.eslaikouskaya.project.java.controllers;
 
 import by.it.eslaikouskaya.project.java.beans.Material;
 import by.it.eslaikouskaya.project.java.dao.Dao;
@@ -13,12 +13,16 @@ public class CmdSearch extends Cmd {
 	public Cmd execute(HttpServletRequest req) throws Exception {
 		if (FormHelper.isPost(req)) {
 			String name = Validator.getString(req, "name");
-			String where = String.format(" WHERE Name='%s' ", name);
-			List<Material> users = Dao.getDao().material.getAll(where);
-			if (users.size() > 0) {
-				return Actions.INDEX.command;
-			}
+			Dao dao = Dao.getDao();
+			String where = String.format("WHERE name='%s'", name);
+			List<Material> materials = dao.material.getAll(where);
+			if (materials.size() < 1)
+				req.setAttribute("materials", "Матриалов с таким именем не найдено");
+			else
+				req.setAttribute("materials", materials);
+			return null;
 		}
-		return null;
+
+		return Actions.SEARCH.command;
 	}
 }
