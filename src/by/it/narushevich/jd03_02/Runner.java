@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class Runner {
     public static void main(String[] args) throws SQLException {
-        User user=new User(0,"Ivanetz","Ivanov","qwerty","ivan@ya.ru",2);
+        User user=new User(0,"Ivanov","qwerty","ivan@ya.ru",2);
         UserCRUD userCRUD=new UserCRUD();
         userCRUD.create(user);
         user=userCRUD.read(user.getId());
@@ -34,7 +34,6 @@ public class Runner {
         teatag.setUsers_id(3);
         teatag.setMaterial_id(1);
         teatag.setTrademark_id(2);
-        teatag.setWidth_x_height_id(11);
         TeatagCRUD teatagCRUD=new TeatagCRUD();
         teatagCRUD.create(teatag);
         teatag=teatagCRUD.read(teatag.getId());
@@ -66,16 +65,5 @@ public class Runner {
         trademark=trademarkCRUD.read(trademark.getId());
         System.out.println(trademark);
         trademarkCRUD.delete(trademark);
-
-        Width_x_Height width_x_height = new Width_x_Height(0,"35 x 44");
-        Width_x_HeightCRUD width_x_heightCRUD=new Width_x_HeightCRUD();
-        width_x_heightCRUD.create(width_x_height);
-        width_x_height=width_x_heightCRUD.read(width_x_height.getId());
-        System.out.println(width_x_height);
-        width_x_height.setWidth_x_height("30 x 50");
-        width_x_heightCRUD.update(width_x_height);
-        width_x_height=width_x_heightCRUD.read(width_x_height.getId());
-        System.out.println(width_x_height);
-        width_x_heightCRUD.delete(width_x_height);
     }
 }

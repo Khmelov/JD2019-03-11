@@ -1,0 +1,11 @@
+----------Short Report----------
+start Time = Wed May 01 21:33:13 
+
+operations And Results = 
+3+3
+6.0
+
+by.it.khlystunova.jd02_06.calc02_06.CalcException: ERROR: Нет такой переменной! 
+end
+
+finish Time = Wed May 01 21:33:26 
