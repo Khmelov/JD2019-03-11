@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -6,14 +7,12 @@
     <form class="form-horizontal" action="do?command=ResetDB" method="post">
         <fieldset>
             <!-- Form Name -->
-            <legend>Reset DB</legend>
-
-            <!-- Button (Double) -->
+            <legend>ResetDB</legend>
+            <!-- Button -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="resetdba">Are you sure you want to delete the database?</label>
-                <div class="col-md-8">
-                    <button id="resetdba" name="resetdba" class="btn btn-success">Agree</button>
-                    <button id="resetdbd" name="resetdbd" class="btn btn-danger">Disagree</button>
+                <label class="col-md-4 control-label" for="resetdb">Are you sure you want to Reset DB?</label>
+                <div class="col-md-4">
+                    <button id="resetdb" value="agree" name="resetdb" class="btn btn-warning">Agree</button>
                 </div>
             </div>
 

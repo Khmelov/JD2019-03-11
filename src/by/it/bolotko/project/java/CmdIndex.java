@@ -13,9 +13,9 @@ public class CmdIndex extends Cmd {
         Dao dao = Dao.getDao();
         List<User> users = dao.user.getAll();
         List<Car> cars = dao.car.getAll();
-        req.setAttribute("users",users);
-        req.setAttribute("\n",dao);
-        req.setAttribute("cars",cars);
+        req.setAttribute("users", users);
+        req.setAttribute("\n", dao);
+        req.setAttribute("cars", cars);
         return null;
     }
 }

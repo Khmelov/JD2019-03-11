@@ -6,8 +6,8 @@ abstract class Cmd {
 
     abstract Cmd execute(HttpServletRequest req) throws Exception;
 
-    public String getJsp(){
-        return "/"+this.toString()+".jsp";
+    public String getJsp() {
+        return "/" + this.toString() + ".jsp";
     }
 
     @Override

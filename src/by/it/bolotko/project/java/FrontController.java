@@ -30,7 +30,7 @@ public class FrontController extends HttpServlet {
                         getRequestDispatcher(cmd.getJsp()).
                         forward(req, resp);
             } else {
-                resp.sendRedirect("do?command="+next.toString());
+                resp.sendRedirect("do?command=" + next.toString());
             }
         } catch (Exception e) {
             getServletContext().setAttribute("Error", getErrorTxt(e));

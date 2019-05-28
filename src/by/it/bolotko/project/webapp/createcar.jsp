@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -14,7 +15,7 @@
                 <label class="col-md-4 control-label" for="car_type">Car type</label>
                 <div class="col-md-4">
                     <select id="car_type" name="car_type" class="form-control">
-                        <option value="passenger">passenger</option>
+                        <option value="passenger">passenger car</option>
                         <option value="truck">truck</option>
                     </select>
                     <span class="help-block"> select car type </span>
@@ -26,7 +27,7 @@
                 <label class="col-md-4 control-label" for="fuel_type">Fuel type</label>
                 <div class="col-md-4">
                     <select id="fuel_type" name="fuel_type" class="form-control">
-                        <option value="gasoline">gasoline</option>
+                        <option value="petrol">petrol</option>
                         <option value="diesel">diesel</option>
                         <option value="electricity">electricity</option>
                     </select>

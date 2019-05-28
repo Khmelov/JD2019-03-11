@@ -10,7 +10,8 @@ public enum Actions {
     LOGOUT(new CmdLogout()),
     SIGNUP(new CmdSignup()),
     ERROR(new CmdError()),
-    CREATECAR(new CmdCreateCar());
+    CREATECAR(new CmdCreateCar()),
+    PROFILE(new CmdProfile());
 
     public Cmd command;
 

@@ -4,8 +4,8 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.htm" %>
-    <p>All Users: ${users}</p>
-    <p>All Cars: ${cars}</p>
+    <p>User: ${user}</p>
+    <p>Cars: ${cars}</p>
 </div>
 </body>
 </html>

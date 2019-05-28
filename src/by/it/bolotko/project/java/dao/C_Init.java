@@ -34,6 +34,8 @@ public class C_Init {
                     "  `phone` VARCHAR(20) NULL,\n" +
                     "  `roles_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
+                    "  UNIQUE `login_UNIQUE` (`login` ASC),\n" +
+                    "  UNIQUE `email_UNIQUE` (`email` ASC),\n" +
                     "  CONSTRAINT `fk_users_roles`\n" +
                     "    FOREIGN KEY (`roles_id`)\n" +
                     "    REFERENCES `bolotko`.`roles` (`id`)\n" +
@@ -69,10 +71,10 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `bolotko`.`users` (`id`, `login`, `password`, `email`, `phone`, `roles_id`) VALUES (DEFAULT, 'user1', '0000', 'test1@yandex.ru', '+375(29)7634900', 4);\n");
             statement.executeUpdate("INSERT INTO `bolotko`.`users` (`id`, `login`, `password`, `email`, `phone`, `roles_id`) VALUES (DEFAULT, 'user2', '0000', 'test2@yandex.ru', '+375(29)7634900', 4);\n");
             statement.executeUpdate("INSERT INTO `bolotko`.`users` (`id`, `login`, `password`, `email`, `phone`, `roles_id`) VALUES (DEFAULT, 'maksim', 'miskam', 'maksim1997@mail.ru', '+375(33)5356226', 2);\n");
-            statement.executeUpdate("INSERT INTO `bolotko`.`cars` (`id`, `car_type`, `mark`, `model`, `year_of_issue`, `fuel_type`, `price`, `users_id`) VALUES (DEFAULT, 'passenger', 'Audi', 'A4', '1998', 'gasoline', 4395, 2);\n");
-            statement.executeUpdate("INSERT INTO `bolotko`.`cars` (`id`, `car_type`, `mark`, `model`, `year_of_issue`, `fuel_type`, `price`, `users_id`) VALUES (DEFAULT, 'passenger', 'BMW', 'M5', '2008', 'gasoline', 26470, 2);\n");
+            statement.executeUpdate("INSERT INTO `bolotko`.`cars` (`id`, `car_type`, `mark`, `model`, `year_of_issue`, `fuel_type`, `price`, `users_id`) VALUES (DEFAULT, 'passenger', 'Audi', 'A4', '1998', 'petrol', 4395, 2);\n");
+            statement.executeUpdate("INSERT INTO `bolotko`.`cars` (`id`, `car_type`, `mark`, `model`, `year_of_issue`, `fuel_type`, `price`, `users_id`) VALUES (DEFAULT, 'passenger', 'BMW', 'M5', '2008', 'petrol', 26470, 2);\n");
             statement.executeUpdate("INSERT INTO `bolotko`.`cars` (`id`, `car_type`, `mark`, `model`, `year_of_issue`, `fuel_type`, `price`, `users_id`) VALUES (DEFAULT, 'truck', 'Avia', 'A21', '1987', 'diesel', 799, 3);\n");
-            statement.executeUpdate("INSERT INTO `bolotko`.`cars` (`id`, `car_type`, `mark`, `model`, `year_of_issue`, `fuel_type`, `price`, `users_id`) VALUES (DEFAULT, 'passenger', 'Dacia', 'Logan', '2008', 'gasoline', 3602, 8);\n");
+            statement.executeUpdate("INSERT INTO `bolotko`.`cars` (`id`, `car_type`, `mark`, `model`, `year_of_issue`, `fuel_type`, `price`, `users_id`) VALUES (DEFAULT, 'passenger', 'Dacia', 'Logan', '2008', 'petrol', 3602, 8);\n");
             statement.executeUpdate("INSERT INTO `bolotko`.`cars` (`id`, `car_type`, `mark`, `model`, `year_of_issue`, `fuel_type`, `price`, `users_id`) VALUES (DEFAULT, 'truck', 'KIA', 'K2500', '2015', 'diesel', 13636, 8);\n");
         }
 
