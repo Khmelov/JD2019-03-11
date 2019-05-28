@@ -11,43 +11,46 @@ import by.it.narushevich.project.java.util.Validator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Iterator;
-import java.util.List;
 
 public class CmdCreateTag extends Cmd {
     @Override
     public Cmd execute(HttpServletRequest req) throws Exception {
         Dao dao = Dao.getDao();
-        long trademark_id;
-        long material_id = 0;
 
         if (FormHelper.isPost(req)) {
             Teatag teatag = new Teatag();
 
             teatag.setId(0);
-            List<Trademark> trademarks = dao.trademark.getAll(
-                    "WHERE trademark='" + req.getParameter("Trademark") + "'");
-            Iterator<Trademark> it = trademarks.iterator();
-            if (it.hasNext()) {
-                trademark_id = it.next().getId();
-            } else {
-                Trademark trademark = new Trademark(0,
-                        Validator.getString(req, "trademark", Patterns.TRADEMARK));
-                dao.trademark.create(trademark);
-                trademark_id = trademark.getId();
-            }
-            teatag.setTrademark_id(trademark_id);
+            String trademarkName = req.getParameter("trademark list");
+            System.out.println(trademarkName);
 
-            List<Material> materials = dao.material.getAll(
-                    "WHERE material='" + req.getParameter("material") + "'");
-            Iterator<Material> it2 = materials.iterator();
-            if (it2.hasNext()) {
-                material_id = it2.next().getId();
+            if (!trademarkName.equals("")){
+                String whereTrademark = String.format("WHERE trademark='%s'", trademarkName);
+                Trademark trademark = dao.trademark.getAll(whereTrademark).get(0);
+                teatag.setTrademark_id(trademark.getId());
+            }
+            else{
+                String yourTrademark = Validator.getString(
+                        req, "trademark", Patterns.TRADEMARK).toUpperCase();
+
+                String whereTrademark = String.format("WHERE trademark='%s'", yourTrademark);
+                Trademark trademark = dao.trademark.getAll(whereTrademark).get(0);
+                if (trademark != null) {
+                    teatag.setTrademark_id(trademark.getId());
+                } else {
+                    trademark = new Trademark(0, yourTrademark);
+                    dao.trademark.create(trademark);
+                    teatag.setTrademark_id(trademark.getId());
+                }
             }
 
-            teatag.setMaterial_id(material_id);
             teatag.setSubtitle(
                     Validator.getString(req, "subtitle", Patterns.SUBTITLE));
+
+            String whereMaterial = String.format("WHERE material='%s'", req.getParameter("material"));
+            Material material = dao.material.getAll(whereMaterial).get(0);
+            teatag.setMaterial_id(material.getId());
+
             teatag.setWidth(
                     Validator.getDouble(req, "width"));
             teatag.setHeight(
@@ -62,7 +65,7 @@ public class CmdCreateTag extends Cmd {
             teatag.setUser_id(user.getId());
 
             if (dao.teatag.create(teatag)) {
-                return Actions.USERCOLLECTION.command;
+                return Actions.PROFILE.command;
             }
         }
         return null;

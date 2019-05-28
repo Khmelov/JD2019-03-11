@@ -66,7 +66,7 @@ public class MaterialDao extends AbstractDao<Material> {
 
     @Override
     public Material read(long id) throws SQLException {
-        String where=String.format(" WHERE `id`='%d' LIMIT 0,1", id);
+        String where=String.format(" WHERE `id`=%d LIMIT 0,1", id);
         List<Material> materials = getAll(where);
         if (materials.size() == 1)
             return materials.get(0);

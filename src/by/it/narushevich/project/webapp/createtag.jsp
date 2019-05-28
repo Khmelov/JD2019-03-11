@@ -13,23 +13,60 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Создание элемента для вашей коллекции</legend>
+<legend>Создание нового элемента вашей коллекции</legend>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="trademark list">Список торговых марок</label>
+  <div class="col-md-4">
+    <select id="trademark list" name="trademark list" class="form-control">
+      <option>Выберите из списка</option>
+      <option value="AHMAD TEA">Ahmad tea</option>
+      <option value="AKBAR">Akbar</option>
+      <option value="ALATTAR">Alattar</option>
+      <option value="AUCHAN">Auchan</option>
+      <option value="BROOKE BOND">Brooke Bond</option>
+      <option value="CHELTON">Chelton</option>
+      <option value="DILMAH">Dilmah</option>
+      <option value="FOREST OF ARDEN">Forest of Arden</option>
+      <option value="GOLDEN BOWL">Golden Bowl</option>
+      <option value="GREENFIELD">Greenfield</option>
+      <option value="JAF TEA">Jaf tea</option>
+      <option value="KAKOO">Kakoo</option>
+      <option value="LIPTON">Lipton</option>
+      <option value="LORD NELSON">Lord Nelson</option>
+      <option value="MABROC">Mabroc</option>
+      <option value="MAITRE DE THE">Maitre de The</option>
+      <option value="MALWA">Malwa</option>
+      <option value="MESSMER">Messmer</option>
+      <option value="MISTRAL">Mistral</option>
+      <option value="NATURSAN">Natursan</option>
+      <option value="PICKWICK">Pickwick</option>
+      <option value="PRINCESS JAVA">Princess Java</option>
+      <option value="TEA">Tea</option>
+    </select>
+    <span class="help-block">если нужного нет - оставьте поле пустым</span>
+  </div>
+</div>
+
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="trademark">Торговая марка</label>
+  <label class="col-md-4 control-label" for="trademark"></label>
   <div class="col-md-4">
-  <input id="trademark" name="trademark" type="text" value="Wisotzky tea" placeholder="" class="form-control input-md">
-  <span class="help-block">enter trademark here if it is not listed</span>
+  <input id="trademark" name="trademark" type="text" placeholder="МАРКА ЧАЯ" class="form-control input-md">
+  <span class="help-block">введите торговую марку</span>
   </div>
 </div>
+
+
 
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="subtitle">Подзаголовок</label>
   <div class="col-md-4">
-  <input id="subtitle" name="subtitle" type="text" value="Very taste tea" placeholder="" class="form-control input-md">
-  <span class="help-block">what is writing on tag else</span>
+  <input id="subtitle" name="subtitle" type="text" value="черный чай" placeholder="" class="form-control input-md">
+  <span class="help-block">что еще написано на ярлычке?</span>
   </div>
 </div>
 
@@ -38,9 +75,9 @@
   <label class="col-md-4 control-label" for="material">Материал</label>
   <div class="col-md-4">
     <select id="material" name="material" class="form-control">
-      <option value="1">cardboard</option>
-      <option value="2">paper</option>
-      <option value="3">plastic</option>
+      <option value="cardboard">картон</option>
+      <option value="paper">бумага</option>
+      <option value="plastic">пластик</option>
     </select>
   </div>
 </div>
@@ -50,7 +87,6 @@
   <label class="col-md-4 control-label" for="width">Ширина, мм</label>
   <div class="col-md-4">
   <input id="width" name="width" type="text" value="25" placeholder="" class="form-control input-md">
-  <span class="help-block">Width in mm of your tag</span>
   </div>
 </div>
 
@@ -58,8 +94,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="height">Высота, мм</label>
   <div class="col-md-4">
-  <input id="height" name="Height, mm" type="text" value="28" placeholder="" class="form-control input-md">
-  <span class="help-block">Height in mm of your tag</span>
+  <input id="height" name="height" type="text" value="28" placeholder="" class="form-control input-md">
   </div>
 </div>
 
@@ -68,7 +103,7 @@
   <label class="col-md-4 control-label" for="in collection">В коллекции с</label>
   <div class="col-md-4">
   <input id="in collection" name="in collection" type="text" value="2005-07-04" placeholder="" class="form-control input-md">
-    <span class="help-block">Date in format yyyy-mm-dd</span>
+    <span class="help-block">Дата в формате ГГГГ-ММ-ДД</span>
   </div>
 </div>
 
@@ -77,7 +112,6 @@
   <label class="col-md-4 control-label" for="number in catalog">Номер в каталоге</label>
   <div class="col-md-4">
   <input id="number in catalog" name="number in catalog" type="text" value="02-05-4" placeholder="" class="form-control input-md">
-
   </div>
 </div>
 
@@ -93,7 +127,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="create"></label>
   <div class="col-md-4">
-    <button id="create" name="create" class="btn btn-primary">Создать элемент</button>
+    <button id="create" name="create" class="btn btn-primary">Создать</button>
   </div>
 </div>
 

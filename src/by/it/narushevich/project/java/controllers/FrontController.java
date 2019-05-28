@@ -10,13 +10,21 @@ import java.io.IOException;
 
 public class FrontController extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        process(req, resp);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            process(req, resp);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        process(req, resp);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp){
+        try {
+            process(req, resp);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws IOException {

@@ -9,7 +9,7 @@
 <%@ include file="include/menu.htm" %>
 <br>
 
-<p>Teatags: ${usersTeatags}</p>
+<p>Ваша коллекция: ${usersTeatags}</p>
 
 </div>
 </body>

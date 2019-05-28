@@ -38,7 +38,7 @@
     <!-- компиляция файлов проекта -->
     <target name="03compile" depends="02init">
         <echo>Compile the source files</echo>
-        <javac srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes" debug="true">
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes" debug="true">
             <classpath refid="classpath"/>
         </javac>
     </target>

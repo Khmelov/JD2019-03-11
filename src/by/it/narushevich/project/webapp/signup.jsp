@@ -12,32 +12,32 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Sing Up</legend>
+<legend>Регистрация нового пользователя</legend>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="login">Login</label>
+  <label class="col-md-4 control-label" for="login">Логин</label>
   <div class="col-md-4">
   <input id="login" name="login" value="testUser" type="text" placeholder="" class="form-control input-md" required="">
-  <span class="help-block">any symbols [a-zA-Z0-9._], length from 8 to 15</span>
+  <span class="help-block">русские и английские буквы, цифры, . и _, длина 8 до 15</span>
   </div>
 </div>
 
 <!-- Password input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="password">Password</label>
+  <label class="col-md-4 control-label" for="password">Пароль</label>
   <div class="col-md-4">
     <input id="password" name="password" value="testPassword" type="password" placeholder="" class="form-control input-md" required="">
-      <span class="help-block">min length 8 symbols</span>
+      <span class="help-block">минимальная длина 8 символов</span>
       </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="e-mail">E-mail</label>
+  <label class="col-md-4 control-label" for="email">Электронная почта</label>
   <div class="col-md-4">
     <input id="email" name="email" value="user@tut.by" type="text" placeholder="" class="form-control input-md" required="">
-        <span class="help-block">your e-mail</span>
+        <span class="help-block">Ваш e-mail</span>
       </div>
 </div>
 
@@ -45,7 +45,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="sign-up"></label>
   <div class="col-md-4">
-    <button id="sign-up" name="sign-up" class="btn btn-primary">Sign Up</button>
+    <button id="sign-up" name="sign-up" class="btn btn-primary">Зарегистрировать</button>
   </div>
 </div>
 

@@ -12,8 +12,7 @@ public enum Actions {
     SEARCH(new CmdSearch()),
     PROFILE(new CmdProfile()),
     DELETEUSER(new CmdDeleteUser()),
-    CREATETAG(new CmdCreateTag()),
-    USERCOLLECTION(new CmdUserCollection());
+    CREATETAG(new CmdCreateTag());
 
     public Cmd command;
 
