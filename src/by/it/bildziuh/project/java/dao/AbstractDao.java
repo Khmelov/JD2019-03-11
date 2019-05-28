@@ -12,7 +12,7 @@ public abstract class AbstractDao<TYPE> implements InterfaceDao<TYPE> {
     protected long executeCreate(String sql) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             if (count == 1) {

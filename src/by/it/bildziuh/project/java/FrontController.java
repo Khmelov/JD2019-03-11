@@ -1,50 +1,54 @@
 package by.it.bildziuh.project.java;
 
-import by.it.bildziuh.jd03_04.java.Actions;
-import by.it.bildziuh.jd03_04.java.Cmd;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class FrontController extends HttpServlet{
+public class FrontController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        process(req,resp);
+        process(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        process(req,resp);
+        process(req, resp);
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         try {
-            by.it.bildziuh.jd03_04.java.Cmd cmd = Actions.defineCommand(req);
-            by.it.bildziuh.jd03_04.java.Cmd next = cmd.execute(req);
+            Cmd cmd = Actions.defineCommand(req);
+            Cmd next = cmd.execute(req);
             resp.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
-      //      resp.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
 
-            if (next==cmd || next==null){
+            if (next == cmd || next == null) {
                 getServletContext().
                         getRequestDispatcher(cmd.getJsp()).
                         forward(req, resp);
-            }
-            else
-            {
-                resp.getWriter().print(next+" redirect");
+            } else {
+                resp.sendRedirect("do?command=" + next.toString());
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            getServletContext().setAttribute("Error", getErrorTxt(e));
+            resp.sendRedirect("do?command=Error");
         }
+    }
 
-
+    private static String getErrorTxt(Exception e) {
+        StringBuilder error = new StringBuilder("<b>" + e.toString() + "</b><br><br>");
+        StackTraceElement[] stackTrace = e.getStackTrace();
+        for (StackTraceElement element : stackTrace) {
+            if (element.toString().contains(".HttpServlet."))
+                break;
+            error.append(element.toString()).append("<br>\n");
+        }
+        return error.toString();
     }
 
 }
