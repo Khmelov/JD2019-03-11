@@ -2,14 +2,15 @@
     charset=UTF-8"
     language="java"
     pageEncoding="UTF-8" %>
-    <html>
+<html>
 <%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-<p>ERROR: ${Error}</p>
+<br>
+
+<!-- разметка юзеров и возможностью изменения и удаления -->
+
 </div>
 </body>
 </html>
-
-

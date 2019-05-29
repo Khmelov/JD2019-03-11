@@ -25,6 +25,9 @@
                 <a class="nav-link" href="do?command=SignUp">Регистрация</a>
             </li>
             <li class="nav-item">
+                 <a class="nav-link" href="do?command=EditUsers">Админка</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="do?command=Logout">Выход</a>
             </li>
         </ul>

@@ -3,10 +3,10 @@
     language="java"
     pageEncoding="UTF-8" %>
 <html>
-<%@ include file="include/head.htm" %>
+<%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
-<%@ include file="include/menu.htm" %>
+<%@ include file="include/menu.jsp" %>
 <br>
 
 <form class="form-horizontal" action="do?command=CreateTag" method="post">
@@ -58,8 +58,6 @@
   <span class="help-block">введите торговую марку</span>
   </div>
 </div>
-
-
 
 <!-- Text input-->
 <div class="form-group">
