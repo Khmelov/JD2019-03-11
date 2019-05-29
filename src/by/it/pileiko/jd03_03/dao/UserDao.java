@@ -48,7 +48,7 @@ public class UserDao extends AbstractDao <User> {
 
     @Override
     public User read(long id) throws SQLException {
-        String where= String.format("WHERE  `id`= `%d` LIMIT 0,1", id);
+        String where= String.format("WHERE  `id`= %d LIMIT 0,1", id);
         List <User> users= getAll(where);
         if(users.size()==1)
             return users.get(0);

@@ -16,14 +16,14 @@ public class Runner {
         Dao dao = Dao.getDao();
 
        User user = new User (0, "Perviy", "parol", "pervy@mail.by", 2);
-        dao.user.create(user);
-        user = dao.user.read(user.getId());
-        System.out.println(user);
-        user.setLogin("Good User");
-        dao.user.update(user);
-        user=dao.user.read(user.getId());
-        System.out.println(user);
-        dao.user.delete(user);
+       dao.user.create(user);
+       user = dao.user.read(user.getId());
+       System.out.println(user);
+       user.setLogin("Good User");
+       dao.user.update(user);
+       user=dao.user.read(user.getId());
+       System.out.println(user);
+       dao.user.delete(user);
 
         Role role=new Role(0,"Admin");
         dao.role.create(role);

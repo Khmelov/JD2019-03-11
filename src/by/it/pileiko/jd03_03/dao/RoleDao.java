@@ -44,7 +44,7 @@ public class RoleDao extends AbstractDao <Role>{
 
     @Override
     public Role read(long id) throws SQLException {
-        String where=String.format(" WHERE  `id`= `%d` LIMIT 0,1", id);
+        String where=String.format(" WHERE  `id`= '%d' LIMIT 0,1", id);
         List<Role> roles = getAll(where);
         if (roles.size()==1)
             return roles.get(0);
