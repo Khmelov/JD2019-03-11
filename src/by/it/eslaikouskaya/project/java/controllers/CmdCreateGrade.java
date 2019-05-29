@@ -6,6 +6,7 @@ import by.it.eslaikouskaya.project.java.utils.FormHelper;
 import by.it.eslaikouskaya.project.java.utils.Validator;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public class CmdCreateGrade extends Cmd {
 	@Override
@@ -20,7 +21,8 @@ public class CmdCreateGrade extends Cmd {
 
 			Dao dao = Dao.getDao();
 			if (dao.grade.create(grade)) {
-				return Actions.SHOWGRADES.command;
+				List<Grade> grades = dao.grade.getAll();
+				req.setAttribute("grades", grades);
 			}
 		}
 		return null;

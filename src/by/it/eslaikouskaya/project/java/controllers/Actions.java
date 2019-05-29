@@ -9,7 +9,6 @@ public enum Actions {
 	CREATEGRADE(new CmdCreateGrade()),
 	CREATEMAT(new CmdCreateMat()),
 	SHOWCATEGORIES(new CmdShowCategories()),
-	SHOWGRADES(new CmdShowGrades()),
 	INDEX(new CmdIndex()),
 	RESETDB(new CmdResetDB()),
 	LOGIN(new CmdLogin()),

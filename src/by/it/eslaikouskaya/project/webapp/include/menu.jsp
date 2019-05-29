@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<h1 class="display-4">BORITORG</h1>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href=".">BORITORG</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -14,13 +13,13 @@
                 <a class="nav-link" href="do?command=SignUp">Регистрация</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="do?command=CreateMat">Создать материал</a>
+                <a class="nav-link" href="do?command=CreateMat">Изменить материал</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="do?command=CreateGrade">Создать класс</a>
+                <a class="nav-link" href="do?command=CreateGrade">Изменить класс</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="do?command=CreateCategory">Создать категорию</a>
+                <a class="nav-link" href="do?command=CreateCategory">Изменить категорию</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="do?command=Index">Index</a>
