@@ -14,8 +14,6 @@ public class Dao {
     public RoleDao role;
     public UserDao user;
     public RequestDao request;
-    public FirmDao firm;
-    public SteamDao steam;
     public CoffemachineDao coffemachine;
 
 
@@ -27,8 +25,6 @@ public class Dao {
         role=new RoleDao();
         user=new UserDao();
         request=new RequestDao();
-        firm=new FirmDao();
-        steam=new SteamDao();
         coffemachine=new CoffemachineDao();
 
     }

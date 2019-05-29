@@ -1,10 +1,9 @@
-package by.it.khlystunova.project.java;
+package by.it.khlystunova.project.java.controllers;
 
 
 
 import by.it.khlystunova.project.java.beans.Coffemachine;
 import by.it.khlystunova.project.java.dao.Dao;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
  <body>
@@ -22,7 +23,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Password">Password</label>
   <div class="col-md-4">
-    <input id="Password" name="Password" value="qwerty" type="password" placeholder="qwerty" class="form-control input-md" required="">
+    <input id="Password" name="Password" value="lisa21031997" type="password" placeholder="qwerty" class="form-control input-md" required="">
     <span class="help-block">enter a password of at least 8 characters</span>
   </div>
 </div>

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -11,18 +12,18 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Login">Login</label>
+  <label class="col-md-4 control-label" for="Login">Логин</label>
   <div class="col-md-4">
-  <input id="Login" name="Login" value=khlystunova type="text" placeholder="khlystunova" class="form-control input-md" required="">
+  <input id="Login" name="Login" value="khlystunova" type="text" placeholder="khlystunova" class="form-control input-md" required="">
   <span class="help-block">your login</span>
   </div>
 </div>
 
 <!-- Password input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Password">Password</label>
+  <label class="col-md-4 control-label" for="Password">Пароль</label>
   <div class="col-md-4">
-    <input id="Password" name="Password" value=qwerty type="password" placeholder="qwerty" class="form-control input-md" required="">
+    <input id="Password" name="Password" value="lisa21031997" type="password" placeholder="qwerty" class="form-control input-md" required="">
     <span class="help-block">enter a password of at least 8 characters</span>
   </div>
 </div>

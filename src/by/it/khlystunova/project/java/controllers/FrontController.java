@@ -1,6 +1,7 @@
-package by.it.khlystunova.project.java;
+package by.it.khlystunova.project.java.controllers;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +22,9 @@ public class FrontController extends HttpServlet {
     private void process(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException{
 
+
+
+
         try {
             resp.setHeader("Cache-Control","private, no-store, no-cache, must-revalidate");
             resp.setHeader("Pragma","no-cache");
@@ -30,7 +34,7 @@ public class FrontController extends HttpServlet {
                 //показывает нужную html страницу в браузере
                 getServletContext().
                         getRequestDispatcher(cmd.getJsp()).
-                        forward(req, resp);
+                        forward(req, resp);//по forward отдали управления jsp странице , а она после отработки отдала управление фильтру.мы не ожидаем что управление вернется.
             }
             else {
                 resp.sendRedirect("do?command="+next.toString());

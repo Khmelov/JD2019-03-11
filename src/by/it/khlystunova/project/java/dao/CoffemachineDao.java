@@ -16,14 +16,13 @@ public class CoffemachineDao extends AbstractDao<Coffemachine> {
     public boolean create(Coffemachine coffemachine) throws SQLException {
         String sql;
         sql = String.format(Locale.ENGLISH,
-                "INSERT INTO `coffemachines`( `Name`, `firm_ID`, `Power`, `Size`, `Weight`," +
-                        " `steam_ID`, `WaterContainer`, `BeansContainer`, `Color`, `Price`)" +
-                        " VALUES ('%s',%d,%d,'%s',%f,"
-                        + "%d,"
+                "INSERT INTO `coffemachines`( `Name`, `Firm`, `Power`, `Size`, `Weight`," +
+                        " `WaterContainer`, `BeansContainer`, `Color`, `Price`)" +
+                        " VALUES ('%s','%s','%s','%s',%f,"
                         + "'%s','%s','%s',%f)",
-                coffemachine.getName(), coffemachine.getFirm_ID(),
+                coffemachine.getName(), coffemachine.getFirm(),
                 coffemachine.getPower(), coffemachine.getSize(),
-                coffemachine.getWeight(),coffemachine.getSteam_ID(),
+                coffemachine.getWeight(),
                 coffemachine.getWaterContainer(),
                 coffemachine.getBeansContainer(),coffemachine.getColor(),
                 coffemachine.getPrice()
@@ -39,13 +38,13 @@ public class CoffemachineDao extends AbstractDao<Coffemachine> {
         String sql;
         sql = String.format(Locale.ENGLISH,
                 "UPDATE `coffemachines` SET `Name`='%s'," +
-                        "`firm_ID`='%d',`Power`='%d',`Size`='%s'," +
-                        "`Weight`='%f',`steam_ID`='%d',`WaterContainer`='%s'," +
+                        "`Firm`='%s',`Power`='%s',`Size`='%s'," +
+                        "`Weight`='%f',`WaterContainer`='%s'," +
                         "`BeansContainer`='%s'," +
                         "`Color`='%s',`Price`='%f' WHERE 1",
-                coffemachine.getName(), coffemachine.getFirm_ID(),
+                coffemachine.getName(), coffemachine.getFirm(),
                 coffemachine.getPower(), coffemachine.getSize(), coffemachine.getWeight(),
-                coffemachine.getSteam_ID(),coffemachine.getWaterContainer(),
+                coffemachine.getWaterContainer(),
                 coffemachine.getBeansContainer(),coffemachine.getColor(),
                 coffemachine.getPrice()
         );
@@ -76,11 +75,10 @@ public class CoffemachineDao extends AbstractDao<Coffemachine> {
                 Coffemachine coffemachine = new Coffemachine(
                         resultSet.getLong("id"),
                         resultSet.getString("name"),
-                        resultSet.getLong("firm_ID"),
-                        resultSet.getInt("power"),
+                        resultSet.getString("firm"),
+                        resultSet.getString("power"),
                         resultSet.getString("size"),
                         resultSet.getDouble("weight"),
-                        resultSet.getLong("steam_ID"),
                         resultSet.getString("waterContainer"),
                         resultSet.getString("beansContainer"),
                         resultSet.getString("color"),

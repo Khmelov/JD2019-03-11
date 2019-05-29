@@ -4,11 +4,10 @@ public class Coffemachine {
 
     private long id;
     private String name;
-    private long firm_ID;
-    private int power;
+    private String firm;
+    private String power;
     private String size;
     private double weight;
-    private long steam_ID;
     private String waterContainer;
     private String beansContainer;
     private String color;
@@ -17,14 +16,13 @@ public class Coffemachine {
     public Coffemachine() {
     }
 
-    public Coffemachine(long id, String name, long firm_ID, int power, String size, double weight, long steam_ID, String waterContainer, String beansContainer, String color, double price) {
+    public Coffemachine(long id, String name, String firm, String power, String size, double weight, String waterContainer, String beansContainer, String color, double price) {
         this.id = id;
         this.name = name;
-        this.firm_ID = firm_ID;
+        this.firm = firm;
         this.power = power;
         this.size = size;
         this.weight = weight;
-        this.steam_ID = steam_ID;
         this.waterContainer = waterContainer;
         this.beansContainer = beansContainer;
         this.color = color;
@@ -39,11 +37,11 @@ public class Coffemachine {
         return name;
     }
 
-    public long getFirm_ID() {
-        return firm_ID;
+    public String getFirm() {
+        return firm;
     }
 
-    public int getPower() {
+    public String getPower() {
         return power;
     }
 
@@ -53,10 +51,6 @@ public class Coffemachine {
 
     public double getWeight() {
         return weight;
-    }
-
-    public long getSteam_ID() {
-        return steam_ID;
     }
 
     public String getWaterContainer() {
@@ -83,11 +77,11 @@ public class Coffemachine {
         this.name = name;
     }
 
-    public void setFirm_ID(long firm_ID) {
-        this.firm_ID = firm_ID;
+    public void setFirm(String firm) {
+        this.firm = firm;
     }
 
-    public void setPower(int power) {
+    public void setPower(String power) {
         this.power = power;
     }
 
@@ -99,9 +93,6 @@ public class Coffemachine {
         this.weight = weight;
     }
 
-    public void setSteam_ID(long steam_ID) {
-        this.steam_ID = steam_ID;
-    }
 
     public void setWaterContainer(String waterContainer) {
         this.waterContainer = waterContainer;
@@ -122,17 +113,16 @@ public class Coffemachine {
     @Override
     public String toString() {
         return "Coffemachine{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", firm_ID=" + firm_ID +
-                ", power=" + power +
-                ", size='" + size + '\'' +
-                ", weight=" + weight +
-                ", steam_ID=" + steam_ID +
-                ", waterContainer='" + waterContainer + '\'' +
-                ", beansContainer='" + beansContainer + '\'' +
-                ", color='" + color + '\'' +
-                ", price=" + price +
+                "id=" + id +"\n"+
+                ", name='" + name + '\'' +"\n"+
+                ", firm='" + firm + '\'' +"\n"+
+                ", power='" + power + '\'' +"\n"+
+                ", size='" + size + '\'' +"\n"+
+                ", weight=" + weight +"\n"+
+                ", waterContainer='" + waterContainer + '\'' +"\n"+
+                ", beansContainer='" + beansContainer + '\'' +"\n"+
+                ", color='" + color + '\'' +"\n"+
+                ", price=" + price +"\n"+
                 '}';
     }
 }

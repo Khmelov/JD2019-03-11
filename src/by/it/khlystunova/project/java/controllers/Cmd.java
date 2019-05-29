@@ -1,4 +1,4 @@
-package by.it.khlystunova.project.java;
+package by.it.khlystunova.project.java.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 

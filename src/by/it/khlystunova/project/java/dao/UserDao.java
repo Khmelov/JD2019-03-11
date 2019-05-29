@@ -76,18 +76,6 @@ public class UserDao extends AbstractDao<User> {
     }
 
 
-    public Set<String> getAllLogins() throws SQLException {
-        Set<String> logins = new HashSet<String>();
-        List<User> users = getAll();
-        Iterator<User> iterator = users.iterator();
-        while (iterator.hasNext()){
-            User next = iterator.next();
-            String login = next.getLogin();
-            logins.add(login);
-        }
-        return logins;
-    }
-
     @Override
     public User read(long id) throws SQLException {
         String where=String.format(" WHERE `id`='%d' LIMIT 0,1", id);

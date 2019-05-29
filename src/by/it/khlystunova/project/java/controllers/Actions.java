@@ -1,4 +1,4 @@
-package by.it.khlystunova.project.java;
+package by.it.khlystunova.project.java.controllers;
 
 
 
@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 public enum Actions {
 
     LOGIN(new CmdLogin()),
+    HOME(new CmdHome()),
     INDEX(new CmdIndex()),
+    PROFILE(new CmdProfile()),
     LOGOUT(new CmdLogout()),
     SIGNUP(new CmdSignup()),
     CREATEREQUEST(new CmdCreateRequest()),

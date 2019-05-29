@@ -55,13 +55,7 @@ public class User {
     }
 
     public void setLogin(String login) throws SQLException,WebsiteException {
-        UserDao userDao = new UserDao();
-        Set<String> allLogins = userDao.getAllLogins();
-        if(allLogins.contains(login))
-            throw new WebsiteException("This login already exist.Please, change login");
-        else
         this.login = login;
-
     }
 
     public void setPassword(String password) {

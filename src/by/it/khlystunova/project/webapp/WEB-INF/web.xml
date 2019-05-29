@@ -12,7 +12,7 @@
     -->
     <servlet>
         <servlet-name>FrontController</servlet-name>
-        <servlet-class>by.it.khlystunova.project.java.FrontController</servlet-class>
+        <servlet-class>by.it.khlystunova.project.java.controllers.FrontController</servlet-class>
     </servlet>
 
     <servlet-mapping>

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -29,11 +30,14 @@
 
     <!-- Select Basic -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="Coffemashine">Coffemashine</label>
+      <label class="col-md-4 control-label" for="Coffemachine">Coffemachine</label>
       <div class="col-md-4">
-        <select id="Coffemashine" name="Coffemashine" class="form-control">
-          <option value="1">Option one</option>
-          <option value="2">Option two</option>
+        <select id="Coffemachine" name="Coffemachine" class="form-control">
+          <option value="LC/D">LC/D</option>
+          <option value="GE-GD ONE">GE-GD ONE</option>
+          <option value="EP 5331/10">EP 5331/10</option>
+          <option value="XD COMPACT">XD COMPACT</option>
+          <option value="DELONGHI EN 550.S">DELONGHI EN 550.S</option>
         </select>
       </div>
     </div>
