@@ -1,21 +1,20 @@
-package by.it.akhmelev.project06.java.conrollers;
+package by.it.akhmelev.project07.java.controller;
 
-import by.it.akhmelev.project06.java.beans.Ad;
-import by.it.akhmelev.project06.java.beans.User;
-import by.it.akhmelev.project06.java.dao.Dao;
-import by.it.akhmelev.project06.java.utils.FormHelper;
-import by.it.akhmelev.project06.java.utils.Validator;
+import by.it.akhmelev.project07.java.beans.Ad;
+import by.it.akhmelev.project07.java.beans.User;
+import by.it.akhmelev.project07.java.dao.Dao;
+import by.it.akhmelev.project07.java.utils.FormHelper;
+import by.it.akhmelev.project07.java.utils.Tools;
+import by.it.akhmelev.project07.java.utils.Validator;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class CmdCreateAd extends Cmd {
     @Override
     public Cmd execute(HttpServletRequest req) throws Exception {
-
-        Object oUser = req.getSession().getAttribute("user");
-        if (oUser == null)
+        User user = Tools.findUserInSession(req);
+        if (user == null)
             return Actions.LOGIN.command;
-        User user = (User) oUser;
         if (FormHelper.isPost(req)) {
             Ad ad = new Ad(
                     0,
