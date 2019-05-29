@@ -8,7 +8,9 @@ public interface InterfaceDao <TYPE> {
     boolean create (TYPE bean) throws SQLException;
     boolean update (TYPE bean) throws SQLException;
     boolean delete (TYPE bean) throws SQLException;
-
+    TYPE read(long id) throws SQLException;
+    List <TYPE> getALL() throws SQLException;
+    List <TYPE> getALL(String where) throws SQLException;
 
 
 }
