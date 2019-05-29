@@ -24,7 +24,7 @@ import java.util.List;
 //  нет потокобезопасности, совсем, т.к. это только пример, иначе код заметно усложнится.
 //  Поэтому - никакого реального применения, используйте сие только в учебных целях!
 
-public abstract class UniversalDAO <TypeBean> implements InterfaceDao<TypeBean> {
+public class UniversalDAO<TypeBean> implements InterfaceDao<TypeBean> {
 
     private TypeBean bean; //это некий неизвестный bean
     private String table; //это его таблица в базе
@@ -99,10 +99,9 @@ public abstract class UniversalDAO <TypeBean> implements InterfaceDao<TypeBean> 
             return null;
     }
 
-
     @Override
-    public List<TypeBean> getALL(String where) throws SQLException {
-        return null;
+    public List<TypeBean> getAll() throws SQLException {
+        return getAll("");
     }
 
 
@@ -186,7 +185,7 @@ public abstract class UniversalDAO <TypeBean> implements InterfaceDao<TypeBean> 
                 IllegalAccessException |
                 NoSuchMethodException |
                 InvocationTargetException e
-                ) {
+        ) {
             e.printStackTrace();
         }
         return null; //если не создался вернем null
@@ -211,5 +210,6 @@ public abstract class UniversalDAO <TypeBean> implements InterfaceDao<TypeBean> 
         }
         return result;
     }
+
 
 }

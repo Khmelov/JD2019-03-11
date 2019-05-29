@@ -6,53 +6,44 @@ import by.it.pileiko.jd03_03.beans.User;
 import by.it.pileiko.jd03_03.crud.CarCRUD;
 import by.it.pileiko.jd03_03.crud.RoleCRUD;
 import by.it.pileiko.jd03_03.crud.UserCRUD;
+import by.it.pileiko.jd03_03.dao.Dao;
 
 import java.sql.SQLException;
 
 public class Runner {
     public static void main(String[] args) throws SQLException {
-        User user = new User(0, "Perviy", "parol", "pervy@mail.by", 2);
-        UserCRUD userCRUD = new UserCRUD();
-        userCRUD.create(user);
-        user=userCRUD.read(user.getId());
 
+        Dao dao = Dao.getDao();
+
+       User user = new User (0, "Perviy", "parol", "pervy@mail.by", 2);
+        dao.user.create(user);
+        user = dao.user.read(user.getId());
         System.out.println(user);
-
         user.setLogin("Good User");
-        userCRUD.update(user);
-        user=userCRUD.read(user.getId());
+        dao.user.update(user);
+        user=dao.user.read(user.getId());
         System.out.println(user);
+        dao.user.delete(user);
 
         Role role=new Role(0,"Admin");
-        RoleCRUD roleCRUD=new RoleCRUD();
-        roleCRUD.create(role);
-        role=roleCRUD.read(role.getId());
+        dao.role.create(role);
+        role=dao.role.read(role.getId());
         System.out.println(role);
-        role.setRole(" not good admin");
-        roleCRUD.update(role);
-        role=roleCRUD.read(role.getId());
+        role.setRole("not good admin");
+        dao.role.update(role);
+        role = dao.role.read(role.getId());
         System.out.println(role);
-        roleCRUD.delete(role);
+        dao.role.delete(role);
 
-        Car car = new Car();
-        car.setDescription("very good small car");
-        car.setUsersId(2);
-        car.setBrand("VW");
-        car.setEngine(1600);
-        car.setModel("polo");
-        car.setPrice(6500.5);
-        car.setYear(2015);
-        CarCRUD carCRUD = new CarCRUD();
-        carCRUD.create(car);
-        car=carCRUD.read(car.getId());
+        Car car = new Car(2,"VW", "polo", 1600, 6500.5, 2015, "very good small car", 2);
+        dao.car.create(car);
+        car=dao.car.read(car.getId());
         System.out.println(car);
         car.setDescription("expensive old car");
-        carCRUD.update(car);
-        car=carCRUD.read(car.getId());
+        dao.car.update(car);
+        car=dao.car.read(car.getId());
         System.out.println(car);
-        carCRUD.delete(car);
-
-
+        // dao.car.delete(car);
 
     }
 

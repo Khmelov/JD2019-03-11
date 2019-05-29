@@ -45,7 +45,7 @@ public class RoleDao extends AbstractDao <Role>{
     @Override
     public Role read(long id) throws SQLException {
         String where=String.format(" WHERE  `id`= `%d` LIMIT 0,1", id);
-        List<Role> roles = getALL(where);
+        List<Role> roles = getAll(where);
         if (roles.size()==1)
             return roles.get(0);
         else
@@ -53,18 +53,18 @@ public class RoleDao extends AbstractDao <Role>{
     }
 
     @Override
-    public List<Role> getALL() throws SQLException {
-        return getALL("");
+    public List<Role> getAll() throws SQLException {
+        return getAll("");
     }
 
     @Override
-    public List<Role> getALL(String where) throws SQLException {
+    public List<Role> getAll(String where) throws SQLException {
         List<Role> roles=new ArrayList<>();
         String sql = String.format(Locale.ENGLISH,
                 "SELECT * FROM `roles` %s", where);
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
