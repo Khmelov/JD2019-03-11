@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class CmdProfile extends Cmd {
+class CmdProfile extends Cmd {
     @Override
     Cmd execute(HttpServletRequest req) throws Exception {
         HttpSession session = req.getSession();

@@ -2,7 +2,6 @@ package by.it.khlystunova.project.java.dao;
 
 
 import by.it.khlystunova.project.java.beans.*;
-import by.it.khlystunova.project.java.dao.*;
 
 import java.sql.SQLException;
 

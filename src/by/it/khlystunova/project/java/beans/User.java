@@ -1,14 +1,6 @@
 package by.it.khlystunova.project.java.beans;
 
-import by.it.khlystunova.project.java.dao.Dao;
-import by.it.khlystunova.project.java.dao.UserDao;
-import by.it.khlystunova.project.java.exceptions.WebsiteException;
 
-import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class User {
 
@@ -19,7 +11,9 @@ public class User {
     private String email;
     private long roles_ID;
 
-    public User(){};
+    public User(){
+
+    }
 
     public User(long id, String login, String password, String email, long roles_ID) {
         this.id = id;
@@ -54,7 +48,7 @@ public class User {
         this.id = id;
     }
 
-    public void setLogin(String login) throws SQLException,WebsiteException {
+    public void setLogin(String login){
         this.login = login;
     }
 

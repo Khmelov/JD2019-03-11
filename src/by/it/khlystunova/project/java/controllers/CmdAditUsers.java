@@ -1,9 +1,10 @@
 package by.it.khlystunova.project.java.controllers;
 
 import javax.servlet.http.HttpServletRequest;
-class CmdHome extends Cmd {
+
+public class CmdAditUsers extends Cmd {
     @Override
-    Cmd execute(HttpServletRequest req){
-        return Actions.INDEX.command;
+    public Cmd execute(HttpServletRequest req) {
+        return null;
     }
 }

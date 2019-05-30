@@ -14,6 +14,7 @@ public enum Actions {
     SIGNUP(new CmdSignup()),
     CREATEREQUEST(new CmdCreateRequest()),
     ERROR(new CmdError()),
+    ADITUSERS(new CmdAditUsers()),
     RESETDB(new CmdResetDB());
 
 

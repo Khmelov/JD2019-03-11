@@ -1,8 +1,6 @@
 package by.it.khlystunova.project.java.dao;
 
-//import by.it.khlystunova.jd03_03.C_Init;
 
-//import java.sql.SQLException;
 
 import java.sql.SQLException;
 

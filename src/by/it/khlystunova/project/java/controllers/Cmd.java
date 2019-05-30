@@ -8,14 +8,13 @@ public abstract class Cmd {
 
     @Override
     public String toString() {
-        String nameCommand = this
+        return this
                 .getClass()
                 .getSimpleName()
                 .replace("Cmd", "")
                 .toLowerCase();
-        return nameCommand;
     }
-    public String getJsp(){
+    String getJsp(){
         return "/"+this.toString()+".jsp";
     }
 }

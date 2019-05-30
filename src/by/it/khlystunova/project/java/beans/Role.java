@@ -5,8 +5,7 @@ public class Role {
     private long id;
     private  String role;
 
-    public Role() {
-    }
+    public Role() {}
 
     public Role(long id, String role) {
         this.id = id;

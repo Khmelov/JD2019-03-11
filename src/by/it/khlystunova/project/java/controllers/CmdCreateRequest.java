@@ -23,7 +23,7 @@ class CmdCreateRequest extends  Cmd{
             request.setUsers_ID(user.getId());
             request.setContact(Validator.getString(req,"Contact", Patterns.CONTACT));
             request.setDeliveryAdress(Validator.getString(req,"Delivery address",Patterns.ADDRESS));
-            request.setCoffemachines_ID(getCoffemaсhines_ID(req));
+            request.setCoffemachines_ID(getIdCoffemachines(req));
             if(dao.request.create(request)) {
                 return Actions.PROFILE.command;
             }
@@ -31,7 +31,7 @@ class CmdCreateRequest extends  Cmd{
         return null;
     }
 
-    private long getCoffemaсhines_ID(HttpServletRequest req) throws SQLException {
+    private long getIdCoffemachines(HttpServletRequest req) throws SQLException {
         Dao dao = Dao.getDao();
         String coffemachine = Validator.getString(req,"Coffemachine").trim();
         List<Coffemachine> coffemachineAll = dao.coffemachine.getAll();
