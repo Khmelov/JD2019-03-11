@@ -1,4 +1,4 @@
-package by.it.bolotko.project.java;
+package by.it.bolotko.project.java.dao;
 
 import by.it.bolotko.project.java.beans.Car;
 import by.it.bolotko.project.java.beans.Role;

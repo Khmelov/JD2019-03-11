@@ -1,4 +1,4 @@
-package by.it.bolotko.project.java;
+package by.it.bolotko.project.java.CMD;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,8 +6,8 @@ abstract class Cmd {
 
     abstract Cmd execute(HttpServletRequest req) throws Exception;
 
-    public String getJsp(){
-        return "/"+this.toString()+".jsp";
+    public String getJsp() {
+        return "/" + this.toString() + ".jsp";
     }
 
     @Override
