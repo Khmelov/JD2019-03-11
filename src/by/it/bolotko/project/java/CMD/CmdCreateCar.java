@@ -1,4 +1,4 @@
-package by.it.bolotko.project.java;
+package by.it.bolotko.project.java.CMD;
 
 import by.it.bolotko.project.java.beans.Car;
 import by.it.bolotko.project.java.beans.User;
@@ -22,8 +22,8 @@ public class CmdCreateCar extends Cmd {
         if (FormHelper.isPost(req)) {
             Car car = new Car(
                     0,
-                    Validator.getString(req, "car_type"),
-                    Validator.getString(req, "fuel_type"),
+                    Validator.getString(req, "car_type", "[A-Za-z]+"),
+                    Validator.getString(req, "fuel_type", "[A-Za-z]+"),
                     Validator.getString(req, "mark", "[а-яА-ЯA-Za-z0-9]+"),
                     Validator.getString(req, "model", "[а-яА-ЯA-Za-z0-9]+"),
                     Validator.getString(req, "price", "[0-9]+"),
@@ -31,10 +31,8 @@ public class CmdCreateCar extends Cmd {
                     user.getId()
             );
 
-            Dao dao = Dao.getDao();
-            if (dao.car.create(car)) {
-                return Actions.INDEX.command;
-            }
+            Dao.getDao().car.create(car);
+            return Actions.PROFILE.command;
         }
         return null;
     }

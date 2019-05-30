@@ -1,4 +1,4 @@
-package by.it.bolotko.project.java;
+package by.it.bolotko.project.java.CMD;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -1,31 +1,34 @@
-package by.it.bolotko.project.java;
+package by.it.bolotko.project.java.CMD;
 
+import by.it.bolotko.project.java.beans.User;
 import by.it.bolotko.project.java.utils.FormHelper;
-import by.it.bolotko.project.java.utils.Validator;
+import by.it.bolotko.project.java.utils.Tools;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class CmdLogout extends Cmd {
     @Override
-    public Cmd execute(HttpServletRequest req) throws Exception {
+    public Cmd execute(HttpServletRequest req) {
         HttpSession session = req.getSession();
+        User user= Tools.findUserInSession(req);
 
-        if (session.getAttribute("user") == null) {
+        if (user == null) {
             return Actions.LOGIN.command;
         }
 
         if (FormHelper.isPost(req)) {
-            //String button = req.getParameter("Logout");
-            if (Validator.getString(req, "logouta").equals("agree")) {
+
+            if (FormHelper.contains(req, "logouta")) {
                 session.invalidate();
                 return Actions.LOGIN.command;
             }
 
-            if (Validator.getString(req, "logoutd").equals("disagree")) {
+            if (FormHelper.contains(req, "logoutd")) {
                 return Actions.PROFILE.command;
-            } //todo
+            }
         }
+
         return null;
     }
 }

@@ -1,10 +1,11 @@
-package by.it.bolotko.project.java;
+package by.it.bolotko.project.java.CMD;
 
 import javax.servlet.http.HttpServletRequest;
 
 public enum Actions {
 
     INDEX(new CmdIndex()),
+    EDITUSERS(new CmdEditUsers()),
     RESETDB(new CmdResetDB()),
     LOGIN(new CmdLogin()),
     LOGOUT(new CmdLogout()),
@@ -20,9 +21,11 @@ public enum Actions {
     }
 
     static Cmd defineCommand(HttpServletRequest req) {
-        String nameCommand = req.getParameter("command").toUpperCase();
+        String nameCommand = req.getParameter("command");
+        if (nameCommand==null)
+            return Actions.INDEX.command;
         try {
-            return Actions.valueOf(nameCommand).command;
+            return Actions.valueOf(nameCommand.toUpperCase()).command;
         } catch (IllegalArgumentException e) {
             return Actions.ERROR.command;
         }

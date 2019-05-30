@@ -6,14 +6,18 @@
          metadata-complete="true">
     <display-name>Сервлет BOLOTKO</display-name>
 
+    <welcome-file-list>
+        <welcome-file>homepage</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>FrontController</servlet-name>
-        <servlet-class>by.it.bolotko.project.java.FrontController</servlet-class>
+        <servlet-class>by.it.bolotko.project.java.CMD.FrontController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/do</url-pattern>
+        <url-pattern>/homepage</url-pattern>
     </servlet-mapping>
 
     <filter>
