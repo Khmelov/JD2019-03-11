@@ -17,25 +17,25 @@
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="login">Логин</label>
-  <div class="col-md-4">
+  <div class="col-md-5">
   <input id="login" name="login" value="testUser" type="text" placeholder="" class="form-control input-md" required="">
-  <span class="help-block">русские и английские буквы, цифры, . и _, длина 8 до 15</span>
+  <span class="help-block">английские буквы, цифры, . и _, длина от 5 до 15</span>
   </div>
 </div>
 
 <!-- Password input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="password">Пароль</label>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <input id="password" name="password" value="testPassword" type="password" placeholder="" class="form-control input-md" required="">
-      <span class="help-block">минимальная длина 8 символов</span>
+      <span class="help-block">английские буквы и цифры, длина 5 до 15 символов</span>
       </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="email">Электронная почта</label>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <input id="email" name="email" value="user@tut.by" type="text" placeholder="" class="form-control input-md" required="">
         <span class="help-block">Ваш e-mail</span>
       </div>

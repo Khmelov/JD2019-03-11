@@ -17,18 +17,18 @@
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="login">Логин</label>
-  <div class="col-md-4">
-  <input id="login" name="login" value="testUser" type="text" placeholder="" class="form-control input-md" required="">
-  <span class="help-block">русские и английские буквы, цифры, . и _, длина 8 до 15</span>
+  <div class="col-md-5">
+  <input id="login" name="login" value="admin" type="text" placeholder="" class="form-control input-md" required="">
+  <span class="help-block">английские буквы, цифры, . и _, длина от 5 до 15</span>
   </div>
 </div>
 
 <!-- Password input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="password">Пароль</label>
-  <div class="col-md-4">
-    <input id="password" name="password" value="testPassword" type="password" placeholder="" class="form-control input-md" required="">
-      <span class="help-block">минимальная длина 8 символов</span>
+  <div class="col-md-5">
+    <input id="password" name="password" value="admin" type="password" placeholder="" class="form-control input-md" required="">
+      <span class="help-block">английские буквы и цифры, длина от 5 до 15 символов</span>
       </div>
 </div>
 
@@ -42,6 +42,16 @@
 
 </fieldset>
 </form>
+
+<c:if test="${errorAuthorisation}">
+<div class="cd-popup" role="alert">
+	<div class="cd-popup-container">
+		<h4>Ошибка!</h4>
+		     <div><frame width="200" height="100" frameborder="1" src="${errorAuthorisation}"</frame></div>
+	</div>
+</div>
+</c:if>
+
 </div>
 </body>
 </html>

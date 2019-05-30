@@ -6,15 +6,21 @@ import by.it.narushevich.project.java.beans.Trademark;
 import by.it.narushevich.project.java.beans.User;
 import by.it.narushevich.project.java.dao.Dao;
 import by.it.narushevich.project.java.util.FormHelper;
+import by.it.narushevich.project.java.util.IsThereUser;
 import by.it.narushevich.project.java.util.Patterns;
 import by.it.narushevich.project.java.util.Validator;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 
 public class CmdCreateTag extends Cmd {
     @Override
-    public Cmd execute(HttpServletRequest req) throws Exception {
+    public Cmd execute(HttpServletRequest req) throws SQLException {
+
+        User user = IsThereUser.isUserInSession(req);
+        if (user == null)
+            return Actions.LOGIN.command;
+
         Dao dao = Dao.getDao();
 
         if (FormHelper.isPost(req)) {
@@ -60,8 +66,6 @@ public class CmdCreateTag extends Cmd {
             teatag.setNum_in_catalog(
                     Validator.getString(req, "number in catalog", Patterns.NUMBER_IN_CATALOG));
 
-            HttpSession session = req.getSession();
-            User user = (User) session.getAttribute("user");
             teatag.setUser_id(user.getId());
 
             if (dao.teatag.create(teatag)) {

@@ -1,14 +1,33 @@
 package by.it.narushevich.project.java.controllers;
 
+import by.it.narushevich.project.java.beans.Role;
 import by.it.narushevich.project.java.commands.Actions;
 import by.it.narushevich.project.java.commands.Cmd;
+import by.it.narushevich.project.java.dao.Dao;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class FrontController extends HttpServlet {
+
+    @Override
+    public void init() {
+        Dao dao = Dao.getDao();
+        List<Role> roles = null;
+        try {
+            roles = dao.role.getAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        ServletContext servletContext = getServletContext();
+        servletContext.setAttribute("roles",roles);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
@@ -31,9 +50,8 @@ public class FrontController extends HttpServlet {
         try {
             Cmd cmd = Actions.defineCommand(req);
             Cmd next = cmd.execute(req);
-            resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
-            if (next==cmd || next==null){
+            if (next==null){
                 getServletContext()
                         .getRequestDispatcher(cmd.getJsp())
                         .forward(req, resp);

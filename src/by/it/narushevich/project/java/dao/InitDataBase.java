@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class C_init {
+public class InitDataBase {
 
     public static void main(String[] args) throws SQLException {
 
@@ -28,7 +28,6 @@ public class C_init {
                     "  `role_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
                     "  UNIQUE  `login_UNIQUE` (`login` ASC) ,\n" +
-                    "  UNIQUE  `email_UNIQUE` (`email` ASC) ,\n" +
                     "  CONSTRAINT `fk_users_roles`\n" +
                     "    FOREIGN KEY (`role_id`)\n" +
                     "    REFERENCES `narushevich`.`roles` (`id`)\n" +
@@ -57,7 +56,6 @@ public class C_init {
                     "  `num_in_catalog` VARCHAR(7) NULL,\n" +
                     "  `user_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
-                    "  UNIQUE `num_in_catalog_UNIQUE` (`num_in_catalog` ASC) ,\n" +
                     "  CONSTRAINT `fk_teatags_users1`\n" +
                     "    FOREIGN KEY (`user_id`)\n" +
                     "    REFERENCES `narushevich`.`users` (`id`)\n" +
@@ -79,7 +77,8 @@ public class C_init {
             statement.executeUpdate("INSERT INTO `narushevich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'moderator');");
             statement.executeUpdate("INSERT INTO `narushevich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
             statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'masha_05', '800c97bfa2be7c1b564a3237f266fa27', 'masha_05@tut.by', 1);");
-            statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'fr_pole', 'ce130c4c688feb67e12f59c595bfdca1', 'zhan_pol@gmail.com', 2);");
+            statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'best_admin@tut.by', 1);");
+            statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'zhan_france', 'ce130c4c688feb67e12f59c595bfdca1', 'zhan_pol@gmail.com', 2);");
             statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'dimon_rus', '3f3693122873361055ce5594d18687e4', 'dimas@mail.ru', 2);");
             statement.executeUpdate("INSERT INTO `narushevich`.`material` (`id`, `material`) VALUES (DEFAULT, 'cardboard');");
             statement.executeUpdate("INSERT INTO `narushevich`.`material` (`id`, `material`) VALUES (DEFAULT, 'paper');");
@@ -157,7 +156,7 @@ public class C_init {
             statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 9, 'strawberry', 2, 25, 28, '2011.06.30', '02-39-3', 3);");
             statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 9, 'green tea', 1, 26, 28, '2010.03.25', '02-38-4', 3);");
             statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 9, 'black tea', 1, 28, 32, '2007.12.15', '02-38-3', 3);");
-            statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 9, 'indian', 1, 26, 28, '2010.05.04', '02-38-1', 3);");
+            statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 9, 'Have a nice tea time!', 1, 26, 28, '2010.05.04', '02-38-1', 3);");
         }
     }
 }

@@ -1,6 +1,7 @@
 package by.it.narushevich.project.java.dao;
 
 import by.it.narushevich.project.java.beans.Teatag;
+import by.it.narushevich.project.java.beans.TeatagString;
 import by.it.narushevich.project.java.connect.ConnectionCreator;
 
 import java.sql.Connection;
@@ -49,8 +50,8 @@ public class TeatagDao extends AbstractDao<Teatag> {
         return executeUpdate(sql);
     }
 
-    public List<String> getSelected() throws SQLException {
-        List<String> teatags = new ArrayList<>();
+    public List<TeatagString> getSelected() throws SQLException {
+        List<TeatagString> teatags = new ArrayList<>();
         String sql = "SELECT `trademark`, `subtitle`, `material`, `width`, `height`, " +
                 "`in_collection_since`, `num_in_catalog`, `login` " +
                 "FROM `teatags` JOIN trademark ON teatags.`trademark_id`=trademark.id " +
@@ -62,40 +63,46 @@ public class TeatagDao extends AbstractDao<Teatag> {
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()){
-                String teatag = resultSet.getString("trademark") + ", " +
-                        resultSet.getString("subtitle") + ", " +
-                        resultSet.getString("material") + ", " +
-                        resultSet.getString("width") + " mm, " +
-                        resultSet.getString("height") + " mm, " +
-                        resultSet.getString("in_collection_since") + ", " +
-                        resultSet.getString("num_in_catalog") + ", " +
-                        resultSet.getString("login") + "\n";
+                TeatagString teatag = new TeatagString(
+                        resultSet.getString("trademark"),
+                        resultSet.getString("subtitle"),
+                        resultSet.getString("material"),
+                        resultSet.getDouble("width"),
+                        resultSet.getDouble("height"),
+                        resultSet.getDate("in_collection_since"),
+                        resultSet.getString("num_in_catalog"),
+                        resultSet.getString("login")
+                );
                 teatags.add(teatag);
             }
         }
         return teatags;
     }
 
-    public List<String> getSelected(long id) throws SQLException {
-        List<String> teatags = new ArrayList<>();
+    public List<TeatagString> getSelected(long id) throws SQLException {
+        List<TeatagString> teatags = new ArrayList<>();
         String sql = String.format("SELECT `trademark`, `subtitle`, `material`, `width`, `height`, " +
-                "`in_collection_since`, `num_in_catalog` FROM `teatags` " +
+                "`in_collection_since`, `num_in_catalog`,`login` FROM `teatags` " +
                 "JOIN trademark ON teatags.`trademark_id`=trademark.id " +
                 "JOIN material ON teatags.material_id=material.id " +
-                "WHERE teatags.user_id=%d",id);
+                "JOIN users ON teatags.user_id=users.id" +
+                " WHERE teatags.user_id=%d",id);
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()){
-                String teatag = resultSet.getString("trademark") + ", " +
-                        resultSet.getString("subtitle") + ", " +
-                        resultSet.getString("material") + ", " +
-                        resultSet.getString("width") + " mm, " +
-                        resultSet.getString("height") + " mm, " +
-                        resultSet.getString("in_collection_since") + ", " +
-                        resultSet.getString("num_in_catalog") + "\n";
+                TeatagString teatag = new TeatagString(
+                        resultSet.getString("trademark"),
+                        resultSet.getString("subtitle"),
+                        resultSet.getString("material"),
+                        resultSet.getDouble("width"),
+                        resultSet.getDouble("height"),
+                        resultSet.getDate("in_collection_since"),
+                        resultSet.getString("num_in_catalog"),
+                        resultSet.getString("login")
+                );
                 teatags.add(teatag);
             }
         }
@@ -105,7 +112,7 @@ public class TeatagDao extends AbstractDao<Teatag> {
 
     @Override
     public List<Teatag> getAll(String where) throws SQLException {
-        List<Teatag> teatags = new ArrayList<>();
+        List<Teatag> usersTeatags = new ArrayList<>();
         String sql = String.format(Locale.ENGLISH,
                 "SELECT * FROM `teatags` %s", where);
         try (
@@ -124,10 +131,10 @@ public class TeatagDao extends AbstractDao<Teatag> {
                         resultSet.getDate("in_collection_since"),
                         resultSet.getString("num_in_catalog"),
                         resultSet.getInt("user_id"));
-                teatags.add(teatag);
+                usersTeatags.add(teatag);
             }
         }
-        return teatags;
+        return usersTeatags;
     }
 
     @Override
