@@ -39,35 +39,13 @@ CREATE TABLE IF NOT EXISTS `khlystunova`.`users` (
   `Email` VARCHAR(45) NULL,
   `roles_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
+  UNIQUE INDEX `Login_UNIQUE` (`Login` ASC),
+  UNIQUE INDEX `Email_UNIQUE` (`Email` ASC),
   CONSTRAINT `fk_users_roles`
     FOREIGN KEY (`roles_ID`)
     REFERENCES `khlystunova`.`roles` (`ID`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `khlystunova`.`firm`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `khlystunova`.`firm` ;
-
-CREATE TABLE IF NOT EXISTS `khlystunova`.`firm` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `firm` VARCHAR(45) NULL,
-  PRIMARY KEY (`ID`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `khlystunova`.`steam`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `khlystunova`.`steam` ;
-
-CREATE TABLE IF NOT EXISTS `khlystunova`.`steam` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `Steam` VARCHAR(45) NULL,
-  PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
 
@@ -79,26 +57,15 @@ DROP TABLE IF EXISTS `khlystunova`.`coffemachines` ;
 CREATE TABLE IF NOT EXISTS `khlystunova`.`coffemachines` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(50) NULL,
-  `firm_ID` INT NOT NULL,
-  `Power` INT NULL,
+  `Firm` VARCHAR(45) NULL,
+  `Power` VARCHAR(45) NULL,
   `Size` VARCHAR(50) NULL,
   `Weight` DOUBLE NULL,
-  `steam_ID` INT NOT NULL,
   `WaterContainer` VARCHAR(45) NULL,
   `BeansContainer` VARCHAR(45) NULL,
   `Color` VARCHAR(45) NULL,
   `Price` DOUBLE NULL,
-  PRIMARY KEY (`ID`),
-  CONSTRAINT `fk_coffemachines_firm1`
-    FOREIGN KEY (`firm_ID`)
-    REFERENCES `khlystunova`.`firm` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_coffemachines_steam1`
-    FOREIGN KEY (`steam_ID`)
-    REFERENCES `khlystunova`.`steam` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
 
@@ -156,35 +123,15 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `khlystunova`.`firm`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `khlystunova`;
-INSERT INTO `khlystunova`.`firm` (`ID`, `firm`) VALUES (DEFAULT, 'Gagia');
-INSERT INTO `khlystunova`.`firm` (`ID`, `firm`) VALUES (DEFAULT, 'Italic');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `khlystunova`.`steam`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `khlystunova`;
-INSERT INTO `khlystunova`.`steam` (`ID`, `Steam`) VALUES (DEFAULT, 'automatic');
-INSERT INTO `khlystunova`.`steam` (`ID`, `Steam`) VALUES (DEFAULT, 'autonomy');
-INSERT INTO `khlystunova`.`steam` (`ID`, `Steam`) VALUES (DEFAULT, 'panarello');
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `khlystunova`.`coffemachines`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `khlystunova`;
-INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `firm_ID`, `Power`, `Size`, `Weight`, `steam_ID`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'LC/D', 1, 1600, '625x472x510 ', 49.3, 1, '13 l', '7 l', 'Metalic', 5650);
-INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `firm_ID`, `Power`, `Size`, `Weight`, `steam_ID`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'GE-GD ONE', 2, 1200, '530x550x420 ', 30.4, 2, '2,3 l', '2 l', 'Red', 4620);
+INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `Firm`, `Power`, `Size`, `Weight`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'LC/D', 'SAECO', '230-240 В / 50-60 Gc/5 kvt', '625x472x510 ', 49.3, '13 L', '7 l', 'Metalic', 5650);
+INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `Firm`, `Power`, `Size`, `Weight`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'GE-GD ONE', 'GAGGIA', '230-240 В / 50-60 Gc/5 kvt', '530x550x420 ', 30.4, '2,3 L', '2 l', 'Red', 4620);
+INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `Firm`, `Power`, `Size`, `Weight`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'EP 5331/10', 'PHILIPS', '-', '221x340x430', 8.8, '1.8 L', '250g', 'White', 1449);
+INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `Firm`, `Power`, `Size`, `Weight`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, ' XD COMPACT', 'GAGGIA ', '230-240 В / 50-60 Gc/3,2 kvt', '310x470x510', 35, '4.9 L', '-', 'Metalic', 1330);
+INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `Firm`, `Power`, `Size`, `Weight`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, ' DELONGHI EN 550.S', 'NESPRESSO ', '-', '167х253х319', 4.79, '0.9 L', '-', 'Black', 749);
 
 COMMIT;
 
