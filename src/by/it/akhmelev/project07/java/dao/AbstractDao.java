@@ -1,6 +1,7 @@
-package by.it.akhmelev.jd03_03.dao;
+package by.it.akhmelev.project07.java.dao;
 
-import by.it.akhmelev.jd03_03.connect.ConnectionCreator;
+
+import by.it.akhmelev.project07.java.connect.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.sql.Statement;
 abstract class AbstractDao<T> implements InterfaceDao<T>{
 
     long executeCreate(String sql) throws SQLException {
+        System.out.println("DEBUG:"+sql);
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
@@ -26,6 +28,7 @@ abstract class AbstractDao<T> implements InterfaceDao<T>{
     }
 
     boolean executeUpdate(String sql) throws SQLException{
+        System.out.println("DEBUG:"+sql);
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
