@@ -16,6 +16,7 @@ public class CmdLogout extends Cmd {
         }
 
         if (FormHelper.isPost(req)) {
+            //String button = req.getParameter("Logout");
             if (Validator.getString(req, "logouta").equals("agree")) {
                 session.invalidate();
                 return Actions.LOGIN.command;
