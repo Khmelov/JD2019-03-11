@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class C_init {
+public class InitDataBase {
 
     public static void main(String[] args) throws SQLException {
 
@@ -23,12 +23,11 @@ public class C_init {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `narushevich`.`users` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `login` VARCHAR(15) NULL,\n" +
-                    "  `password` VARCHAR(15) NULL,\n" +
+                    "  `password` VARCHAR(100) NULL,\n" +
                     "  `email` VARCHAR(45) NULL,\n" +
                     "  `role_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
                     "  UNIQUE  `login_UNIQUE` (`login` ASC) ,\n" +
-                    "  UNIQUE  `email_UNIQUE` (`email` ASC) ,\n" +
                     "  CONSTRAINT `fk_users_roles`\n" +
                     "    FOREIGN KEY (`role_id`)\n" +
                     "    REFERENCES `narushevich`.`roles` (`id`)\n" +
@@ -53,7 +52,7 @@ public class C_init {
                     "  `material_id` INT NOT NULL,\n" +
                     "  `width` DECIMAL NULL,\n" +
                     "  `height` DECIMAL NULL,\n" +
-                    "  `in_collection_since` DATE NULL,\n" +
+                    "  `in_collection_since` DATE NOT NULL,\n" +
                     "  `num_in_catalog` VARCHAR(7) NULL,\n" +
                     "  `user_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
@@ -77,35 +76,36 @@ public class C_init {
             statement.executeUpdate("INSERT INTO `narushevich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
             statement.executeUpdate("INSERT INTO `narushevich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'moderator');");
             statement.executeUpdate("INSERT INTO `narushevich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'masha_05', 'qwerty', 'masha_05@tut.by', 1);");
-            statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'fr_pole', 'asdfgh', 'pol_zhan@gmail.com', 2);");
-            statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'dimon_rus', 'wasder', 'dimas@mail.ru', 2);");
+            statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'masha_05', '800c97bfa2be7c1b564a3237f266fa27', 'masha_05@tut.by', 1);");
+            statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'best_admin@tut.by', 1);");
+            statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'zhan_france', 'ce130c4c688feb67e12f59c595bfdca1', 'zhan_pol@gmail.com', 2);");
+            statement.executeUpdate("INSERT INTO `narushevich`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'dimon_rus', '3f3693122873361055ce5594d18687e4', 'dimas@mail.ru', 2);");
             statement.executeUpdate("INSERT INTO `narushevich`.`material` (`id`, `material`) VALUES (DEFAULT, 'cardboard');");
             statement.executeUpdate("INSERT INTO `narushevich`.`material` (`id`, `material`) VALUES (DEFAULT, 'paper');");
             statement.executeUpdate("INSERT INTO `narushevich`.`material` (`id`, `material`) VALUES (DEFAULT, 'plastic');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Ahmad tea');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Akbar');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Alattar');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Auchan');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Brooke Bond');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Chelton');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Dilmah');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Forest of Arden');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Golden Bowl');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Greenfield');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Jaf tea');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Kakoo');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Lipton');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Lord Nelson');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Mabroc');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Maitre de The');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Malwa');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Messmer');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Mistral');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Natursan');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Pickwick');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Princess Java');");
-            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'Tea');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'AHMAD TEA');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'AKBAR');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'ALATTAR');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'AUCHAN');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'BROOKE BOND');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'CHELTON');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'DILMAH');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'FOREST OF ARDEN');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'GOLDEN BOWL');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'GREENFIELD');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'JAF TEA');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'KAKOO');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'LIPTON');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'LORD NELSON');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'MABROC');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'MAITRE DE THE');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'MALWA');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'MESSMER');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'MISTRAL');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'NATURSAN');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'PICKWICK');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'PRINCESS JAVA');");
+            statement.executeUpdate("INSERT INTO `narushevich`.`trademark` (`id`, `trademark`) VALUES (DEFAULT, 'TEA');");
             statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 1, 'English Tea #1', 1, 28, 32, '2017.04.01', '02-08-3', 1);");
             statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 1, 'Cinnamon Haze', 1, 28, 32, '2018.05.05', '02-08-4', 1);");
             statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 1, 'Earl Grey', 1, 28, 32, '2002.01.07', '02-09-1', 1);");
@@ -156,7 +156,7 @@ public class C_init {
             statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 9, 'strawberry', 2, 25, 28, '2011.06.30', '02-39-3', 3);");
             statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 9, 'green tea', 1, 26, 28, '2010.03.25', '02-38-4', 3);");
             statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 9, 'black tea', 1, 28, 32, '2007.12.15', '02-38-3', 3);");
-            statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 9, 'indian', 1, 26, 28, '2010.05.04', '02-38-1', 3);");
+            statement.executeUpdate("INSERT INTO `narushevich`.`teatags` (`id`, `trademark_id`, `subtitle`, `material_id`, `width`, `height`, `in_collection_since`, `num_in_catalog`, `user_id`) VALUES (DEFAULT, 9, 'Have a nice tea time!', 1, 26, 28, '2010.05.04', '02-38-1', 3);");
         }
     }
 }

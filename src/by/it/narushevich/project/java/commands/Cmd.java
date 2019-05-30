@@ -1,9 +1,10 @@
-package by.it.narushevich.project.java;
+package by.it.narushevich.project.java.commands;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 
 public abstract class Cmd {
-    abstract Cmd execute(HttpServletRequest req) throws Exception;
+    public abstract Cmd execute(HttpServletRequest req) throws SQLException;
 
     @Override
     public String toString() {

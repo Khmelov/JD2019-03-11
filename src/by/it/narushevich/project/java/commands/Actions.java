@@ -1,4 +1,4 @@
-package by.it.narushevich.project.java;
+package by.it.narushevich.project.java.commands;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,14 +6,13 @@ public enum Actions {
     LOGIN (new CmdLogin()),
     LOGOUT (new CmdLogout()),
     SIGNUP (new CmdSignup()),
+    EDITUSERS (new CmdEditUsers()),
     ERROR (new CmdError()),
     INDEX (new CmdIndex()),
     CATALOG(new CmdCatalog()),
-    SEARCH(new CmdSearch()),
+    RESETDATABASE(new CmdResetDataBase()),
     PROFILE(new CmdProfile()),
-    DELETEUSER(new CmdDeleteUser()),
-    CREATETAG(new CmdCreateTag()),
-    USERCOLLECTION(new CmdUserCollection());
+    CREATETAG(new CmdCreateTag());
 
     public Cmd command;
 
@@ -21,7 +20,7 @@ public enum Actions {
         this.command = command;
     }
 
-    static Cmd defineCommand(HttpServletRequest req) {
+    public static Cmd defineCommand(HttpServletRequest req) {
         String nameCommand = req.getParameter("command").toUpperCase();
         try {
             return Actions.valueOf(nameCommand).command;

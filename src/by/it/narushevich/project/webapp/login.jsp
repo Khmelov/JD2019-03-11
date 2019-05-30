@@ -1,29 +1,34 @@
+<%@ page contentType="text/html;
+    charset=UTF-8"
+    language="java"
+    pageEncoding="UTF-8" %>
 <html>
-<%@ include file="include/head.htm" %>
+<%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
-<%@ include file="include/menu.htm" %>
+<%@ include file="include/menu.jsp" %>
+
 <form class="form-horizontal" action="do?command=Login" method="post">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Sing In</legend>
+<legend>Авторизация пользователя</legend>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="login">Login</label>
-  <div class="col-md-4">
-  <input id="login" name="login" value="testUser" type="text" placeholder="" class="form-control input-md" required="">
-  <span class="help-block">any symbols [a-zA-Z0-9._], length from 8 to 15</span>
+  <label class="col-md-4 control-label" for="login">Логин</label>
+  <div class="col-md-5">
+  <input id="login" name="login" value="admin" type="text" placeholder="" class="form-control input-md" required="">
+  <span class="help-block">английские буквы, цифры, . и _, длина от 5 до 15</span>
   </div>
 </div>
 
 <!-- Password input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="password">Password</label>
-  <div class="col-md-4">
-    <input id="password" name="password" value="testPassword" type="password" placeholder="" class="form-control input-md" required="">
-      <span class="help-block">min length 8 symbols</span>
+  <label class="col-md-4 control-label" for="password">Пароль</label>
+  <div class="col-md-5">
+    <input id="password" name="password" value="admin" type="password" placeholder="" class="form-control input-md" required="">
+      <span class="help-block">английские буквы и цифры, длина от 5 до 15 символов</span>
       </div>
 </div>
 
@@ -31,12 +36,22 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="login"></label>
   <div class="col-md-4">
-    <button id="login" name="login" class="btn btn-primary">Login</button>
+    <button id="login" name="login" class="btn btn-primary">Войти</button>
   </div>
 </div>
 
 </fieldset>
 </form>
+
+<c:if test="${errorAuthorisation}">
+<div class="cd-popup" role="alert">
+	<div class="cd-popup-container">
+		<h4>Ошибка!</h4>
+		     <div><frame width="200" height="100" frameborder="1" src="${errorAuthorisation}"</frame></div>
+	</div>
+</div>
+</c:if>
+
 </div>
 </body>
 </html>
