@@ -24,7 +24,7 @@
 
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-1">
                     <input id="password" name="password" type="password" placeholder="" class="form-control input-md"
                            required="" value="${user.password}">
 
@@ -49,7 +49,7 @@
                 </div>
 
                 <!-- Button (Double) -->
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <button id="update" name="update" class="btn btn-success">Обновить</button>
                     <button id="delete" name="delete" class="btn btn-danger">Удалить</button>
                 </div>

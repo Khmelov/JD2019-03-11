@@ -17,9 +17,6 @@
             </c:if>
             <c:if test="${user!=null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="do?command=EditUsers">Управление</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="do?command=Profile">Профиль</a>
                 </li>
                 <li class="nav-item">
@@ -30,6 +27,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="do?command=Logout">Выход</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="do?command=EditUsers">Управление</a>
                 </li>
             </c:if>
             <li class="nav-item">
