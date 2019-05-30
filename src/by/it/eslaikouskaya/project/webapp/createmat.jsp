@@ -47,6 +47,14 @@
 
 </fieldset>
 </form>
+<p>${success}</p>
+<br>
+<c:forEach items="${materials}" var="material">
+<div class="row">
+        <div class="col-md-3">${material.name}</div>
+        <div class="col-md-1">${material.price}</div>
+</div>
+</c:forEach>
 </div>
 </body>
 </html>

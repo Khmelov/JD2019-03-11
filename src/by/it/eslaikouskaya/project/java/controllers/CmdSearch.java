@@ -3,6 +3,7 @@ package by.it.eslaikouskaya.project.java.controllers;
 import by.it.eslaikouskaya.project.java.beans.Material;
 import by.it.eslaikouskaya.project.java.dao.Dao;
 import by.it.eslaikouskaya.project.java.utils.FormHelper;
+import by.it.eslaikouskaya.project.java.utils.Patterns;
 import by.it.eslaikouskaya.project.java.utils.Validator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,7 @@ public class CmdSearch extends Cmd {
 	@Override
 	public Cmd execute(HttpServletRequest req) throws Exception {
 		if (FormHelper.isPost(req)) {
-			String name = Validator.getString(req, "name");
+			String name = Validator.getString(req, "name", Patterns.MATERIAL);
 			Dao dao = Dao.getDao();
 			String where = String.format("WHERE name='%s'", name);
 			List<Material> materials = dao.material.getAll(where);
@@ -22,7 +23,6 @@ public class CmdSearch extends Cmd {
 				req.setAttribute("materials", materials);
 			return null;
 		}
-
-		return Actions.SEARCH.command;
+		return null;
 	}
 }

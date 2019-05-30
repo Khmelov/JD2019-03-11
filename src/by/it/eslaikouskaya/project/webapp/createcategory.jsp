@@ -29,6 +29,11 @@
 
 </fieldset>
 </form>
+<p>${success}</p>
+<br>
+<c:forEach items="${categories}" var="category">
+<p>${category.category}</p>
+</c:forEach>
 </div>
 </body>
 </html>

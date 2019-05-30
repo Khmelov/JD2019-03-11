@@ -38,7 +38,11 @@
 
 </fieldset>
 </form>
-<p>${grades}</p>
+<p>${success}</p>
+<br>
+<c:forEach items="${grades}" var="grade">
+<p>${grade.grade}</p>
+</c:forEach>
 </div>
 </body>
 </html>

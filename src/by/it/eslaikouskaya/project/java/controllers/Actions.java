@@ -5,14 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 public enum Actions {
 
 	SEARCH(new CmdSearch()),
+	EDITUSERS(new CmdEditUsers()),
 	CREATECATEGORY(new CmdCreateCategory()),
 	CREATEGRADE(new CmdCreateGrade()),
 	CREATEMAT(new CmdCreateMat()),
-	SHOWCATEGORIES(new CmdShowCategories()),
 	INDEX(new CmdIndex()),
 	RESETDB(new CmdResetDB()),
 	LOGIN(new CmdLogin()),
-	BASKET(new CmdBasket()),
+	PROFILE(new CmdProfile()),
 	SIGNUP(new CmdSignup()),
 	ERROR(new CmdError());
 
@@ -23,9 +23,11 @@ public enum Actions {
 	}
 
 	static Cmd defineCommand(HttpServletRequest req) {
-		String nameCommand = req.getParameter("command").toUpperCase();
+		String nameCommand = req.getParameter("command");
+		if (nameCommand == null)
+			return Actions.INDEX.command;
 		try {
-			return Actions.valueOf(nameCommand).command;
+			return Actions.valueOf(nameCommand.toUpperCase()).command;
 		} catch (IllegalArgumentException e) {
 			return Actions.ERROR.command;
 		}

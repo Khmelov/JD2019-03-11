@@ -18,13 +18,20 @@ public class Validator {
 		throw new SiteException("Incorrect value of " + name);
 	}
 
-
 	public static int getInt(HttpServletRequest req, String name) {
-		try {
-			return Integer.parseInt(req.getParameter(name));
-		} catch (Exception e) {
-			throw new SiteException("Incorrect value of " + name, e);
+		return getInt(req, name, ".*");
+	}
+
+	public static int getInt(HttpServletRequest req, String name, String pattern) {
+		String value = req.getParameter(name);
+		if (value.matches(pattern)) {
+			try {
+				return Integer.parseInt(req.getParameter(name));
+			} catch (Exception e) {
+				throw new SiteException("Incorrect value of " + name, e);
+			}
 		}
+		throw new SiteException("Incorrect value of " + name);
 	}
 
 	public static double getDouble(HttpServletRequest req, String name) {
@@ -36,10 +43,18 @@ public class Validator {
 	}
 
 	public static long getLong(HttpServletRequest req, String name) {
-		try {
-			return Long.parseLong(req.getParameter(name));
-		} catch (Exception e) {
-			throw new SiteException("Incorrect value of " + name, e);
+		return getLong(req, name, ".*");
+	}
+
+	public static long getLong(HttpServletRequest req, String name, String pattern) {
+		String value = req.getParameter(name);
+		if (value.matches(pattern)) {
+			try {
+				return Long.parseLong(req.getParameter(name));
+			} catch (Exception e) {
+				throw new SiteException("Incorrect value of " + name, e);
+			}
 		}
+		throw new SiteException("Incorrect value of " + name);
 	}
 }

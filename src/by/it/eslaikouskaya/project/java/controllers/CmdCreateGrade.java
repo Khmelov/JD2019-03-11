@@ -3,6 +3,7 @@ package by.it.eslaikouskaya.project.java.controllers;
 import by.it.eslaikouskaya.project.java.beans.Grade;
 import by.it.eslaikouskaya.project.java.dao.Dao;
 import by.it.eslaikouskaya.project.java.utils.FormHelper;
+import by.it.eslaikouskaya.project.java.utils.Patterns;
 import by.it.eslaikouskaya.project.java.utils.Validator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +16,15 @@ public class CmdCreateGrade extends Cmd {
 		if (FormHelper.isPost(req)) {
 			Grade grade = new Grade(
 					0,
-					Validator.getString(req, "grade"),
-					Validator.getLong(req, "categories_ID")
+					Validator.getString(req, "grade", Patterns.MATERIAL),
+					Validator.getLong(req, "categories_ID", Patterns.NUMBER)
 			);
 
 			Dao dao = Dao.getDao();
+			List<Grade> grades = dao.grade.getAll();
+			req.setAttribute("grades", grades);
 			if (dao.grade.create(grade)) {
-				List<Grade> grades = dao.grade.getAll();
-				req.setAttribute("grades", grades);
+				req.setAttribute("success", "Класс успешно создан");
 			}
 		}
 		return null;

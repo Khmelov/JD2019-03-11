@@ -33,7 +33,7 @@
                 <label class="col-md-4 control-label" for="password">Пароль</label>
                 <div class="col-md-4">
                     <input id="password" name="password" value="testPassword" type="password" placeholder="Придумайте пароль" class="form-control input-md" required="">
-                    <span class="help-block">минимум 8 символов</span>
+                    <span class="help-block">минимум 5 символов</span>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
 
         </fieldset>
     </form>
-
+<p>${exist}</p>
 </div>
 </body>
 </html>
