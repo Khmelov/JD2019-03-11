@@ -20,5 +20,18 @@
         <url-pattern>/do</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>PageEncoder</filter-name>
+        <filter-class>by.it.bildziuh.project.java.filters.PageEncoder</filter-class>
+        <init-param>
+            <param-name>encode</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>PageEncoder</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </web-app>

@@ -1,9 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
 <div class="container">
     <%@ include file="include/menu.htm" %>
-    <form class="form-horizontal" action="do?command=Login" method="post">
+    <form class="form-horizontal" action="j_security_check" method="post">
         <fieldset>
 
             <!-- Form Name -->
@@ -13,9 +14,9 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="login">Login</label>
                 <div class="col-md-4">
-                    <input id="login" name="login" value="testUser" type="text" placeholder=""
+                    <input id="login" name="j_username" value="user" type="text" placeholder=""
                            class="form-control input-md" required="">
-                    <span class="help-block">any symbols [a-z0-9]</span>
+                    <span class="help-block">Введите логин</span>
                 </div>
             </div>
 
@@ -23,9 +24,9 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="password">Password</label>
                 <div class="col-md-4">
-                    <input id="password" name="password" value="testPassword" type="password" placeholder=""
+                    <input id="password" name="j_password" value="user" type="password" placeholder=""
                            class="form-control input-md" required="">
-                    <span class="help-block">min length 8 symols</span>
+                    <span class="help-block">Введите пароль</span>
                 </div>
             </div>
 
