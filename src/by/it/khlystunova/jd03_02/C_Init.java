@@ -8,13 +8,13 @@ import java.sql.Statement;
 
 public class C_Init {
 
-//    static {
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//        } catch (Exception ex) {
-//            // handle the error
-//        }
-//    }
+    static {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (Exception ex) {
+            // handle the error
+        }
+    }
 
 
     public static void main(String[] args) throws SQLException {

@@ -1,6 +1,6 @@
 package by.it.akhmelev.jd03_03.dao;
 
-import by.it.khlystunova.jd03_03.connect.ConnectionCreator;
+import by.it.akhmelev.jd03_03.connect.ConnectionCreator;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

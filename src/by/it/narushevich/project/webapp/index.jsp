@@ -1,8 +1,12 @@
+<%@ page contentType="text/html;
+    charset=UTF-8"
+    language="java"
+    pageEncoding="UTF-8" %>
 <html>
-<%@ include file="include/head.htm" %>
+<%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
-<%@ include file="include/menu.htm" %>
+<%@ include file="include/menu.jsp" %>
 <br>
 <head>
     <style>
@@ -10,23 +14,34 @@
     </style>
   <head>
   <body>
-  <h3><p class="text-center" class="font-weight-bold">What is the THEONOTAPHILIA?</p></h3>
+  <h3><p class="text-center" class="font-weight-bold">Что такое ТЕОНОТАФИЛИЯ?</p></h3>
 
-<p class="text-justify">Theonotaphilia (from lat. Thea - tea, nota - label and greek. Plilio - to love) - collecting labels and tea bags. Term  was proposed by Alexei Milakov
- from Latvia in 2005 year.</p>
+<div class="row">
+<div class="col-md-3" style="margin-top: 25px;" align="center"><img align="center" src="teatags.jpg"/></div>
+<div class="col-md-9 text-justify"><p><b>Теонотафилия</b> (от лат. <i>thea</i> - чай, <i>nota</i> - ярлык,
+этикетка и  греч. <i>philio</i> - любить) - коллекционирование ярлычков от чайных пакетиков или
+самих пакетиков. Термин был предложен Алексеем Миляковым из Латвии в 2005 году.</p>
+<p class="text-justify">Это довольно редкий вид коллекционирования, несмотря на доступность
+собираемого материала. Самый распространенный предмет коллекционирования — ярлыки (tea tags) и
+пакетики (конвертики, саше) от одноразовых чайных пакетиков. Также популярно собирание самих
+одноразовых пакетиков для заваривания. Некоторые коллекционеры собирают чайную упаковку:
+жестяные коробки, деревянные ящички, картонные коробочки, а также рекламные вкладыши. В Европе,
+в частности, в Нидерландах, Чехии, Бельгии, Дании, наиболее распространено коллекционирование
+чайных пакетиков.</p>
+</div>
+</div>
+<p class="text-justify">По данным Книги рекордов Гиннесса самая большая коллекция из 839 чайных
+ярлыков зарегистрирована 4 сентября 2011 года у Даниэля Сабо (Daniel Szabo) из Будапешта (Венгрия).</p>
 
-<p class="text-justify">It's rare form of collecting, despite the simplicity and availability of collection material. Tea tags from disposable tea bag is the most common
-collectibles. The picking up one-off brewing tea bags is popular too. Some collectors collect tea packaging:
-tin boxes, wooden boxes, cardboard boxes, as well as advertising inserts. In the Netherlands,
-The Czech Republic, Belgium, Denmark the most common tea bags collecting.</p>
+<p class="text-justify">Однако другие информационные источники указывают на гораздо большие коллекции
+ теонотафилов. Так, самая большая коллекция чайных ярлыков (около 20 000) в России принадлежит
+ Марине Ярлыковой (Владивосток). По данным личного сайта коллекционеров из Нидерландов Софи Сильвиус
+ (Sofie Silvius) и Берта Бракшма (Bert Braaksma) у них в общей <a href="http://www.theelabels.nl/">
+ коллекции</a> 30 003 ярлыка и их количество увеличивается. Среди коллекционеров чайных конвертиков
+ (пакетиков) можно выделить Марьёк Розье (Marjoke Rozier) из  Нидерландов. В её коллекции около
+ 46 000 пакетиков.</p>
 
-<p class="text-justify">According to the Guinness Book of Records, the largest collection of 839 tea labels was registered on September 4, 2011.
-Daniel Szabo from Budapest (Hungary).</p>
-
-<p class="text-justify">However, other information sources point to much larger collections. So, the largest collection of tea labels
- (about 20,000) in Russia belongs to Marina Yarlykova (Vladivostok). According to the personal site of collectors from the Netherlands Sofie Silvius
- Bert Braaksma in their total collection of 30,003 labels. <a href="http://www.theelabels.nl/">Here</a> is their collection. Among the collectors of tea bags
- can be distinguished Marjoke Rozier from the Netherlands. In her collection of about 46,000 bags.</p>
+ Материал из <a href="https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BE%D0%BD%D0%BE%D1%82%D0%B0%D1%84%D0%B8%D0%BB%D0%B8%D1%8F">Википедии</a>
 </div>
 </body>
 </html>

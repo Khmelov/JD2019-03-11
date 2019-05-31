@@ -37,11 +37,12 @@
                 </div>
             </div>
 
-            <!-- Button -->
+
+            <!-- Button (Double) -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="update"></label>
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <button id="update" name="update" class="btn btn-success">Изменить</button>
+                    <button id="logout" name="logout" class="btn btn-danger">Выйти</button>
                 </div>
             </div>
 
@@ -74,22 +75,7 @@
         </div>
     </c:forEach>
 
-
-    <form class="form-horizontal" action="do?command=Profile" method="post">
-        <fieldset>
-            <!-- Form Name -->
-            <legend>Logout</legend>
-            <!-- Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="logout"></label>
-                <div class="col-md-4">
-                    <button id="logout" value="ok" name="logout" class="btn btn-warning">Logout</button>
-                </div>
-            </div>
-
-        </fieldset>
-    </form>
-
+    <br><br><br><hr>
 </div>
 </body>
 </html>

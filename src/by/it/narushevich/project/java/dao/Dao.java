@@ -1,7 +1,5 @@
 package by.it.narushevich.project.java.dao;
 
-import java.sql.SQLException;
-
 public class Dao {
     private static volatile Dao instance;
 
@@ -28,9 +26,5 @@ public class Dao {
             }
         }
         return instance;
-    }
-
-    public static void resetDataBase() throws SQLException {
-        C_init.main(new String[] {});
     }
 }
