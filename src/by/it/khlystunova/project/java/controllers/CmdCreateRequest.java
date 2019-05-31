@@ -14,20 +14,24 @@ import java.util.List;
 class CmdCreateRequest extends  Cmd{
     @Override
     Cmd execute(HttpServletRequest req) throws Exception {
+        Dao dao = Dao.getDao();
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        if(req.getMethod().equals("POST")) {
-            Dao dao = Dao.getDao();
-            Request request = new Request();
-            request.setId(0);
-            request.setUsers_ID(user.getId());
-            request.setContact(Validator.getString(req,"Contact", Patterns.CONTACT));
-            request.setDeliveryAdress(Validator.getString(req,"Delivery address",Patterns.ADDRESS));
-            request.setCoffemachines_ID(getIdCoffemachines(req));
-            if(dao.request.create(request)) {
-                return Actions.PROFILE.command;
+        if(user!=null){
+            if (req.getMethod().equals("POST")) {
+                Request request = new Request();
+                request.setId(0);
+                request.setUsers_ID(user.getId());
+                request.setContact(Validator.getString(req, "Contact", Patterns.CONTACT));
+                request.setDeliveryAdress(Validator.getString(req, "Delivery address", Patterns.ADDRESS));
+                request.setCoffemachines_ID(getIdCoffemachines(req));
+                if (dao.request.create(request)) {
+                    return Actions.PROFILE.command;
+                }
             }
-        }
+        }else return Actions.LOGIN.command;
+        List<Coffemachine> coffemachines = dao.coffemachine.getAll();
+        req.setAttribute("coffemachines",coffemachines);
         return null;
     }
 

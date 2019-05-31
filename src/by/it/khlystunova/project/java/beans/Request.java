@@ -11,11 +11,11 @@ public class Request {
     public Request() {
     }
 
-    public Request(long id, long users_ID, String contact, String deliveryAdress, long coffemachines_ID) {
+    public Request(long id, long users_ID, String contact, String deliveryAddress, long coffemachines_ID) {
         this.id = id;
         this.users_ID = users_ID;
         this.contact = contact;
-        this.deliveryAddress = deliveryAdress;
+        this.deliveryAddress = deliveryAddress;
         this.coffemachines_ID = coffemachines_ID;
     }
 

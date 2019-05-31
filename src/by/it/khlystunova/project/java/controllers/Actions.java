@@ -15,6 +15,9 @@ public enum Actions {
     CREATEREQUEST(new CmdCreateRequest()),
     ERROR(new CmdError()),
     ADITUSERS(new CmdAditUsers()),
+    EDITCOFFEMACHINES(new CmdEditCoffemachines()),
+    ADDCOFFEMACHINE(new CmdAddCoffemachine()),
+    SHOWALLREQUESTS(new CmdShowAllRequests()),
     RESETDB(new CmdResetDB());
 
 
@@ -26,6 +29,7 @@ public enum Actions {
 
     static Cmd defineCommand(HttpServletRequest req) {
         String nameCommand = req.getParameter("command").toUpperCase();
+        if (nameCommand==null) return Actions.INDEX.command;
         try {
             return Actions.valueOf(nameCommand).command;//Возвращает константу перечисления указанного типа перечисления с указанным именем.
         } catch (IllegalArgumentException e) {

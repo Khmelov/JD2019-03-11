@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
-<%@ include file="include/head.htm" %>
+<%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
-    <%@ include file="include/menu.htm" %>
+    <%@ include file="include/menu.jsp" %>
     <form class="form-horizontal" action="do?command=CreateRequest" method="post">
     <fieldset>
 
@@ -33,11 +33,9 @@
       <label class="col-md-4 control-label" for="Coffemachine">Coffemachine</label>
       <div class="col-md-4">
         <select id="Coffemachine" name="Coffemachine" class="form-control">
-          <option value="LC/D">LC/D</option>
-          <option value="GE-GD ONE">GE-GD ONE</option>
-          <option value="EP 5331/10">EP 5331/10</option>
-          <option value="XD COMPACT">XD COMPACT</option>
-          <option value="DELONGHI EN 550.S">DELONGHI EN 550.S</option>
+         <c:forEach var="coffemachine" items="${coffemachines}" >
+            <option value="${coffemachine.name}">${coffemachine.name}</option>
+         </c:forEach>
         </select>
       </div>
     </div>
