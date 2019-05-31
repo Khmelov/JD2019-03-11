@@ -11,6 +11,7 @@ import java.sql.Statement;
 public abstract class AbstractDao<TYPE> implements InterfaceDao<TYPE>{
 
     protected long executeCreate(String sql) throws SQLException {
+        System.out.println("DEBUG" + sql);
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
@@ -27,6 +28,7 @@ public abstract class AbstractDao<TYPE> implements InterfaceDao<TYPE>{
     }
 
     protected boolean executeUpdate(String sql) throws SQLException{
+        System.out.println("DEBUG" + sql);
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()

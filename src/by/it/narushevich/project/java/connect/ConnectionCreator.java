@@ -21,7 +21,7 @@ public class ConnectionCreator {
     public static Connection get() throws SQLException {
         if (connection == null || connection.isClosed()) {
             DriverManager.registerDriver(new FabricMySQLDriver());
-            synchronized (SetupConnection.getURL()) {
+            synchronized (ConnectionCreator.class) {
                 if (connection == null || connection.isClosed()) {
                     connection= DriverManager.getConnection(
                             SetupConnection.getURL(),

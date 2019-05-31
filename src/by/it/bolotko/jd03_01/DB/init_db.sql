@@ -40,6 +40,8 @@ CREATE TABLE IF NOT EXISTS `bolotko`.`users` (
   `phone` VARCHAR(20) NULL,
   `roles_id` INT NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE `login_UNIQUE` (`login` ASC),
+  UNIQUE `email_UNIQUE` (`email` ASC),
   CONSTRAINT `fk_users_roles`
     FOREIGN KEY (`roles_id`)
     REFERENCES `bolotko`.`roles` (`id`)
