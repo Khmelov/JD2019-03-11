@@ -23,18 +23,20 @@
                     <a class="nav-link" href="do?command=CreateCar">Создание объявления</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="do?command=Index">База данных</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="do?command=Logout">Выход</a>
+                </li>
+            </c:if>
+            <c:if test="${user.roles_id==1}" >
+                <li class="nav-item">
+                    <a class="nav-link" href="do?command=Index">База данных</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="do?command=EditUsers">Управление</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="do?command=ResetDB">Сброс БД</a>
+                </li>
             </c:if>
-            <li class="nav-item">
-                <a class="nav-link" href="do?command=ResetDB">Сброс БД</a>
-            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -5,7 +5,7 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
 
-    <h2>База данных автомобилей</h2>
+    <h2>Все автомобили: </h2>
     <div class="row">
         <div class="col-md-2">Тип автомобиля</div>
         <div class="col-md-1">Тип топлива</div>
@@ -23,6 +23,9 @@
             <div class="col-md-2">${car.model}</div>
             <div class="col-md-1">${car.price}</div>
             <div class="col-md-1">${car.year_of_issue}</div>
+            <div class="col-md-3">
+                <button id="details" name="details" class="btn btn-primary">подробности</button>
+            </div>
         </div>
     </c:forEach>
 
