@@ -21,7 +21,11 @@ public class FrontController extends HttpServlet {
         try {
             roles = dao.role.getAll();
         } catch (SQLException e) {
-            e.printStackTrace();
+            try {
+                dao.resetDataBase();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
         }
         ServletContext servletContext = getServletContext();
         servletContext.setAttribute("roles",roles);
