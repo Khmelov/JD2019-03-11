@@ -23,7 +23,7 @@ public enum Actions {
     static Cmd defineCommand(HttpServletRequest req) {
         String nameCommand = req.getParameter("command");
         if (nameCommand==null)
-            return Actions.INDEX.command;
+            return Actions.INDEX.command; //todo Главная
         try {
             return Actions.valueOf(nameCommand.toUpperCase()).command;
         } catch (IllegalArgumentException e) {

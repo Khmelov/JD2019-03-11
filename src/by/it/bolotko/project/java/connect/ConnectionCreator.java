@@ -31,8 +31,9 @@ public class ConnectionCreator {
     public static Connection get() throws SQLException{
         if (connection == null || connection.isClosed()){
             synchronized (ConnectionCreator.class){
-                connection = DriverManager.getConnection(URL,USER,PASSWORD);
-            }
+                if (connection == null || connection.isClosed()) {
+                    connection= DriverManager.getConnection(URL,USER,PASSWORD);
+                }            }
         }
         return connection;
     }

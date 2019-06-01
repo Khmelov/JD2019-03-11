@@ -4,7 +4,7 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <form class="form-horizontal" action="do?command=CreateCar" method="post">
+    <form class="form-horizontal" action="do?command=CreateCar" method="post" > //enctype="multipart/form-data"
         <fieldset>
 
             <!-- Form Name -->
@@ -68,6 +68,14 @@
                 <div class="col-md-4">
                     <input id="year_of_issue" name="year_of_issue" type="text" value="2012" placeholder="" class="form-control input-md" required="">
                     <span class="help-block"> введите год выпуска автомобиля (например: 1997)</span>
+                </div>
+            </div>
+
+            <!-- File Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="photo">Фото</label>
+                <div class="col-md-4">
+                    <input id="photo" name="photo" class="input-file" type="file">
                 </div>
             </div>
 

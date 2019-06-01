@@ -125,6 +125,8 @@
 
     <br><br><br>
     <hr>
+    <my:paginator count="${carsSize}" step="5" urlprefix="do?command=profile&start="/>
+    <hr>
 </div>
 </body>
 </html>

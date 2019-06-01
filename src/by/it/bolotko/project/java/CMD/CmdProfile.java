@@ -8,7 +8,6 @@ import by.it.bolotko.project.java.utils.Tools;
 import by.it.bolotko.project.java.utils.Validator;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class CmdProfile extends Cmd {
@@ -16,7 +15,6 @@ public class CmdProfile extends Cmd {
    public Cmd execute(HttpServletRequest req) throws Exception {
         Dao dao = Dao.getDao();
         User user = Tools.findUserInSession(req);
-
         if (user == null) {
             return Actions.LOGIN.command;
         }
@@ -72,10 +70,13 @@ public class CmdProfile extends Cmd {
         }
 
 
-
-
-
         List<Car> cars = dao.car.getAll("WHERE users_id=" + user.getId());
+        req.setAttribute("carsSize", cars.size());
+        int start = 0;
+        if (FormHelper.contains(req, "start"))
+            start = Validator.getInt(req, "start");
+        String limit = String.format(" WHERE users_id=%d LIMIT %s,5", user.getId(), start);
+        cars = dao.car.getAll(limit);
         req.setAttribute("cars", cars);
 
         return null;

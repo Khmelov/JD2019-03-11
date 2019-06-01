@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href=".">Главная</a>
@@ -8,34 +9,18 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <c:if test="${user==null}">
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=Login">Авторизация</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=SignUp">Регистрация</a>
-                </li>
+                <my:menu command="Login" text="Авторизация"/>
+                <my:menu command="SignUp" text="Регистрация"/>
             </c:if>
             <c:if test="${user!=null}">
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=Profile">Профиль</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=CreateCar">Создание объявления</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=Logout">Выход</a>
-                </li>
+                <my:menu command="Profile" text="Профиль"/>
+                <my:menu command="CreateCar" text="Создание объявления"/>
+                <my:menu command="Logout" text="Выход"/>
             </c:if>
-            <c:if test="${user.roles_id==1}" >
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=Index">База данных</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=EditUsers">Управление</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=ResetDB">Сброс БД</a>
-                </li>
+            <c:if test="${user.roles_id==1}">
+                <my:menu command="Index" text="База данных"/>
+                <my:menu command="EditUsers" text="Управление"/>
+                <my:menu command="ResetDB" text="Сброс БД"/>
             </c:if>
         </ul>
         <form class="form-inline my-2 my-lg-0">
