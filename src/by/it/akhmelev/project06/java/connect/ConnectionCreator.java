@@ -38,4 +38,12 @@ public class ConnectionCreator {
         }
         return connection;
     };
+    public static void main(String[] args) {
+        try {
+            Connection connection = ConnectionCreator.get();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
