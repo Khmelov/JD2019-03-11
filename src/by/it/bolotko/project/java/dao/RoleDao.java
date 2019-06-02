@@ -79,7 +79,7 @@ public class RoleDao extends AbstractDao<Role> {
     }
 
     @Override
-    public List<Role> getAll() {
-        return null;
+    public List<Role> getAll() throws SQLException {
+        return getAll("");
     }
 }

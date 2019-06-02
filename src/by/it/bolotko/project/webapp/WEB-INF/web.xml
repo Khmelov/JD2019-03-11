@@ -5,19 +5,32 @@
          version="3.0"
          metadata-complete="true">
     <display-name>Сервлет BOLOTKO</display-name>
-    <!--
-    Для любого сервлета нужно определить два тега servlet и servlet-mapping.
-    Важно чтобы внутри каждого из этих тегов были теги servlet-name
-    и имя сервлета в них было одинаковым!!!
-    -->
+
+    <welcome-file-list>
+        <welcome-file>homepage</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>FrontController</servlet-name>
-        <servlet-class>by.it.bolotko.project.java.FrontController</servlet-class>
+        <servlet-class>by.it.bolotko.project.java.CMD.FrontController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/do</url-pattern>
+        <url-pattern>/homepage</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>PageEncoder</filter-name>
+        <filter-class>by.it.bolotko.project.java.filters.PageEncoder</filter-class>
+        <init-param>
+            <param-name>encode</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>PageEncoder</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

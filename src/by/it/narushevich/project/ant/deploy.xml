@@ -15,6 +15,7 @@
         <fileset dir="${local.lib.dir}" includes="jstl-1.2.jar"/>
         <fileset dir="${local.lib.dir}" includes="mysql-connector-java.jar"/>
         <fileset dir="${global.lib.dir}" includes="servlet-api.jar"/>
+        <fileset dir="${global.lib.dir}" includes="commons-codec-1.10.jar"/>
     </path>
 
     <!-- начинаем выполнять шаги (т.е. цели). -->
@@ -38,7 +39,7 @@
     <!-- компиляция файлов проекта -->
     <target name="03compile" depends="02init">
         <echo>Compile the source files</echo>
-        <javac srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes" debug="true">
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes" debug="true">
             <classpath refid="classpath"/>
         </javac>
     </target>
