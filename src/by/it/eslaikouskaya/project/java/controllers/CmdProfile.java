@@ -1,5 +1,6 @@
 package by.it.eslaikouskaya.project.java.controllers;
 
+import by.it.eslaikouskaya.project.java.beans.Grade;
 import by.it.eslaikouskaya.project.java.beans.Material;
 import by.it.eslaikouskaya.project.java.beans.Purchase;
 import by.it.eslaikouskaya.project.java.beans.User;
@@ -42,23 +43,31 @@ public class CmdProfile extends Cmd {
 				return Actions.LOGIN.command;
 			}
 
-			if (FormHelper.contains(req, "delete")) {
-				String name = Validator.getString(req, "name", Patterns.MATERIAL);
-				String where = String.format("WHERE name='%s'", name);
-				List<Material> chosen = dao.material.getAll(where);
-
-				Purchase purchase = new Purchase(
-						0,
-						user.getID(),
-						chosen.get(0).getID(),
-						Validator.getInt(req, "number", Patterns.NUMBER)
-				);
-				dao.purchase.delete(purchase);
+			if (FormHelper.contains(req, "send")) {
+				req.setAttribute("sent", "Спасибо за заказ!");
 				return this;
 			}
 
-			if (FormHelper.contains(req, "send")) {
-				req.setAttribute("sent", "Спасибо за заказ!");
+
+			if (FormHelper.contains(req, "change")) {
+				Purchase purchase = new Purchase(
+						Validator.getLong(req, "purchase.ID", Patterns.NUMBER),
+						user.getID(),
+						Validator.getLong(req, "material.ID", Patterns.NUMBER),
+						Validator.getInt(req, "number", Patterns.NUMBER)
+				);
+				dao.purchase.update(purchase);
+				return this;
+			}
+
+			if (FormHelper.contains(req, "delete")) {
+				Purchase purchase = new Purchase(
+						Validator.getLong(req, "purchase.ID", Patterns.NUMBER),
+						user.getID(),
+						Validator.getLong(req, "material.ID", Patterns.NUMBER),
+						Validator.getInt(req, "number", Patterns.NUMBER)
+				);
+				dao.purchase.delete(purchase);
 				return this;
 			}
 		}
@@ -67,6 +76,8 @@ public class CmdProfile extends Cmd {
 		req.setAttribute("purchases", purchases);
 		List<Material> materials = dao.material.getAll();
 		req.setAttribute("materials", materials);
+		List<Grade> grades = dao.grade.getAll();
+		req.setAttribute("grades", grades);
 
 		return null;
 	}

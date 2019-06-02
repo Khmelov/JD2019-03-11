@@ -18,14 +18,13 @@ public class CmdCreateCategory extends Cmd {
 					0,
 					Validator.getString(req, "category", Patterns.MATERIAL)
 			);
-
 			Dao dao = Dao.getDao();
-			List<Category> categories = dao.category.getAll();
-			req.setAttribute("categories", categories);
-
 			if (dao.category.create(category)) {
 				req.setAttribute("success", "Категория успешно создана!");
 			}
+
+			List<Category> categories = dao.category.getAll();
+			req.setAttribute("categories", categories);
 		}
 		return null;
 	}

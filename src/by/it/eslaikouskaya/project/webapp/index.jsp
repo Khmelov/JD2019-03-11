@@ -7,9 +7,9 @@
 
     <div class="row">
         <div class="col-md-3">Наименование</div>
-        <div class="col-md-1">Цена</div>
         <div class="col-md-4">Класс</div>
         <div class="col-md-2">Категория</div>
+        <div class="col-md-1">Цена</div>
         <c:if test="${user!=null}">
             <div class="col-md-1">Кол-во</div>
             <div class="col-md-1">В корзину</div>
@@ -17,9 +17,11 @@
     </div>
 
     <c:forEach items="${materials}" var="material">
+       <form class="form-horizontal-${material.ID}" action="do?command=Index" method="post">
         <div class="row">
+        <input id="ID" name="ID" type="hidden" placeholder="" class="form-control input-md"
+                                          required="" value="${material.ID}">
             <div class="col-md-3">${material.name}</div>
-            <div class="col-md-1">${material.price}</div>
             <c:forEach items="${grades}" var="grade">
                 <c:if test="${material.grades_ID==grade.ID}">
                     <div class="col-md-4">${grade.grade}</div>
@@ -30,16 +32,18 @@
                         </c:forEach>
                 </c:if>
             </c:forEach>
+            <div class="col-md-1">${material.price}</div>
             <c:if test="${user!=null}">
             <!-- Text input-->
                  <div class="col-md-1">
                  <input id="number" name="number" type="text" placeholder="" class="form-control input-md">
                  </div>
                  <div class="col-md-1">
-                     <button type="tobasket" name="button" class="btn btn-light">Добавить</button>
+                     <button id="tobasket" name="tobasket" class="btn btn-light">Добавить</button>
                  </div>
             </c:if>
         </div>
+        </form>
     </c:forEach>
 </div>
 </body>

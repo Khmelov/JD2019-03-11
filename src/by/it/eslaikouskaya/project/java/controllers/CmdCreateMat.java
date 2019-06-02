@@ -20,11 +20,10 @@ public class CmdCreateMat extends Cmd {
 					Validator.getLong(req, "grades_ID", Patterns.NUMBER)
 			);
 			Dao dao = Dao.getDao();
-			req.setAttribute("materials", dao.material.getAll());
-
 			if (dao.material.create(material)) {
 				req.setAttribute("success", "Материал успешно создан!");
 			}
+			req.setAttribute("materials", dao.material.getAll());
 		}
 		return null;
 	}

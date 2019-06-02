@@ -15,21 +15,23 @@ public class CmdIndex extends Cmd {
 	Cmd execute(HttpServletRequest req) throws Exception {
 		Dao dao = Dao.getDao();
 
+		List<Material> materials = dao.material.getAll();
+		req.setAttribute("materials", materials);
+		List<Grade> grades = dao.grade.getAll();
+		req.setAttribute("grades", grades);
+		List<Category> categories = dao.category.getAll();
+		req.setAttribute("categories", categories);
+
 		if (FormHelper.isPost(req)) {
-			User user = Tools.findUserInSession(req);
-			String name = Validator.getString(req, "name", Patterns.MATERIAL);
-			String price = Validator.getString(req, "price", Patterns.NUMBER);
-			String where = String.format("WHERE name='%s' price='%s'", name, price);
-			List<Material> chosen = dao.material.getAll(where);
 			if (FormHelper.contains(req, "tobasket")) {
+				User user = Tools.findUserInSession(req);
 				if (user != null) {
 					Purchase purchase = new Purchase(
 							0,
 							user.getID(),
-							chosen.get(0).getID(),
+							Validator.getLong(req, "ID", Patterns.NUMBER),
 							Validator.getInt(req, "number", Patterns.NUMBER)
 					);
-					dao.purchase.create(purchase);
 					if (dao.purchase.create(purchase)) {
 						return Actions.PROFILE.command;
 					}
@@ -37,12 +39,6 @@ public class CmdIndex extends Cmd {
 			}
 		}
 
-		List<Material> materials = dao.material.getAll();
-		req.setAttribute("materials", materials);
-		List<Grade> grades = dao.grade.getAll();
-		req.setAttribute("grades", grades);
-		List<Category> categories = dao.category.getAll();
-		req.setAttribute("categories", categories);
 		return null;
 	}
 }

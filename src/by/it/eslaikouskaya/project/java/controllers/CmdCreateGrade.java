@@ -21,11 +21,11 @@ public class CmdCreateGrade extends Cmd {
 			);
 
 			Dao dao = Dao.getDao();
-			List<Grade> grades = dao.grade.getAll();
-			req.setAttribute("grades", grades);
 			if (dao.grade.create(grade)) {
 				req.setAttribute("success", "Класс успешно создан");
 			}
+			List<Grade> grades = dao.grade.getAll();
+			req.setAttribute("grades", grades);
 		}
 		return null;
 	}
