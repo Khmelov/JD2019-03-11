@@ -71,13 +71,13 @@
                 </div>
             </div>
 
-            <!-- File Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="photo">Фото</label>
-                <div class="col-md-4">
-                    <input id="photo" name="photo" class="input-file" type="file">
-                </div>
-            </div>
+<%--            <!-- File Button -->--%>
+<%--            <div class="form-group">--%>
+<%--                <label class="col-md-4 control-label" for="photo">Фото</label>--%>
+<%--                <div class="col-md-4">--%>
+<%--                    <input id="photo" name="photo" class="input-file" type="file">--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
             <!-- Button -->
             <div class="form-group">
