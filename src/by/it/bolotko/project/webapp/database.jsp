@@ -5,9 +5,26 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
 
-    <h4> Все автомобили: </h4>
+    <h4> Пользователи: </h4>
     <div class="row">
-        <%--        <div class="col-md-2">Фото</div> --%>
+        <div class=col-md-2><h6>Логин:</h6></div>
+        <div class=col-md-3><h6>Email:</h6></div>
+        <div class=col-md-2><h6>Телефон:</h6></div>
+        <div class=col-md-2><h6>Роль:</h6></div>
+    </div>
+
+    <c:forEach items="${users}" var="user">
+        <div class="row">
+            <div class=col-md-2><h6>${user.login}</h6></div>
+            <div class=col-md-3><h6>${user.email}</h6></div>
+            <div class=col-md-2><h6>${user.phone}</h6></div>
+            <div class=col-md-2><h6>${user.roles_id}</h6></div>
+        </div>
+    </c:forEach>
+
+    <h4> Автомобили: </h4>
+    <div class="row">
+<%--        <div class="col-md-2">Фото</div> --%>
         <div class="col-md-2"><h6>Тип автомобиля:</h6></div>
         <div class="col-md-1"><h6>Тип топлива:</h6></div>
         <div class="col-md-2"><h6>Марка автомобиля:</h6></div>
@@ -18,7 +35,7 @@
 
     <c:forEach items="${cars}" var="car">
         <div class="row">
-                <%--            <div class="col-md-2"><img src="images/img${car.id}" height="90"> </div>--%>
+<%--            <div class="col-md-2"><img src="images/img${car.id}" height="90"> </div>--%>
             <div class="col-md-2"><h6>${car.car_type}</h6></div>
             <div class="col-md-1"><h6>${car.fuel_type}</h6></div>
             <div class="col-md-2"><h6>${car.mark}</h6></div>
@@ -30,9 +47,6 @@
             </div>
         </div>
     </c:forEach>
-
-    <hr>
-    <my:paginator count="${carsSize}" step="10" urlprefix="?start="/>
 
 </div>
 </body>

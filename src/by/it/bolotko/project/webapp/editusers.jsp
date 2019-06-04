@@ -7,8 +7,7 @@
     <h2>Редактирование пользователей</h2>
     <div class="row">
         <div class=col-md-2>Логин</div>
-        <div class=col-md-2>Пароль</div>
-        <div class=col-md-2>Email</div>
+        <div class=col-md-3>Email</div>
         <div class=col-md-2>Телефон</div>
         <div class=col-md-2>Роль</div>
     </div>
@@ -21,16 +20,12 @@
                 <div class="col-md-2">
                     <input id="login" name="login" type="text" placeholder="" class="form-control input-md"
                            required="" value="${user.login}">
-
                 </div>
 
-                <div class="col-md-1">
-                    <input id="password" name="password" type="password" placeholder="" class="form-control input-md"
-                           required="" value="${user.password}">
+                <input id="password" name="password" type="hidden" placeholder="" class="form-control input-md"
+                       required="" value="${user.password}">
 
-                </div>
-
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <input id="email" name="email" type="text" placeholder="" class="form-control input-md"
                            required="" value="${user.email}">
                 </div>

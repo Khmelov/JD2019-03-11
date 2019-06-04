@@ -17,15 +17,35 @@
                 <my:menu command="CreateCar" text="Создание объявления"/>
                 <my:menu command="Logout" text="Выход"/>
             </c:if>
-            <c:if test="${user.roles_id==1}">
-                <my:menu command="Index" text="База данных"/>
-                <my:menu command="EditUsers" text="Управление"/>
-                <my:menu command="ResetDB" text="Сброс БД"/>
-            </c:if>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+        <form class="navbar-nav my-2 my-lg-0">
+            <c:if test="${user.roles_id==1}">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Администрирование
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="do?command=DataBase">База данных</a>
+                        <a class="dropdown-item" href="do?command=EditUsers">Управление пользователями</a>
+                        <a class="dropdown-item" href="do?command=EditCars">Управление объявлениями</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="do?command=ResetDB">Сброс базы данных</a>
+                    </div>
+                </li>
+            </c:if>
+            <c:if test="${user.roles_id==3}">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Администрирование
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="do?command=DataBase">База данных</a>
+                        <a class="dropdown-item" href="do?command=EditCars">Управление объявлениями</a>
+                    </div>
+                </li>
+            </c:if>
         </form>
     </div>
 </nav>
