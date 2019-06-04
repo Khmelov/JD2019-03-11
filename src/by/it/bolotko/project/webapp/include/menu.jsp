@@ -15,9 +15,13 @@
             <c:if test="${user!=null}">
                 <my:menu command="Profile" text="Профиль"/>
                 <my:menu command="CreateCar" text="Создание объявления"/>
-                <my:menu command="Logout" text="Выход"/>
             </c:if>
         </ul>
+        <form class="navbar-nav my-2 my-lg-0">
+            <c:if test="${user!=null}">
+                <my:menu command="Logout" text="Выход"/>
+            </c:if>
+        </form>
         <form class="navbar-nav my-2 my-lg-0">
             <c:if test="${user.roles_id==1}">
                 <li class="nav-item dropdown">
