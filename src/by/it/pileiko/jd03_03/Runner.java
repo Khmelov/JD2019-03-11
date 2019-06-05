@@ -3,9 +3,6 @@ package by.it.pileiko.jd03_03;
 import by.it.pileiko.jd03_03.beans.Car;
 import by.it.pileiko.jd03_03.beans.Role;
 import by.it.pileiko.jd03_03.beans.User;
-import by.it.pileiko.jd03_03.crud.CarCRUD;
-import by.it.pileiko.jd03_03.crud.RoleCRUD;
-import by.it.pileiko.jd03_03.crud.UserCRUD;
 import by.it.pileiko.jd03_03.dao.Dao;
 
 import java.sql.SQLException;
@@ -43,7 +40,7 @@ public class Runner {
         dao.car.update(car);
         car=dao.car.read(car.getId());
         System.out.println(car);
-        // dao.car.delete(car);
+        dao.car.delete(car);
 
     }
 
