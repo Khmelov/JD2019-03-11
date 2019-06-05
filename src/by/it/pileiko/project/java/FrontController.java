@@ -1,4 +1,4 @@
-package by.it.pileiko.jd03_04.java;
+package by.it.pileiko.project.java;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,13 +29,26 @@ public class FrontController  extends HttpServlet {
                 getServletContext().getRequestDispatcher(cmd.getJsp()).forward(req, resp);
             }
             else {
-                resp.getWriter().print(next+ " redirect");
+                resp.sendRedirect("do?command="+next.toString());
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+        catch (Exception e) {
+            getServletContext().setAttribute("Error", getErrorTxt(e));
+            resp.sendRedirect("do?command=Error");
         }
 
+    }
+
+    public static String getErrorTxt(Exception e) {
+        StringBuilder error = new StringBuilder("<b>"+e.toString()+"</b><br><br>");
+        StackTraceElement[] stackTrace = e.getStackTrace();
+        for (StackTraceElement element : stackTrace) {
+            if (element.toString().contains(".HttpServlet.")){
+                break;
+            }
+            error.append(element.toString()).append("<br>\n");
+        }
+        return error.toString();
     }
 }
 
