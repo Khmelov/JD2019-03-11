@@ -1,18 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
-<body>
-<div class="container">
+<body style="background-image:url(images/fon2.jpg)">
+<div class="container" style="background-color:whitesmoke">
     <%@ include file="include/menu.jsp" %>
-    <form class="form-horizontal" action="do?command=Profile" method="post">
+    <br>
+    <form class="form-horizontal" align="center" action="do?command=Profile" method="post">
         <fieldset>
 
             <!-- Form Name -->
-            <legend>Мои данные</legend>
+            <h4>Мои данные</h4>
 
             <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="login">Логин</label>
+            <div class="form-group" align="center">
+                <label class="col-md-4 control-label" for="login" align="left">Логин</label>
                 <div class="col-md-4">
                     <input id="login" name="login" type="text" value="${user.login}" placeholder=""
                            class="form-control input-md" required="">
@@ -21,8 +22,8 @@
             </div>
 
             <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="email">E-mail</label>
+            <div class="form-group" align="center">
+                <label class="col-md-4 control-label" for="email" align="left">E-mail</label>
                 <div class="col-md-4">
                     <input id="email" name="email" type="text" value="${user.email}" placeholder="login@mail.com"
                            class="form-control input-md" required="">
@@ -31,18 +32,18 @@
             </div>
 
             <!-- Password input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="password">Пароль</label>
+            <div class="form-group" align="center">
+                <label class="col-md-4 control-label" for="password" align="left">Пароль</label>
                 <div class="col-md-4">
                     <input id="password" name="password" type="password" value="${user.password}" placeholder=""
                            class="form-control input-md" required="">
-                    <span class="help-block"> минимум 4 символа </span>
+                    <span class="help-block"> минимум 4 символа ([a-z], [A-Z], [0-9], @#$%) </span>
                 </div>
             </div>
 
             <!-- Phone input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="phone">Телефон</label>
+            <div class="form-group" align="center">
+                <label class="col-md-4 control-label" for="phone" align="left">Телефон</label>
                 <div class="col-md-4">
                     <input id="phone" name="phone" type="text" value="${user.phone}" placeholder=""
                            class="form-control input-md" required="">
@@ -52,7 +53,7 @@
 
 
             <!-- Button (Double) -->
-            <div class="form-group">
+            <div class="form-group" align="center">
                 <div class="col-md-8">
                     <button id="update" name="update" class="btn btn-success">Изменить</button>
                     <button id="logout" name="logout" class="btn btn-danger">Выйти</button>
@@ -123,10 +124,11 @@
         </form>
     </c:forEach>
 
-    <br><br><br>
+    <br>
     <hr>
     <my:paginator count="${carsSize}" step="5" urlprefix="do?command=profile&start="/>
     <hr>
+    <br>
 </div>
 </body>
 </html>

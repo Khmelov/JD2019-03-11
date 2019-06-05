@@ -18,11 +18,6 @@
             </c:if>
         </ul>
         <form class="navbar-nav my-2 my-lg-0">
-            <c:if test="${user!=null}">
-                <my:menu command="Logout" text="Выход"/>
-            </c:if>
-        </form>
-        <form class="navbar-nav my-2 my-lg-0">
             <c:if test="${user.roles_id==1}">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -45,10 +40,14 @@
                         Администрирование
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="do?command=DataBase">База данных</a>
                         <a class="dropdown-item" href="do?command=EditCars">Управление объявлениями</a>
                     </div>
                 </li>
+            </c:if>
+        </form>
+        <form class="navbar-nav my-2 my-lg-0">
+            <c:if test="${user!=null}">
+                <my:menu command="Logout" text="Выход"/>
             </c:if>
         </form>
     </div>

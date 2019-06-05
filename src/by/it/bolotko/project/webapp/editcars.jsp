@@ -1,18 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
-<body>
-<div class="container">
+<body style="background-image:url(images/fon2.jpg)">
+<div class="container" style="background-color:whitesmoke">
     <%@ include file="include/menu.jsp" %>
-    <h2>Редактирование объявлений</h2>
+    <br>
+    <h3 align="center" style="color:#284755">редактирование объявлений</h3>
+    <br>
     <div class="row">
-        <div class="col-md-2">Тип автомобиля</div>
-        <div class="col-md-1">Тип топлива</div>
-        <div class="col-md-1">Марка автомобиля</div>
-        <div class="col-md-1">Модель автомобиля</div>
-        <div class="col-md-2">Цена</div>
-        <div class="col-md-1">Год выпуска</div>
-        <div class="col-md-1">Пользователь</div>
+        <div class="col-md-2" align="center" style="color:#284755; font-size:16px"><b>Тип автомобиля</b></div>
+        <div class="col-md-1" align="center" style="color:#284755; font-size:16px"><b>Тип топлива</b></div>
+        <div class="col-md-1" align="center" style="color:#284755; font-size:16px"><b>Марка</b></div>
+        <div class="col-md-1" align="center" style="color:#284755; font-size:16px"><b>Модель</b></div>
+        <div class="col-md-2" align="center" style="color:#284755; font-size:16px"><b>Цена</b></div>
+        <div class="col-md-1" align="center" style="color:#284755; font-size:16px"><b>Год выпуска</b></div>
+        <div class="col-md-1" align="center" style="color:#284755; font-size:16px"><b>Пользователь</b></div>
     </div>
     <c:forEach items="${cars}" var="car">
         <form class="form-horizontal-${car.id}" action="do?command=EditCars" method="post">
@@ -72,6 +74,7 @@
     <hr>
     <my:paginator count="${carsSize}" step="10" urlprefix="do?command=editcars&start="/>
     <hr>
+    <br><br>
 </div>
 </body>
 </html>
