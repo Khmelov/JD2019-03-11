@@ -6,7 +6,7 @@
     <%@ include file="include/menu.jsp" %>
     <br>
 
-    <p align="center" style="color:#284755; font-size:30px"><b><i>Все объявления:</i></b></p>
+    <p align="center" style="color:#284755; font-size:30px"><b><i>Все объявления о продаже автомобилей:</i></b></p>
 
     <div class="row">
         <%--        <div class="col-md-2">Фото</div> --%>

@@ -74,7 +74,7 @@
     <hr>
     <my:paginator count="${carsSize}" step="10" urlprefix="do?command=editcars&start="/>
     <hr>
-    <br><br>
+    <br>
 </div>
 </body>
 </html>
