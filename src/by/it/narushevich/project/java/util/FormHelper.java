@@ -8,4 +8,8 @@ public class FormHelper {
 
         return req.getMethod().equalsIgnoreCase("POST");
     }
+
+    public static boolean pressedButton(HttpServletRequest req, String name) {
+        return req.getParameter(name)!=null;
+    }
 }
