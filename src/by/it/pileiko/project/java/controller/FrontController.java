@@ -1,12 +1,34 @@
-package by.it.pileiko.project.java;
+package by.it.pileiko.project.java.controller;
 
+import by.it.pileiko.project.java.beans.Role;
+import by.it.pileiko.project.java.dao.Dao;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class FrontController  extends HttpServlet {
+
+    public void init() throws ServletException {
+        Dao dao = Dao.getDao();
+        List<Role> roles = null;
+        try {
+            roles = dao.role.getAll();
+        } catch (SQLException e) {
+            try {
+                dao.resetDataBase();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+        ServletContext servletContext = getServletContext();
+        servletContext.setAttribute("roles",roles);
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -39,7 +61,7 @@ public class FrontController  extends HttpServlet {
 
     }
 
-    public static String getErrorTxt(Exception e) {
+    private static String getErrorTxt(Exception e) {
         StringBuilder error = new StringBuilder("<b>"+e.toString()+"</b><br><br>");
         StackTraceElement[] stackTrace = e.getStackTrace();
         for (StackTraceElement element : stackTrace) {
@@ -51,4 +73,5 @@ public class FrontController  extends HttpServlet {
         return error.toString();
     }
 }
+
 

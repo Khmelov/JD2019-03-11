@@ -1,4 +1,4 @@
-package by.it.pileiko.project.java;
+package by.it.pileiko.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
