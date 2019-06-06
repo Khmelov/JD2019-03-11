@@ -4,11 +4,15 @@ import javax.servlet.http.HttpServletRequest;
 
 public enum Actions {
 
+	ABOUTUS(new CmdAboutUs()),
+	BASKET(new CmdBasket()),
+	CONTACTS(new CmdContacts()),
+	LOGOUT(new CmdLogOut()),
 	SEARCH(new CmdSearch()),
 	EDITUSERS(new CmdEditUsers()),
-	CREATECATEGORY(new CmdCreateCategory()),
-	CREATEGRADE(new CmdCreateGrade()),
-	CREATEMAT(new CmdCreateMat()),
+	EDITCATEGORY(new CmdEditCategory()),
+	EDITGRADE(new CmdEditGrade()),
+	EDITMAT(new CmdEditMat()),
 	INDEX(new CmdIndex()),
 	RESETDB(new CmdResetDB()),
 	LOGIN(new CmdLogin()),

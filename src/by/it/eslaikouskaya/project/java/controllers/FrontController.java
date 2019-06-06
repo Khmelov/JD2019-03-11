@@ -1,5 +1,6 @@
 package by.it.eslaikouskaya.project.java.controllers;
 
+import by.it.eslaikouskaya.project.java.beans.Category;
 import by.it.eslaikouskaya.project.java.beans.Role;
 import by.it.eslaikouskaya.project.java.dao.Dao;
 
@@ -26,6 +27,14 @@ public class FrontController extends HttpServlet {
 		}
 		ServletContext servletContext = getServletContext();
 		servletContext.setAttribute("roles", roles);
+
+		List<Category> categories = null;
+		try {
+			categories = dao.category.getAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		servletContext.setAttribute("categories", categories);
 	}
 
 	@Override

@@ -4,11 +4,11 @@
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-<form class="form-horizontal" action="do?command=CreateCategory" method="post">
+<form class="form-horizontal" action="do?command=EditCategory" method="post">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Создать категорию</legend>
+<legend>Изменить категорию</legend>
 
 <!-- Text input-->
 <div class="form-group">
@@ -21,19 +21,21 @@
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="button"></label>
-  <div class="col-md-4">
-    <button id="button" name="button" class="btn btn-primary">Создать</button>
-  </div>
-</div>
+   <label class="col-md-4 control-label" for="button"></label>
+   <div class="col-md-4">
+     <button id="create" name="create" class="btn btn-light">Создать</button>
+     <button id="delete" name="delete" class="btn btn-dark">Удалить</button>
+   </div>
+ </div>
 
 </fieldset>
 </form>
-<p>${success}</p>
+<h3>${success}</h3>
 <br>
 <c:forEach items="${categories}" var="category">
 <p>${category.category}</p>
 </c:forEach>
+<hr>
 </div>
 </body>
 </html>

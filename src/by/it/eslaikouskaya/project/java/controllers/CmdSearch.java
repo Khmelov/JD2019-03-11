@@ -42,7 +42,7 @@ public class CmdSearch extends Cmd {
 							Validator.getInt(req, "number", Patterns.NUMBER)
 					);
 					if (dao.purchase.create(purchase)) {
-						return Actions.PROFILE.command;
+						return Actions.BASKET.command;
 					}
 				}
 			}

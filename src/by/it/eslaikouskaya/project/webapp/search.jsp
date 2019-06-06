@@ -4,34 +4,7 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-
-   <form class="form-horizontal-${material.ID}" action="do?command=Search" method="post">
-      <fieldset>
-
-   <!-- Form Name -->
-   <legend>Поиск</legend>
-
-   <!-- Text input-->
-   <div class="form-group">
-     <label class="col-md-4 control-label" for="name">Наименование материала</label>
-     <div class="col-md-4">
-     <input id="name" name="name" value="муфта" type="text" placeholder="" class="form-control input-md" required="">
-
-     </div>
-   </div>
-
-   <!-- Button -->
-   <div class="form-group">
-     <label class="col-md-4 control-label" for="button"></label>
-     <div class="col-md-4">
-       <button id="search" name="search" class="btn btn-primary">Поиск</button>
-     </div>
-   </div>
-
-   </fieldset>
-   </form>
-
-   <p>Результаты поиска:</p>
+<p>Результаты поиска:</p>
    <p>${notfound}</p>
    <c:forEach items="${materials}" var="material">
    <form class="form-horizontal-${material.ID}" action="do?command=Search" method="post">
@@ -50,6 +23,7 @@
                    </c:if>
                </c:forEach>
                <div class="col-md-1">${material.price}</div>
+               <c:if test="${user.roles_ID!=1}">
                <c:if test="${user!=null}">
                <!-- Text input-->
                     <div class="col-md-1">
@@ -59,9 +33,12 @@
                         <button id="tobasket" name="tobasket" class="btn btn-light">Добавить</button>
                     </div>
                </c:if>
+               </c:if>
            </div>
    </form>
    </c:forEach>
+   <hr>
+     <p>+375 (177) 742777  +375 (177) 931777  +375 (29) 6872793  +375 (33) 6740370</p>
 </div>
 </body>
 </html>

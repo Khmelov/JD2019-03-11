@@ -18,11 +18,16 @@ public class CmdLogin extends Cmd {
 			String password = Validator.getString(req, "password", Patterns.PASSWORD);
 			String where = String.format(" WHERE Login='%s' and Password='%s'", login, password);
 			List<User> users = Dao.getDao().user.getAll(where);
+			if (users.size() < 1) {
+				req.setAttribute("incorrect",
+						"Аккаунта с таким логином и паролем не существует");
+				return null;
+			}
 			if (users.size() > 0) {
 				HttpSession session = req.getSession();
 				User user = users.get(0);
 				session.setAttribute("user", user);
-				return Actions.PROFILE.command;
+				return Actions.INDEX.command;
 			}
 		}
 		return null;

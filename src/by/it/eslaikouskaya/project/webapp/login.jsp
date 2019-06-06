@@ -11,6 +11,7 @@
             <legend>Вход</legend>
 
             <!-- Text input-->
+            <h3>${incorrect}</h3>
             <div class="form-group">
                 <label class="col-md-4 control-label" for="login">Логин</label>
                 <div class="col-md-4">

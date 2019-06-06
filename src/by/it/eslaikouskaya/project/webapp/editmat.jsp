@@ -4,11 +4,11 @@
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-<form class="form-horizontal" action="do?command=CreateMat" method="post">
+<form class="form-horizontal" action="do?command=EditMat" method="post">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Создать материал</legend>
+<legend>Изменить материал</legend>
 
 <!-- Text input-->
 <div class="form-group">
@@ -19,13 +19,15 @@
   </div>
 </div>
 
-<!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="grade">Номер класса</label>
-  <div class="col-md-4">
-  <input id="grades_ID" name="grades_ID" value="20" type="text" placeholder="Введите номер класса" class="form-control input-md" required="">
-  <span class="help-block">Номер должен соответствовать категории</span>
-  </div>
+<label class="col-md-4 control-label" for="name">Имя класса</label>
+<div class="col-md-4">
+<select id="grades_ID" name="grades_ID" class="form-control">
+<c:forEach items="${grades}" var="grade">
+<option value="${grade.ID}">${grade.grade}</option>
+</c:forEach>
+</select>
+</div>
 </div>
 
 <!-- Text input-->
@@ -41,20 +43,33 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="button"></label>
   <div class="col-md-4">
-    <button id="button" name="button" class="btn btn-primary">Создать</button>
+    <button id="create" name="create" class="btn btn-light">Создать</button>
+    <button id="delete" name="delete" class="btn btn-dark">Удалить</button>
   </div>
 </div>
 
 </fieldset>
 </form>
-<p>${success}</p>
-<br>
-<c:forEach items="${materials}" var="material">
+<h3>${success}</h3>
+<hr>
 <div class="row">
-        <div class="col-md-3">${material.name}</div>
-        <div class="col-md-1">${material.price}</div>
+<div class="col-md-3">Наименование</div>
+<div class="col-md-3">Класс</div>
+<div class="col-md-3">Наименование</div>
+<div class="col-md-3">Класс</div>
 </div>
+<hr>
+<div class="row">
+<c:forEach items="${materials}" var="material">
+         <div class="col-md-3">${material.name}</div>
+         <c:forEach items="${grades}" var="grade">
+            <c:if test="${material.grades_ID==grade.ID}">
+                <div class="col-md-3">${grade.grade}</div>
+            </c:if>
+         </c:forEach>
 </c:forEach>
+</div>
+<hr>
 </div>
 </body>
 </html>

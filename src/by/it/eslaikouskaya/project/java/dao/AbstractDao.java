@@ -7,9 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public abstract class AbstractDao<TYPE> implements InterfaceDao<TYPE> {
+abstract class AbstractDao<T> implements InterfaceDao<T> {
 
-	protected long executeCreate(String sql) throws SQLException {
+	long executeCreate(String sql) throws SQLException {
+		System.out.println("DEBUG:" + sql);
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()
@@ -25,7 +26,8 @@ public abstract class AbstractDao<TYPE> implements InterfaceDao<TYPE> {
 		return -1;
 	}
 
-	protected boolean executeUpdate(String sql) throws SQLException {
+	boolean executeUpdate(String sql) throws SQLException {
+		System.out.println("DEBUG:" + sql);
 		try (
 				Connection connection = ConnectionCreator.get();
 				Statement statement = connection.createStatement()

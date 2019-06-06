@@ -44,8 +44,8 @@
 
                 <!-- Button (Double) -->
                 <div class="col-md-3">
-                    <button id="update" name="update" class="btn btn-success">Обновить</button>
-                    <button id="delete" name="delete" class="btn btn-danger">Удалить</button>
+                    <button id="update" name="update" class="btn btn-light">Обновить</button>
+                    <button id="delete" name="delete" class="btn btn-dark">Удалить</button>
                 </div>
             </div>
         </form>
