@@ -1,6 +1,7 @@
 package by.it.narushevich.project.java.controllers;
 
 import by.it.narushevich.project.java.beans.Role;
+import by.it.narushevich.project.java.beans.Trademark;
 import by.it.narushevich.project.java.commands.Actions;
 import by.it.narushevich.project.java.commands.Cmd;
 import by.it.narushevich.project.java.dao.Dao;
@@ -19,13 +20,16 @@ public class FrontController extends HttpServlet {
     public void init() {
         Dao dao = Dao.getDao();
         List<Role> roles = null;
+        List<Trademark> trademarks = null;
         try {
+            trademarks = dao.trademark.getAll();
             roles = dao.role.getAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         ServletContext servletContext = getServletContext();
         servletContext.setAttribute("roles",roles);
+        servletContext.setAttribute("trademarks", trademarks);
     }
 
     @Override

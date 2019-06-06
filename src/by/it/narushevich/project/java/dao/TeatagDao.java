@@ -50,13 +50,13 @@ public class TeatagDao extends AbstractDao<Teatag> {
         return executeUpdate(sql);
     }
 
-    public List<TeatagString> getSelected() throws SQLException {
+    public List<TeatagString> getSelected(String condition) throws SQLException {
         List<TeatagString> teatags = new ArrayList<>();
         String sql = "SELECT `trademark`, `subtitle`, `material`, `width`, `height`, " +
                 "`in_collection_since`, `num_in_catalog`, `login` " +
                 "FROM `teatags` JOIN trademark ON teatags.`trademark_id`=trademark.id " +
                 "JOIN material ON teatags.material_id=material.id " +
-                "JOIN users ON teatags.user_id=users.id";
+                "JOIN users ON teatags.user_id=users.id"+condition;
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()

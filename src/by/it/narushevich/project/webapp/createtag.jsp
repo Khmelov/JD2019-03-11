@@ -1,7 +1,4 @@
-<%@ page contentType="text/html;
-    charset=UTF-8"
-    language="java"
-    pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
 <body>
@@ -9,7 +6,7 @@
 <%@ include file="include/menu.jsp" %>
 <br>
 
-<form class="form-horizontal" action="do?command=CreateTag" method="post">
+<form class="form-horizontal" action="do?command=CreateTag" method="post" enctype="multipart/form-data">
 <fieldset>
 
 <!-- Form Name -->
@@ -20,7 +17,7 @@
   <label class="col-md-4 control-label" for="trademark list">Список торговых марок</label>
   <div class="col-md-4">
     <select id="trademark list" name="trademark list" class="form-control">
-      <option>Выберите из списка</option>
+      <option></option>
       <option value="AHMAD TEA">Ahmad tea</option>
       <option value="AKBAR">Akbar</option>
       <option value="ALATTAR">Alattar</option>
@@ -54,7 +51,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="trademark"></label>
   <div class="col-md-4">
-  <input id="trademark" name="trademark" type="text" placeholder="МАРКА ЧАЯ" class="form-control input-md">
+  <input id="trademark" name="trademark" type="text" value="NADIN COMPANY APS." class="form-control input-md">
   <span class="help-block">введите торговую марку</span>
   </div>
 </div>
@@ -63,7 +60,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="subtitle">Подзаголовок</label>
   <div class="col-md-4">
-  <input id="subtitle" name="subtitle" type="text" value="черный чай" placeholder="" class="form-control input-md">
+  <input id="subtitle" name="subtitle" type="text" value="Nadin" placeholder="" class="form-control input-md">
   <span class="help-block">что еще написано на ярлычке?</span>
   </div>
 </div>
@@ -84,7 +81,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="width">Ширина, мм</label>
   <div class="col-md-4">
-  <input id="width" name="width" type="text" value="25" placeholder="" class="form-control input-md">
+  <input id="width" name="width" type="text" value="20" class="form-control input-md">
   </div>
 </div>
 
@@ -92,7 +89,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="height">Высота, мм</label>
   <div class="col-md-4">
-  <input id="height" name="height" type="text" value="28" placeholder="" class="form-control input-md">
+  <input id="height" name="height" type="text" value="28" class="form-control input-md">
   </div>
 </div>
 
@@ -100,7 +97,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="in collection">В коллекции с</label>
   <div class="col-md-4">
-  <input id="in collection" name="in collection" type="text" value="2005-07-04" placeholder="" class="form-control input-md">
+  <input id="in collection" name="in collection" type="text" value="2005-07-04" class="form-control input-md">
     <span class="help-block">Дата в формате ГГГГ-ММ-ДД</span>
   </div>
 </div>
@@ -109,15 +106,15 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="number in catalog">Номер в каталоге</label>
   <div class="col-md-4">
-  <input id="number in catalog" name="number in catalog" type="text" value="02-05-4" placeholder="" class="form-control input-md">
+  <input id="number in catalog" name="number in catalog" type="text" value="01-01-1" class="form-control input-md">
   </div>
 </div>
 
 <!-- File Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="picture">Изображение</label>
+  <label class="col-md-4 control-label" for="upload">Изображение</label>
   <div class="col-md-4">
-    <input id="picture" name="picture" class="input-file" type="file">
+    <input id="upload" name="upload" class="input-file" type="file">
   </div>
 </div>
 

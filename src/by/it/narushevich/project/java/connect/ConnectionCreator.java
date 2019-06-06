@@ -23,7 +23,7 @@ public class ConnectionCreator {
             DriverManager.registerDriver(new FabricMySQLDriver());
             synchronized (ConnectionCreator.class) {
                 if (connection == null || connection.isClosed()) {
-                    connection= DriverManager.getConnection(
+                    connection = DriverManager.getConnection(
                             SetupConnection.getURL(),
                             SetupConnection.getUSER(),
                             SetupConnection.getPASSWORD());

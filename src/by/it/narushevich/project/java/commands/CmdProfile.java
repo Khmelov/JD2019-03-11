@@ -1,10 +1,11 @@
 package by.it.narushevich.project.java.commands;
 
+import by.it.narushevich.project.java.beans.Teatag;
 import by.it.narushevich.project.java.beans.TeatagString;
 import by.it.narushevich.project.java.beans.User;
 import by.it.narushevich.project.java.dao.Dao;
 import by.it.narushevich.project.java.util.FormHelper;
-import by.it.narushevich.project.java.util.IsThereUser;
+import by.it.narushevich.project.java.util.Tools;
 import by.it.narushevich.project.java.util.Patterns;
 import by.it.narushevich.project.java.util.Validator;
 
@@ -20,7 +21,7 @@ public class CmdProfile extends Cmd {
     public Cmd execute(HttpServletRequest req) throws SQLException {
 
         Dao dao = Dao.getDao();
-        User user = IsThereUser.isUserInSession(req);
+        User user = Tools.isUserInSession(req);
 
         if (user == null) {
             return Actions.LOGIN.command;
@@ -28,7 +29,7 @@ public class CmdProfile extends Cmd {
 
         if (FormHelper.isPost(req)) {
 
-            if (FormHelper.pressedButton(req, "update")) {
+            if (FormHelper.pressedButton(req, "updateAc")) {
                 String login = Validator.getString(req, "login", Patterns.LOGIN);
                 String password = md5Hex(Validator.getString(req, "password", Patterns.PASSWORD));
                 String email = Validator.getString(req, "email", Patterns.EMAIL);
@@ -39,17 +40,24 @@ public class CmdProfile extends Cmd {
                 return this;
             }
 
-            if (FormHelper.pressedButton(req, "delete")) {
+            if (FormHelper.pressedButton(req, "deleteAc")) {
                 dao.user.delete(user);
                 return Actions.INDEX.command;
             }
 
-            if (FormHelper.pressedButton(req,"create")) {
+            if (FormHelper.pressedButton(req,"createTag")) {
                 return Actions.CREATETAG.command;
+            }
+
+            if (FormHelper.pressedButton(req,"deleteTag")) {
+                Teatag teatag = dao.teatag.read(Validator.getLong(req, "id"));
+                dao.teatag.delete(teatag);
+                return this;
             }
         }
 
         List<TeatagString> usersTeatags = Dao.getDao().teatag.getSelected(user.getId());
+        req.setAttribute("usersTeatagsSize", usersTeatags.size());
         req.setAttribute("usersTeatags", usersTeatags);
 
         return null;

@@ -56,6 +56,7 @@ public class InitDataBase {
                     "  `num_in_catalog` VARCHAR(7) NULL,\n" +
                     "  `user_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
+                    "  UNIQUE `num_in_catalog_UNIQUE` (`num_in_catalog` ASC),\n" +
                     "  CONSTRAINT `fk_teatags_users1`\n" +
                     "    FOREIGN KEY (`user_id`)\n" +
                     "    REFERENCES `narushevich`.`users` (`id`)\n" +

@@ -38,6 +38,6 @@ public class CmdLogin extends Cmd {
                 return Actions.PROFILE.command;
             }
         }
-        return Actions.ERROR.command;
+        return null;
     }
 }
