@@ -23,9 +23,9 @@ public class CmdBasket extends Cmd {
 		}
 
 		if (FormHelper.isPost(req)) {
-			long matId = Validator.getLong(req, "material.ID", Patterns.NUMBER);
 
 			if (FormHelper.contains(req, "delete")) {
+				long matId = Validator.getLong(req, "material.ID", Patterns.NUMBER);
 				Purchase purchase = new Purchase(
 						Validator.getLong(req, "purchase.ID", Patterns.NUMBER),
 						user.getID(),
@@ -40,6 +40,7 @@ public class CmdBasket extends Cmd {
 			}
 
 			if (FormHelper.contains(req, "change")) {
+				long matId = Validator.getLong(req, "material.ID", Patterns.NUMBER);
 				Purchase purchase = new Purchase(
 						Validator.getLong(req, "purchase.ID", Patterns.NUMBER),
 						user.getID(),
@@ -47,7 +48,7 @@ public class CmdBasket extends Cmd {
 						Validator.getInt(req, "number", Patterns.NUMBER)
 				);
 				if (dao.purchase.update(purchase)) {
-					String change = String.format("Количества товара '%s' изменено!",
+					String change = String.format("Количество товара '%s' изменено!",
 							dao.material.getAll("WHERE ID=" + matId).get(0).getName());
 					req.setAttribute("success", change);
 				}
@@ -55,14 +56,14 @@ public class CmdBasket extends Cmd {
 
 			if (FormHelper.contains(req, "send")) {
 				List<Purchase> purchases = dao.purchase.getAll("WHERE users_ID=" + user.getID());
+				if (purchases.size() < 1) req.setAttribute("sent", "Корзина пуста");
 				for (Purchase purchase : purchases) {
-					dao.purchase.delete(purchase);
+					if (dao.purchase.delete(purchase))
+						req.setAttribute("sent", "Спасибо за заказ!");
 				}
-				if (purchases.size() < 1)
-					req.setAttribute("sent", "Спасибо за заказ!");
-				return null;
 			}
 		}
+
 		List<Purchase> purchases = dao.purchase.getAll("WHERE users_ID=" + user.getID());
 		req.setAttribute("purchases", purchases);
 		List<Material> materials = dao.material.getAll();

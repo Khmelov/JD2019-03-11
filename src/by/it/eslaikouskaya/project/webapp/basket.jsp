@@ -17,9 +17,9 @@
     </div>
     <hr>
 
-
+<form class="form-horizontal-${purchase.ID}" action="do?command=Basket" method="post">
     <c:forEach items="${purchases}" var="purchase">
-    <form class="form-horizontal-${purchase.ID}" action="do?command=Basket" method="post">
+
         <div class="row">
         <input id="purchase.ID" name="purchase.ID" type="hidden" placeholder="" class="form-control input-md" required="" value="${purchase.ID}">
         <c:forEach items="${materials}" var="material">
@@ -42,17 +42,16 @@
                 <button id="delete" name="delete" class="btn btn-danger">Удалить</button>
             </div>
         </div>
-</form>
+
+
     </c:forEach>
-
-
-       <!-- Button -->
-                    <div class="form-group">
-                    <div class="col-md-4">
-                        <button id="send" name="send" class="btn btn-warning"">Заказать</button>
-                    </div>
-                    </div>
-
+               <!-- Button -->
+               <div class="form-group">
+               <div class="col-md-4">
+               <button id="send" name="send" class="btn btn-warning">Заказать</button>
+               </div>
+               </div>
+</form>
     <h3>${sent}</h3>
     </c:if>
 <br><hr>

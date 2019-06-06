@@ -34,6 +34,17 @@ public class CmdEditCategory extends Cmd {
 					req.setAttribute("success", "Введите имя категории правильно!");
 					return null;
 				}
+				if (categories.size() > 1) {
+					for (Category cat : categories) {
+						if (dao.grade.getAll("WHERE categories_ID=" + cat.getID()).size() > 0)
+							continue;
+						if (dao.category.delete(cat)) {
+							req.setAttribute("success", "Категория '" + category + "' успешно удален!");
+							req.setAttribute("categories", dao.category.getAll());
+							return null;
+						}
+					}
+				}
 				long category_id = categories.get(0).getID();
 				if (dao.grade.getAll("WHERE categories_ID=" + category_id).size() > 0) {
 					req.setAttribute("success", "Невозможно удалить категорию, сначала удалите все классы привязанные к ней!");
@@ -42,8 +53,6 @@ public class CmdEditCategory extends Cmd {
 				if (dao.category.delete(categories.get(0)))
 					req.setAttribute("success", "Категория успешно удалена!");
 			}
-
-
 			req.setAttribute("categories", dao.category.getAll());
 
 		}

@@ -19,7 +19,7 @@ public class CmdIndex extends Cmd {
 		int start = 0;
 		if (FormHelper.contains(req, "start"))
 			start = Validator.getInt(req, "start");
-		String limit = String.format(" LIMIT %s,10", start);
+		String limit = String.format(" LIMIT %s,12", start);
 		materials = dao.material.getAll(limit);
 		req.setAttribute("materials", materials);
 		List<Grade> grades = dao.grade.getAll();
@@ -29,9 +29,14 @@ public class CmdIndex extends Cmd {
 
 		if (FormHelper.isPost(req)) {
 			if (FormHelper.contains(req, "tobasket")) {
+
 				User user = Tools.findUserInSession(req);
-				long id = Validator.getLong(req, "ID", Patterns.NUMBER);
 				if (user != null) {
+					if (Validator.getString(req, "number").isEmpty()) {
+						req.setAttribute("added", "Введите количество товара");
+						return null;
+					}
+					long id = Validator.getLong(req, "ID", Patterns.NUMBER);
 					Purchase purchase = new Purchase(
 							0,
 							user.getID(),

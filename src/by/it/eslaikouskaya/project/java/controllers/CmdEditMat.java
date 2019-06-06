@@ -14,6 +14,7 @@ public class CmdEditMat extends Cmd {
 	@Override
 	public Cmd execute(HttpServletRequest req) throws Exception {
 		Dao dao = Dao.getDao();
+
 		if (FormHelper.isPost(req)) {
 			String name = Validator.getString(req, "name", Patterns.MATERIAL);
 			int price = Validator.getInt(req, "price", Patterns.NUMBER);
@@ -34,6 +35,8 @@ public class CmdEditMat extends Cmd {
 				String delete = String.format("Материал '%s' успешно удален!", name);
 				if (materials.size() < 1) {
 					req.setAttribute("success", "Введите имя материала правильно!");
+					req.setAttribute("grades", dao.grade.getAll());
+					req.setAttribute("materials", dao.material.getAll());
 					return null;
 				}
 				if (dao.material.delete(materials.get(0)))

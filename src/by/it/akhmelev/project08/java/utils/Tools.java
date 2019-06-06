@@ -19,7 +19,6 @@ public class Tools {
     }
 
     public static void createImage(HttpServletRequest req, String filename) {
-
         try {
             Part photo = req.getPart("photo");
             String path = req.getServletContext().getRealPath("/images") + "/" + filename;

@@ -4,7 +4,7 @@
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-<form class="form-horizontal" action="do?command=EditGrade" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="do?command=EditGrade" method="post">
 <fieldset>
 
 <!-- Form Name -->
@@ -30,16 +30,7 @@
 </div>
 </div>
 
-<!-- File Button -->
-<div class="form-group">
-<label class="col-md-4 control-label" for="photo">Фото</label>
-<div class="col-md-4">
-<input id="photo" name="photo" class="input-file" type="file">
-</div>
-</div>
-
 <!-- Button -->
-
 <div class="form-group">
    <label class="col-md-4 control-label" for="button"></label>
    <div class="col-md-4">
@@ -71,6 +62,8 @@
 </c:forEach>
 </div>
 <hr>
+
+
 </div>
 </body>
 </html>
