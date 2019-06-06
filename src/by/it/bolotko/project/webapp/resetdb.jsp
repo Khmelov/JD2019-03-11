@@ -1,19 +1,18 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
-<%@ include file="include/head.htm" %>
+<%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
-    <%@ include file="include/menu.htm" %>
+    <%@ include file="include/menu.jsp" %>
     <form class="form-horizontal" action="do?command=ResetDB" method="post">
         <fieldset>
             <!-- Form Name -->
-            <legend>Reset DB</legend>
-
-            <!-- Button (Double) -->
+            <legend>Сброс Базы Данных</legend>
+            <!-- Button -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="resetdba">Are you sure you want to delete the database?</label>
-                <div class="col-md-8">
-                    <button id="resetdba" name="resetdba" class="btn btn-success">Agree</button>
-                    <button id="resetdbd" name="resetdbd" class="btn btn-danger">Disagree</button>
+                <label class="col-md-6 control-label" for="resetdb">Вы уверены что хотите выполнить сброс базы данных?</label>
+                <div class="col-md-4">
+                    <button id="resetdb" value="agree" name="resetdb" class="btn btn-warning">Да!</button>
                 </div>
             </div>
 
