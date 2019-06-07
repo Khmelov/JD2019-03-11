@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
-<%@ include file="include/head.htm" %>
+<%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
-    <%@ include file="include/menu.htm" %>
+    <%@ include file="include/menu.jsp" %>
     <h2>Редактирование пользователей</h2>
     <div class="row">
         <div class=col-md-2>Логин</div>
@@ -37,7 +37,7 @@
                 <div class="col-md-2">
                     <select id="roles_id" name="roles_id" class="form-control">
                         <c:forEach items="${roles}" var="role">
-                            <option value="${role.id}" ${user.roles_id==role.id?"selected":""}>${role.role}</option>
+                            <option value="${role.id}" ${user.roles_ID==role.id?"selected":""}>${role.role}</option>
                         </c:forEach>
                     </select>
                 </div>
