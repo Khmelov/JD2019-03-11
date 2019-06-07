@@ -28,6 +28,12 @@
                 <a class="nav-link" href="do?command=AddMessage">Add Message</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="do?command=Profile">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="do?command=EditUsers">Edit Users</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="do?command=Index">Index</a>
             </li>
             <li class="nav-item">

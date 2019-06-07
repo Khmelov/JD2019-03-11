@@ -4,7 +4,7 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.htm" %>
-    <form class="form-horizontal" action="j_security_check" method="post">
+    <form class="form-horizontal" action="do?command=Login" method="post">
         <fieldset>
 
             <!-- Form Name -->
@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="login">Login</label>
                 <div class="col-md-4">
-                    <input id="login" name="j_username" value="user" type="text" placeholder=""
+                    <input id="login" name="login" value="user" type="text" placeholder=""
                            class="form-control input-md" required="">
                     <span class="help-block">Введите логин</span>
                 </div>
@@ -24,7 +24,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="password">Password</label>
                 <div class="col-md-4">
-                    <input id="password" name="j_password" value="user" type="password" placeholder=""
+                    <input id="password" name="password" value="user" type="password" placeholder=""
                            class="form-control input-md" required="">
                     <span class="help-block">Введите пароль</span>
                 </div>

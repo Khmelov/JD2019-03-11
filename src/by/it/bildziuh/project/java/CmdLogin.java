@@ -6,6 +6,7 @@ import by.it.bildziuh.project.java.utils.FormHelper;
 import by.it.bildziuh.project.java.utils.Validator;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class CmdLogin extends Cmd {
@@ -17,7 +18,10 @@ public class CmdLogin extends Cmd {
             String where=String.format(" WHERE Login='%s' and Password='%s'",login,password);
             List<User> users = Dao.getDao().user.getAll(where);
             if (users.size()>0){
-                return Actions.INDEX.command;
+                HttpSession session = req.getSession();
+                User user = users.get(0);
+                session.setAttribute("user",user);
+                return Actions.ADDMOD.command;
             }
         }
         return null;
