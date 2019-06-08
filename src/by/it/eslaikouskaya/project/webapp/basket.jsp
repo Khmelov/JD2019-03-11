@@ -42,7 +42,8 @@
                 <button id="delete" name="delete" class="btn btn-danger">Удалить</button>
             </div>
         </div>
-
+</form>
+<form class="form-horizontal" action="do?command=Basket" method="post">
 
     </c:forEach>
                <!-- Button -->
@@ -51,9 +52,9 @@
                <button id="send" name="send" class="btn btn-warning">Заказать</button>
                </div>
                </div>
-</form>
     <h3>${sent}</h3>
     </c:if>
+    </form>
 <br><hr>
      <p>+375 (177) 742777  +375 (177) 931777  +375 (29) 6872793  +375 (33) 6740370</p>
 </div>
