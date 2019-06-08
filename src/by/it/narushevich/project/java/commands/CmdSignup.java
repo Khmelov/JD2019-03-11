@@ -2,6 +2,7 @@ package by.it.narushevich.project.java.commands;
 
 import by.it.narushevich.project.java.beans.User;
 import by.it.narushevich.project.java.dao.Dao;
+import by.it.narushevich.project.java.exceptions.SiteException;
 import by.it.narushevich.project.java.util.FormHelper;
 import by.it.narushevich.project.java.util.Patterns;
 import by.it.narushevich.project.java.util.Validator;
@@ -15,7 +16,7 @@ import static org.apache.commons.codec.digest.DigestUtils.md5Hex;
 public class CmdSignup extends Cmd {
 
     @Override
-    public Cmd execute(HttpServletRequest req) throws SQLException {
+    public Cmd execute(HttpServletRequest req) {
 
         Dao dao = Dao.getDao();
 
@@ -25,8 +26,12 @@ public class CmdSignup extends Cmd {
                     md5Hex(Validator.getString(req, "password", Patterns.PASSWORD)),
                     Validator.getString(req, "email", Patterns.EMAIL),
                     2);
-            if (dao.user.create(user)) {
-                return Actions.PROFILE.command;
+            try {
+                if (dao.user.create(user))
+                    return Actions.PROFILE.command;
+            }
+            catch (SQLException e) {
+                throw new SiteException("This login is busy");
             }
         }
         return null;

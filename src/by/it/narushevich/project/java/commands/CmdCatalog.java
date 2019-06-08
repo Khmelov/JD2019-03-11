@@ -15,6 +15,12 @@ public class CmdCatalog extends Cmd {
     public Cmd execute(HttpServletRequest req) throws SQLException {
         Dao dao = Dao.getDao();
         List<TeatagString> teatags = dao.teatag.getSelected("");
+        req.setAttribute("teatagsSize", teatags.size());
+        int start = 0;
+        if (FormHelper.pressedButton(req,"start"))
+            start = Validator.getInt(req,"start");
+        String limit = String.format(" LIMIT %s,10", start);
+        teatags = dao.teatag.getSelected(limit);
         req.setAttribute("teatags", teatags);
         return null;
     }

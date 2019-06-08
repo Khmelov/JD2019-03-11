@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class UserDao extends AbstractDao<User> {
 
@@ -49,7 +50,7 @@ public class UserDao extends AbstractDao<User> {
                 "SELECT * FROM `users` %s", where);
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement()
+                Statement statement = Objects.requireNonNull(connection).createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {

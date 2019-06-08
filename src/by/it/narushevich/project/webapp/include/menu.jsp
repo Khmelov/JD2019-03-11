@@ -19,13 +19,14 @@
                  <a class="nav-link" href="do?command=ResetDataBase">Сброс базы</a>
             </li>
             </c:if>
-
+            <c:if test="${user==null}">
             <li class="nav-item">
             <a class="nav-link" href="do?command=Login">Авторизация</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="do?command=SignUp">Регистрация</a>
             </li>
+            </c:if>
             <c:if test="${user!=null}">
             <li class="nav-item">
                  <a class="nav-link" href="do?command=Logout">Выход</a>

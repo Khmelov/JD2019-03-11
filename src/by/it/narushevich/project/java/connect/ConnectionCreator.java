@@ -1,34 +1,22 @@
 package by.it.narushevich.project.java.connect;
 
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
-
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionCreator {
 
-    private static volatile Connection connection = null;
+    public static Connection get() {
+        Connection connection = null;
 
-    static {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public static Connection get() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            DriverManager.registerDriver(new FabricMySQLDriver());
-            synchronized (ConnectionCreator.class) {
-                if (connection == null || connection.isClosed()) {
-                    connection = DriverManager.getConnection(
-                            SetupConnection.getURL(),
-                            SetupConnection.getUSER(),
-                            SetupConnection.getPASSWORD());
-                }
-            }
+            InitialContext ic = new InitialContext();
+            DataSource ds = (DataSource) ic.lookup("java:/comp/env/jdbc/narushevich");
+            connection = ds.getConnection();
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
         }
         return connection;
     }

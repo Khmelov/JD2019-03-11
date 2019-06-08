@@ -11,36 +11,16 @@
 
 <!-- Form Name -->
 <legend>Создание нового элемента вашей коллекции</legend>
-
+<br>
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="trademark list">Список торговых марок</label>
-  <div class="col-md-4">
+  <label class="col-md-5 control-label" for="trademark list"><i>Список торговых марок</i></label>
+  <div class="col-md-5">
     <select id="trademark list" name="trademark list" class="form-control">
       <option></option>
-      <option value="AHMAD TEA">Ahmad tea</option>
-      <option value="AKBAR">Akbar</option>
-      <option value="ALATTAR">Alattar</option>
-      <option value="AUCHAN">Auchan</option>
-      <option value="BROOKE BOND">Brooke Bond</option>
-      <option value="CHELTON">Chelton</option>
-      <option value="DILMAH">Dilmah</option>
-      <option value="FOREST OF ARDEN">Forest of Arden</option>
-      <option value="GOLDEN BOWL">Golden Bowl</option>
-      <option value="GREENFIELD">Greenfield</option>
-      <option value="JAF TEA">Jaf tea</option>
-      <option value="KAKOO">Kakoo</option>
-      <option value="LIPTON">Lipton</option>
-      <option value="LORD NELSON">Lord Nelson</option>
-      <option value="MABROC">Mabroc</option>
-      <option value="MAITRE DE THE">Maitre de The</option>
-      <option value="MALWA">Malwa</option>
-      <option value="MESSMER">Messmer</option>
-      <option value="MISTRAL">Mistral</option>
-      <option value="NATURSAN">Natursan</option>
-      <option value="PICKWICK">Pickwick</option>
-      <option value="PRINCESS JAVA">Princess Java</option>
-      <option value="TEA">Tea</option>
+        <c:forEach items="${trademarks}" var="trademark">
+            <option value="${trademark.trademark}">${trademark.trademark}</option>
+        </c:forEach>
     </select>
     <span class="help-block">если нужного нет - оставьте поле пустым</span>
   </div>
@@ -49,26 +29,26 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="trademark"></label>
-  <div class="col-md-4">
-  <input id="trademark" name="trademark" type="text" value="NADIN COMPANY APS." class="form-control input-md">
+  <label class="col-md-5 control-label" for="trademark"></label>
+  <div class="col-md-5">
+  <input id="trademark" name="trademark" type="text" class="form-control input-md">
   <span class="help-block">введите торговую марку</span>
   </div>
 </div>
-
+<br>
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="subtitle">Подзаголовок</label>
-  <div class="col-md-4">
-  <input id="subtitle" name="subtitle" type="text" value="Nadin" placeholder="" class="form-control input-md">
-  <span class="help-block">что еще написано на ярлычке?</span>
+  <label class="col-md-5 control-label" for="subtitle"><i>Подзаголовок</i></label>
+  <div class="col-md-5">
+  <input id="subtitle" name="subtitle" type="text" placeholder="" class="form-control input-md">
+  <span class="help-block">что еще написано на ярлычке?<br>Можно использовать английские буквы и пробелы</span>
   </div>
 </div>
-
+<br>
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="material">Материал</label>
-  <div class="col-md-4">
+  <label class="col-md-5 control-label" for="material"><i>Материал</i></label>
+  <div class="col-md-5">
     <select id="material" name="material" class="form-control">
       <option value="cardboard">картон</option>
       <option value="paper">бумага</option>
@@ -76,44 +56,50 @@
     </select>
   </div>
 </div>
-
+<br>
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="width">Ширина, мм</label>
-  <div class="col-md-4">
-  <input id="width" name="width" type="text" value="20" class="form-control input-md">
+  <label class="col-md-5 control-label" for="width"><i>Ширина, мм</i></label>
+  <div class="col-md-5">
+  <input id="width" name="width" type="text" class="form-control input-md">
   </div>
 </div>
-
+<br>
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="height">Высота, мм</label>
-  <div class="col-md-4">
-  <input id="height" name="height" type="text" value="28" class="form-control input-md">
+  <label class="col-md-5 control-label" for="height"><i>Высота, мм</i></label>
+  <div class="col-md-5">
+  <input id="height" name="height" type="text" class="form-control input-md">
   </div>
 </div>
-
+<br>
 <!-- Date input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="in collection">В коллекции с</label>
-  <div class="col-md-4">
-  <input id="in collection" name="in collection" type="text" value="2005-07-04" class="form-control input-md">
+  <label class="col-md-5 control-label" for="in collection"><i>В коллекции с</i></label>
+  <div class="col-md-5">
+  <input id="in collection" name="in collection" type="text" class="form-control input-md">
     <span class="help-block">Дата в формате ГГГГ-ММ-ДД</span>
   </div>
 </div>
-
+<br>
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="number in catalog">Номер в каталоге</label>
-  <div class="col-md-4">
-  <input id="number in catalog" name="number in catalog" type="text" value="01-01-1" class="form-control input-md">
+  <label class="col-md-5 control-label" for="number in catalog"><i>Номер в каталоге</i></label>
+  <div class="col-md-5">
+  <input id="number in catalog" name="number in catalog" type="text" class="form-control input-md">
+  <span class="help-block">состоит из 3-х блоков цифр, разделенных дефисом;<br>
+  1-й блок - типоразмер (две цифры):<br>
+   <b>01</b> - если ширина до 23 мм, а высота до 25 мм,<br>
+   <b>02</b> - если ширина до 32 мм, а высота до 35 мм;<br>
+  2-й блок - номер ряда в реестре (до трех цифр);<br>
+  3-й блок - столбец в ряду (одна цифра).</span>
   </div>
 </div>
-
+<br>
 <!-- File Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="upload">Изображение</label>
-  <div class="col-md-4">
+  <label class="col-md-5 control-label" for="upload"><i>Изображение</i></label>
+  <div class="col-md-5">
     <input id="upload" name="upload" class="input-file" type="file">
   </div>
 </div>

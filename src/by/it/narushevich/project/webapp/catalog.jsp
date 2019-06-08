@@ -33,6 +33,7 @@
         <hr>
     </c:forEach>
     <br>
+    <my:paginator count="${teatagsSize}" step="10" urlprefix="do?command=catalog&start="/>
     <br>
 </div>
 </body>

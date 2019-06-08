@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class TrademarkDao extends AbstractDao<Trademark> {
     @Override
@@ -46,7 +47,7 @@ public class TrademarkDao extends AbstractDao<Trademark> {
                 "SELECT * FROM `trademark` %s", where);
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement()
+                Statement statement = Objects.requireNonNull(connection).createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {

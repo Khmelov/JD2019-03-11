@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class RoleDao extends AbstractDao<Role> {
     @Override
@@ -44,7 +45,7 @@ public class RoleDao extends AbstractDao<Role> {
         String sql = String.format(Locale.ENGLISH,
                 "SELECT * FROM `roles` %s", where);
         try (Connection connection = ConnectionCreator.get();
-             Statement statement = connection.createStatement()) {
+             Statement statement = Objects.requireNonNull(connection).createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()){
                 Role role = new Role(

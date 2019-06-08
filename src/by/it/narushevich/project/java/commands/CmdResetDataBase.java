@@ -1,6 +1,6 @@
 package by.it.narushevich.project.java.commands;
 
-import by.it.narushevich.project.java.dao.InitDataBase;
+import by.it.narushevich.project.java.dao.Dao;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
@@ -8,7 +8,8 @@ import java.sql.SQLException;
 public class CmdResetDataBase extends Cmd{
     @Override
     public Cmd execute(HttpServletRequest req) throws SQLException {
-        InitDataBase.main(new String[] {});
+        Dao dao = Dao.getDao();
+        dao.resetDataBase();
         return Actions.INDEX.command;
     }
 }

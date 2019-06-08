@@ -21,6 +21,7 @@ public class CmdLogout extends Cmd {
         if (user != null && FormHelper.pressedButton(req, "no"))
             return Actions.PROFILE.command;
 
-        return Actions.INDEX.command;
+
+        return null;
     }
 }
