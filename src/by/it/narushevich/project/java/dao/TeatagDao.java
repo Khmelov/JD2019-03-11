@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class TeatagDao extends AbstractDao<Teatag> {
 
@@ -50,16 +51,17 @@ public class TeatagDao extends AbstractDao<Teatag> {
         return executeUpdate(sql);
     }
 
-    public List<TeatagString> getSelected() throws SQLException {
+    public List<TeatagString> getSelected(String condition) throws SQLException {
         List<TeatagString> teatags = new ArrayList<>();
-        String sql = "SELECT `trademark`, `subtitle`, `material`, `width`, `height`, " +
+        String sql = String.format(Locale.ENGLISH,
+                "SELECT `trademark`, `subtitle`, `material`, `width`, `height`, " +
                 "`in_collection_since`, `num_in_catalog`, `login` " +
-                "FROM `teatags` JOIN trademark ON teatags.`trademark_id`=trademark.id " +
+                "FROM teatags JOIN trademark ON teatags.trademark_id=trademark.id " +
                 "JOIN material ON teatags.material_id=material.id " +
-                "JOIN users ON teatags.user_id=users.id";
+                "JOIN users ON teatags.user_id=users.id %s", condition);
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement()
+                Statement statement = Objects.requireNonNull(connection).createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()){
@@ -86,10 +88,10 @@ public class TeatagDao extends AbstractDao<Teatag> {
                 "JOIN trademark ON teatags.`trademark_id`=trademark.id " +
                 "JOIN material ON teatags.material_id=material.id " +
                 "JOIN users ON teatags.user_id=users.id" +
-                " WHERE teatags.user_id=%d",id);
+                " WHERE teatags.user_id=%d ORDER BY `in_collection_since`",id);
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement()
+                Statement statement = Objects.requireNonNull(connection).createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()){
@@ -117,7 +119,7 @@ public class TeatagDao extends AbstractDao<Teatag> {
                 "SELECT * FROM `teatags` %s", where);
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement()
+                Statement statement = Objects.requireNonNull(connection).createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {

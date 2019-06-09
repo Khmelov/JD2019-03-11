@@ -1,7 +1,4 @@
-<%@ page contentType="text/html;
-    charset=UTF-8"
-    language="java"
-    pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
 <body>
@@ -17,7 +14,7 @@
   <h3><p class="text-center" class="font-weight-bold">Что такое ТЕОНОТАФИЛИЯ?</p></h3>
 
 <div class="row">
-<div class="col-md-3" style="margin-top: 25px;" align="center"><img align="center" src="teatags.jpg"/></div>
+<div class="col-md-3" style="margin-top: 20px;" align="center"><img src="pictures/teatags.jpg" height="200 px"/></div>
 <div class="col-md-9 text-justify"><p><b>Теонотафилия</b> (от лат. <i>thea</i> - чай, <i>nota</i> - ярлык,
 этикетка и  греч. <i>philio</i> - любить) - коллекционирование ярлычков от чайных пакетиков или
 самих пакетиков. Термин был предложен Алексеем Миляковым из Латвии в 2005 году.</p>

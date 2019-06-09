@@ -1,7 +1,4 @@
-<%@ page contentType="text/html;
-    charset=UTF-8"
-    language="java"
-    pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
 <body>
@@ -19,7 +16,7 @@
         <div class="form-group">
             <div class="col-md-3">
                <button id="logout" name="logout" class="btn btn-danger">Выйти</button>
-               <button id="no" name="no" class="btn btn-success">Я передумал(а)</button>
+               <button id="no" name="no" class="btn btn-success">Остаться</button>
             </div>
          </div>
 

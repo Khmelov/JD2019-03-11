@@ -2,6 +2,7 @@ package by.it.narushevich.project.java.commands;
 
 import by.it.narushevich.project.java.beans.User;
 import by.it.narushevich.project.java.dao.Dao;
+import by.it.narushevich.project.java.exceptions.SiteException;
 import by.it.narushevich.project.java.util.FormHelper;
 import by.it.narushevich.project.java.util.Patterns;
 import by.it.narushevich.project.java.util.Validator;
@@ -33,11 +34,12 @@ public class CmdLogin extends Cmd {
             String passwordBase = user.getPassword();
             if (passwordBase.equals(passwordForm)) {
                 HttpSession session = req.getSession(true);
-                session.setMaxInactiveInterval(300);
                 session.setAttribute("user", user);
                 return Actions.PROFILE.command;
             }
+            else
+                throw new SiteException("Incorrect password");
         }
-        return Actions.ERROR.command;
+        return null;
     }
 }

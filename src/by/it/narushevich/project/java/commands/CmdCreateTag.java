@@ -6,7 +6,7 @@ import by.it.narushevich.project.java.beans.Trademark;
 import by.it.narushevich.project.java.beans.User;
 import by.it.narushevich.project.java.dao.Dao;
 import by.it.narushevich.project.java.util.FormHelper;
-import by.it.narushevich.project.java.util.IsThereUser;
+import by.it.narushevich.project.java.util.Tools;
 import by.it.narushevich.project.java.util.Patterns;
 import by.it.narushevich.project.java.util.Validator;
 
@@ -17,7 +17,7 @@ public class CmdCreateTag extends Cmd {
     @Override
     public Cmd execute(HttpServletRequest req) throws SQLException {
 
-        User user = IsThereUser.isUserInSession(req);
+        User user = Tools.isUserInSession(req);
         if (user == null)
             return Actions.LOGIN.command;
 
@@ -28,7 +28,6 @@ public class CmdCreateTag extends Cmd {
 
             teatag.setId(0);
             String trademarkName = req.getParameter("trademark list");
-            System.out.println(trademarkName);
 
             if (!trademarkName.equals("")){
                 String whereTrademark = String.format("WHERE trademark='%s'", trademarkName);
@@ -40,11 +39,10 @@ public class CmdCreateTag extends Cmd {
                         req, "trademark", Patterns.TRADEMARK).toUpperCase();
 
                 String whereTrademark = String.format("WHERE trademark='%s'", yourTrademark);
-                Trademark trademark = dao.trademark.getAll(whereTrademark).get(0);
-                if (trademark != null) {
-                    teatag.setTrademark_id(trademark.getId());
+                if (!dao.trademark.getAll(whereTrademark).isEmpty()) {
+                    teatag.setTrademark_id(dao.trademark.getAll(whereTrademark).get(0).getId());
                 } else {
-                    trademark = new Trademark(0, yourTrademark);
+                    Trademark trademark = new Trademark(0, yourTrademark);
                     dao.trademark.create(trademark);
                     teatag.setTrademark_id(trademark.getId());
                 }
@@ -68,10 +66,14 @@ public class CmdCreateTag extends Cmd {
 
             teatag.setUser_id(user.getId());
 
+            Tools.uploadImage(req, teatag);
+
             if (dao.teatag.create(teatag)) {
                 return Actions.PROFILE.command;
             }
         }
         return null;
     }
+
+
 }

@@ -5,13 +5,14 @@ import by.it.narushevich.project.java.connect.ConnectionCreator;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 
 public class InitDataBase {
 
     public static void main(String[] args) throws SQLException {
 
         try (Connection connection = ConnectionCreator.get();
-             Statement statement = connection.createStatement()) {
+             Statement statement = Objects.requireNonNull(connection).createStatement()) {
 
             statement.executeUpdate("DROP SCHEMA IF EXISTS `narushevich` ;");
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `narushevich` DEFAULT CHARACTER SET utf8 ;");
