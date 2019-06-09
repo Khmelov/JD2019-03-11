@@ -1,10 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
-<body>
-<div class="container">
+<body style="background-image:url(images/fon2.jpg)">
+<div class="container" style="background-color:whitesmoke">
     <%@ include file="include/menu.jsp" %>
-    <form class="form-horizontal" action="do?command=CreateCar" method="post">
+    <br>
+    <form class="form-horizontal" action="do?command=CreateCar" method="post" >
+<%--        enctype="multipart/form-data"--%>
         <fieldset>
 
             <!-- Form Name -->
@@ -71,6 +73,14 @@
                 </div>
             </div>
 
+<%--            <!-- File Button -->--%>
+<%--            <div class="form-group">--%>
+<%--                <label class="col-md-4 control-label" for="photo">Фото</label>--%>
+<%--                <div class="col-md-4">--%>
+<%--                    <input id="photo" name="photo" class="input-file" type="file">--%>
+<%--                </div>--%>
+<%--            </div>--%>
+
             <!-- Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="signup"></label>
@@ -81,6 +91,7 @@
 
         </fieldset>
     </form>
+    <br>
 </div>
 </body>
 </html>

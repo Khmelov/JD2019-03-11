@@ -21,7 +21,7 @@ public class CmdLogin extends Cmd {
                 HttpSession session = req.getSession();
                 User user = users.get(0);
                 session.setAttribute("user", user);
-                return Actions.PROFILE.command;
+                return Actions.INDEX.command;
             }
         }
         return null;

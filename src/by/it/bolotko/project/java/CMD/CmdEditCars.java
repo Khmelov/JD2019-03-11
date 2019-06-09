@@ -10,39 +10,18 @@ import by.it.bolotko.project.java.utils.Validator;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class CmdProfile extends Cmd {
+public class CmdEditCars extends Cmd {
     @Override
-   public Cmd execute(HttpServletRequest req) throws Exception {
+    public Cmd execute(HttpServletRequest req) throws Exception {
         Dao dao = Dao.getDao();
         User user = Tools.findUserInSession(req);
-        if (user == null) {
-            return Actions.LOGIN.command;
-        }
-
         if (FormHelper.isPost(req)) {
 
             if (FormHelper.contains(req, "update")) {
-                String login = Validator.getString(req, "login", "[a-zA-Z0-9]{4,30}");
-                String password = Validator.getString(req, "password", "[a-zA-Z0-9@#$%]{4,20}");
-                String email = Validator.getString(req, "email", "[a-z0-9._%+-]+@[a-z0-9.-]+");
-                String phone = Validator.getString(req, "phone", "[0-9+]{13,13}");
-                user.setLogin(login);
-                user.setPassword(password);
-                user.setEmail(email);
-                user.setPhone(phone);
-                dao.user.update(user);
-                return this;
-            }
-
-            if (FormHelper.contains(req, "logout")) {
-                return Actions.LOGOUT.command;
-            }
-
-            if (FormHelper.contains(req, "edit")) {
                 Car car = new Car(
                         Validator.getLong(req, "id"),
-                        Validator.getString(req, "car_type", "[A-Za-z]+"),
-                        Validator.getString(req, "fuel_type", "[A-Za-z]+"),
+                        Validator.getString(req, "car_type", "[A-Za-zа-яА-Я]+"),
+                        Validator.getString(req, "fuel_type", "[A-Za-zа-яА-Я]+"),
                         Validator.getString(req, "mark", "[а-яА-ЯA-Za-z0-9]+"),
                         Validator.getString(req, "model", "[а-яА-ЯA-Za-z0-9]+"),
                         Validator.getString(req, "price", "[0-9]+"),
@@ -53,11 +32,11 @@ public class CmdProfile extends Cmd {
                 return this;
             }
 
-            if (FormHelper.contains(req, "deletecar")) {
+            if (FormHelper.contains(req, "delete")) {
                 Car car = new Car(
                         Validator.getLong(req, "id"),
-                        Validator.getString(req, "car_type", "[A-Za-z]+"),
-                        Validator.getString(req, "fuel_type", "[A-Za-z]+"),
+                        Validator.getString(req, "car_type", "[A-Za-zа-яА-Я]+"),
+                        Validator.getString(req, "fuel_type", "[A-Za-zа-яА-Я]+"),
                         Validator.getString(req, "mark", "[а-яА-ЯA-Za-z0-9]+"),
                         Validator.getString(req, "model", "[а-яА-ЯA-Za-z0-9]+"),
                         Validator.getString(req, "price", "[0-9]+"),
@@ -69,13 +48,14 @@ public class CmdProfile extends Cmd {
             }
         }
 
-
-        List<Car> cars = dao.car.getAll("WHERE users_id=" + user.getId());
+        List<User> users = dao.user.getAll();
+        req.setAttribute("users", users);
+        List<Car> cars = dao.car.getAll();
         req.setAttribute("carsSize", cars.size());
         int start = 0;
         if (FormHelper.contains(req, "start"))
             start = Validator.getInt(req, "start");
-        String limit = String.format(" WHERE users_id=%d LIMIT %s,5", user.getId(), start);
+        String limit = String.format(" LIMIT %s,10", start);
         cars = dao.car.getAll(limit);
         req.setAttribute("cars", cars);
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href=".">Главная</a>
@@ -8,37 +9,46 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <c:if test="${user==null}">
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=Login">Авторизация</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=SignUp">Регистрация</a>
-                </li>
+                <my:menu command="Login" text="Авторизация"/>
+                <my:menu command="SignUp" text="Регистрация"/>
             </c:if>
             <c:if test="${user!=null}">
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=EditUsers">Управление</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=Profile">Профиль</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=CreateCar">Создание объявления</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=Index">База данных</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=Logout">Выход</a>
+                <my:menu command="Profile" text="Профиль"/>
+                <my:menu command="CreateCar" text="Создание объявления"/>
+            </c:if>
+        </ul>
+        <form class="navbar-nav my-2 my-lg-0">
+            <c:if test="${user.roles_id==1}">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Администрирование
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="do?command=DataBase">База данных</a>
+                        <a class="dropdown-item" href="do?command=EditUsers">Управление пользователями</a>
+                        <a class="dropdown-item" href="do?command=EditCars">Редактирование объявлений</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="do?command=ResetDB">Сброс базы данных</a>
+                    </div>
                 </li>
             </c:if>
-            <li class="nav-item">
-                <a class="nav-link" href="do?command=ResetDB">Сброс БД</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+            <c:if test="${user.roles_id==3}">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Администрирование
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="do?command=EditCars">Редактирование объявлений</a>
+                    </div>
+                </li>
+            </c:if>
+        </form>
+        <form class="navbar-nav my-2 my-lg-0">
+            <c:if test="${user!=null}">
+                <my:menu command="Logout" text="Выход"/>
+            </c:if>
         </form>
     </div>
 </nav>

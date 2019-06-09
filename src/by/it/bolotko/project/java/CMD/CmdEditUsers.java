@@ -42,6 +42,12 @@ public class CmdEditUsers extends Cmd {
         }
 
         List<User> users = dao.user.getAll();
+        req.setAttribute("usersSize", users.size());
+        int start = 0;
+        if (FormHelper.contains(req, "start"))
+            start = Validator.getInt(req, "start");
+        String limit = String.format(" LIMIT %s,10", start);
+        users = dao.user.getAll(limit);
         req.setAttribute("users", users);
         return null;
     }
