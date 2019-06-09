@@ -23,8 +23,8 @@ public class CmdCreateCar extends Cmd {
                     0,
                     Validator.getString(req, "car_type", "[A-Za-zа-яА-Я]+"),
                     Validator.getString(req, "fuel_type", "[A-Za-zа-яА-Я]+"),
-                    Validator.getString(req, "mark", "[а-яА-ЯA-Za-z0-9]+"),
-                    Validator.getString(req, "model", "[а-яА-ЯA-Za-z0-9]+"),
+                    Validator.getString(req, "mark", "[а-яА-ЯA-Za-z0-9 ]+"),
+                    Validator.getString(req, "model", "[а-яА-ЯA-Za-z0-9 ]+"),
                     Validator.getString(req, "price", "[0-9]+"),
                     Validator.getString(req, "year_of_issue", "[0-9]{4,4}"),
                     user.getId()

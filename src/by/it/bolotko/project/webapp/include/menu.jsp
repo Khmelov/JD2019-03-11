@@ -27,7 +27,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="do?command=DataBase">База данных</a>
                         <a class="dropdown-item" href="do?command=EditUsers">Управление пользователями</a>
-                        <a class="dropdown-item" href="do?command=EditCars">Управление объявлениями</a>
+                        <a class="dropdown-item" href="do?command=EditCars">Редактирование объявлений</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="do?command=ResetDB">Сброс базы данных</a>
                     </div>
@@ -40,7 +40,7 @@
                         Администрирование
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="do?command=EditCars">Управление объявлениями</a>
+                        <a class="dropdown-item" href="do?command=EditCars">Редактирование объявлений</a>
                     </div>
                 </li>
             </c:if>

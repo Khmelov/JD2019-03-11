@@ -5,7 +5,7 @@
 <div class="container" style="background-color:whitesmoke">
     <%@ include file="include/menu.jsp" %>
     <br>
-    <h3 align="center" style="color:#284755">редактирование пользователей</h3>
+    <h3 align="center" style="color:#284755">управление пользователями</h3>
     <br>
     <div class="row">
         <div class=col-md-2 align="center" style="color:#284755; font-size:16px"><b>Логин</b></div>
@@ -54,7 +54,11 @@
         </form>
     </c:forEach>
 
-    <br><br><br><br><br>
+    <br><br><br>
+    <hr>
+    <my:paginator count="${usersSize}" step="10" urlprefix="do?command=editusers&start="/>
+    <hr>
+    <br>
 </div>
 </body>
 </html>
