@@ -7,7 +7,6 @@
 
     <form class="form-horizontal" action="do?command=SignUp" method="post">
         <fieldset>
-
             <!-- Form Name -->
             <legend>Регистрация(Sign Up)</legend>
 
