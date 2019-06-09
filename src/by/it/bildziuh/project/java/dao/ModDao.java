@@ -2,6 +2,7 @@ package by.it.bildziuh.project.java.dao;
 
 import by.it.bildziuh.project.java.beans.Mod;
 import by.it.bildziuh.project.java.connect.ConnectionCreator;
+import by.it.bildziuh.project.java.dao.AbstractDao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

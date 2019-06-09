@@ -1,5 +1,7 @@
 package by.it.bildziuh.project.java.dao;
 
+import by.it.bildziuh.project.java.dao.ModDao;
+
 import java.sql.SQLException;
 
 public class Dao {

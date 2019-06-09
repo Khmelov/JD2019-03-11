@@ -45,9 +45,11 @@
                     <button id="logout" name="logout" class="btn btn-danger">Выйти</button>
                 </div>
             </div>
-        </fieldset>
 
+        </fieldset>
     </form>
+
+
 
     <h4>Мои модификации</h4>
 
@@ -60,9 +62,9 @@
         <div class="col-md-1">Ссылка</div>
     </div>
 
-    <c:forEach var="mod" items="${modsAll}">
+    <c:forEach items="${mods}" var="mod">
         <div class="row">
-            <div class="col-md-2">${mod.game}</div>
+            <div class="col-md-2">${mod.game()}</div>
             <div class="col-md-2">${mod.group}</div>
             <div class="col-md-2">${mod.name}</div>
             <div class="col-md-3">${mod.description}</div>
@@ -70,6 +72,9 @@
             <div class="col-md-1">${mod.link}</div>
         </div>
     </c:forEach>
+    <hr>
+    <my:paginator count="${modsSize}" step="5" urlprefix="do?command=profile&start="/>
+    <hr>
 </div>
 </body>
 </html>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 public class Validator {
 
 
+
     public static String getString(HttpServletRequest req, String name) {
         return getString(req,name,".*");
     }

@@ -5,11 +5,11 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
 
-    <form class="form-horizontal"action="do?command=AddMod" method="post">
-    <fieldset>
+    <form class="form-horizontal" action="do?command=AddMod" method="post" enctype="multipart/form-data">
+        <fieldset>
 
-    <!-- Form Name -->
-    <legend>Add mod</legend>
+            <!-- Form Name -->
+            <legend>Добавление модификации</legend>
 
     <!-- Text input-->
     <div class="form-group">
@@ -85,6 +85,3 @@
 </div>
 </body>
 </html>
-
-
-

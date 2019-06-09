@@ -27,7 +27,8 @@
     </c:forEach>
 
     <hr>
-    <my:paginator count="${modsSiz}" step="10" urlprefix="?start="/>
+    <my:paginator count="${modsSize}" step="10" urlprefix="?start="/>
+
 </div>
 </body>
 </html>

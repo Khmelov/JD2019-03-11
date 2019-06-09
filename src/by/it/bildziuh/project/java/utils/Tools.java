@@ -23,14 +23,14 @@ public class Tools {
         try {
             Part photo = req.getPart("photo");
             String path = req.getServletContext().getRealPath("/images") + "/" + filename;
-            try (
-                    InputStream inputStream = photo.getInputStream();
-                    OutputStream outputStream = new FileOutputStream(path);
-            ) {
-                byte[] buffer = new byte[100000];
-                while (inputStream.available() > 0) {
+            try(
+            InputStream inputStream = photo.getInputStream();
+            OutputStream outputStream=new FileOutputStream(path);
+            ){
+                byte[] buffer=new byte[100000];
+                while (inputStream.available()>0){
                     int size = inputStream.read(buffer);
-                    outputStream.write(buffer, 0, size);
+                    outputStream.write(buffer,0,size);
                 }
             }
 
@@ -39,6 +39,7 @@ public class Tools {
         } catch (ServletException e) {
             e.printStackTrace();
         }
+
 
     }
 }
