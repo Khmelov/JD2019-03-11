@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
-<%@ include file="include/head.htm" %>
+<%@ include file="include/head.jsp" %>
  <body>
     <div class="container">
-<%@ include file="include/menu.htm" %>
+<%@ include file="include/menu.jsp" %>
 <form class="form-horizontal" action="do?command=SignUp" method="post">
 <fieldset>
 
@@ -24,7 +24,7 @@
   <label class="col-md-4 control-label" for="Password">Password</label>
   <div class="col-md-4">
     <input id="Password" name="Password" value="lisa21031997" type="password" placeholder="qwerty" class="form-control input-md" required="">
-    <span class="help-block">enter a password of at least 8 characters</span>
+    <span class="help-block">enter a password of at least 4 characters</span>
   </div>
 </div>
 

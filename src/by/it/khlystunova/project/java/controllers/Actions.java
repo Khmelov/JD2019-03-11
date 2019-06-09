@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 public enum Actions {
 
     LOGIN(new CmdLogin()),
-    HOME(new CmdHome()),
     INDEX(new CmdIndex()),
     PROFILE(new CmdProfile()),
     LOGOUT(new CmdLogout()),
@@ -15,6 +14,9 @@ public enum Actions {
     CREATEREQUEST(new CmdCreateRequest()),
     ERROR(new CmdError()),
     ADITUSERS(new CmdAditUsers()),
+    EDITCOFFEMACHINES(new CmdEditCoffemachines()),
+    ADDCOFFEMACHINE(new CmdAddCoffemachine()),
+    SHOWALLREQUESTS(new CmdShowAllRequests()),
     RESETDB(new CmdResetDB());
 
 
@@ -27,7 +29,7 @@ public enum Actions {
     static Cmd defineCommand(HttpServletRequest req) {
         String nameCommand = req.getParameter("command").toUpperCase();
         try {
-            return Actions.valueOf(nameCommand).command;//Возвращает константу перечисления указанного типа перечисления с указанным именем.
+            return Actions.valueOf(nameCommand.toUpperCase()).command;//Возвращает константу перечисления указанного типа перечисления с указанным именем.
         } catch (IllegalArgumentException e) {
             return Actions.ERROR.command;
         }

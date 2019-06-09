@@ -1,11 +1,32 @@
 package by.it.khlystunova.project.java.controllers;
 
+import by.it.khlystunova.project.java.beans.Role;
+import by.it.khlystunova.project.java.dao.Dao;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class FrontController extends HttpServlet {
+
+
+    @Override
+    public void init() throws ServletException {
+        Dao dao = Dao.getDao();
+        List<Role> roles = null;
+        try {
+            roles = dao.role.getAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        ServletContext servletContext = getServletContext();
+        servletContext.setAttribute("roles",roles);
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -19,10 +40,6 @@ public class FrontController extends HttpServlet {
     }
     private void process(HttpServletRequest req, HttpServletResponse resp)
             throws IOException{
-
-
-
-
         try {
             resp.setHeader("Cache-Control","private, no-store, no-cache, must-revalidate");
             resp.setHeader("Pragma","no-cache");
