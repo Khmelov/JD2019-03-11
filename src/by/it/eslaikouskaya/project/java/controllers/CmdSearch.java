@@ -8,6 +8,7 @@ import by.it.eslaikouskaya.project.java.utils.Tools;
 import by.it.eslaikouskaya.project.java.utils.Validator;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CmdSearch extends Cmd {
@@ -20,13 +21,34 @@ public class CmdSearch extends Cmd {
 				String name = Validator.getString(req, "name", Patterns.MATERIAL);
 				String where = String.format("WHERE name='%s'", name);
 				List<Material> materials = dao.material.getAll(where);
+
 				List<Grade> grades = dao.grade.getAll();
 				req.setAttribute("grades", grades);
 
 				List<Category> categories = dao.category.getAll();
 				req.setAttribute("categories", categories);
-				if (materials.size() < 1)
-					req.setAttribute("notfound", "Матриалов с таким именем не найдено");
+				if (materials.size() < 1) {
+					List<Grade> grs = dao.grade.getAll("WHERE grade='" + name + "'");
+					if (grs.size() < 1) {
+						List<Category> cats = dao.category.getAll("WHERE category='" + name + "'");
+						if (cats.size() < 1) req.setAttribute
+								("notfound", "По вашему запросу ничего не надено :(");
+						else {
+							List<Material> materialsFromCategories = new ArrayList<>();
+							List<Grade> gradesForMaterials = dao.grade.getAll
+									("WHERE categories_ID=" + cats.get(0).getID());
+							for (Grade gradeForMaterials : gradesForMaterials) {
+								List<Material> materialsFromGrades = dao.material.getAll
+										("WHERE grades_ID='" + gradeForMaterials.getID() + "'");
+								if (materialsFromGrades.size() > 1)
+									materialsFromCategories.addAll(materialsFromGrades);
+							}
+							req.setAttribute("materials", materialsFromCategories);
+						}
+					} else
+						req.setAttribute("materials", dao.material.getAll
+								("WHERE grades_ID='" + grs.get(0).getID() + "'"));
+				}
 				else
 					req.setAttribute("materials", materials);
 			}

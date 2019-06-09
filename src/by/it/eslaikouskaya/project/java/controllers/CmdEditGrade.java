@@ -61,6 +61,7 @@ public class CmdEditGrade extends Cmd {
 					req.setAttribute("success", delete);
 				}
 			}
+
 			req.setAttribute("grades", dao.grade.getAll());
 		}
 		return null;
