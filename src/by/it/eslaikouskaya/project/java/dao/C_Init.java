@@ -93,7 +93,7 @@ public class C_Init {
 			statement.executeUpdate("INSERT INTO `eslaikouskaya`.`roles` (`ID`, `Role`) VALUES (DEFAULT, 'Manager');\n");
 			statement.executeUpdate("INSERT INTO `eslaikouskaya`.`roles` (`ID`, `Role`) VALUES (DEFAULT, 'Guest');\n");
 			statement.executeUpdate("INSERT INTO `eslaikouskaya`.`roles` (`ID`, `Role`) VALUES (DEFAULT, 'User');\n");
-			statement.executeUpdate("INSERT INTO `eslaikouskaya`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'Katya1234', 'qwerty', 'K@gmail.com', 1);\n");
+			statement.executeUpdate("INSERT INTO `eslaikouskaya`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'admin', 'admin', 'admin@mail.com', 1);\n");
 			statement.executeUpdate("INSERT INTO `eslaikouskaya`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'Pavel13', 'asdfgh', 'Pav@tut.by', 2);\n");
 			statement.executeUpdate("INSERT INTO `eslaikouskaya`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'AbrahamZERO', '123qwe', 'Azero@mail.ru', 3);\n");
 			statement.executeUpdate("INSERT INTO `eslaikouskaya`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'Lily_33', 'qazwsx', 'LilPop@mail.ru', 4);\n");

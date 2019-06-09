@@ -125,7 +125,7 @@
     </target>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - -  - - -  -->
-    <!-- дальнейшие команды выполняются томкатом.
+    <!-- дальнейшие корманды выполняются томкатом.
     Удаляем старое приложение. Аналог кнопки undeploy в
     http://localhost:28080/manager/html/list
     -->
@@ -181,4 +181,12 @@
             <arg value="/k start ${tomcat.base.url}/${web.root}"/>
         </exec>
     </target>
+
+    <!--запуск браузера(safari) на Mac (возможно linux)-->
+    <target name="Mac browser" depends="10deploy">
+        <exec executable="open" spawn="true">
+            <arg value="${tomcat.base.url}/${web.root}"/>
+        </exec>
+    </target>
+
 </project>
