@@ -67,12 +67,12 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'moderator');");
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
-            statement.executeUpdate("INSERT INTO `bildziuh`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'admin', 'admin', 'admin@gmail.com', 1);\n");
-            statement.executeUpdate("INSERT INTO `bildziuh`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'user', 'user', 'user@mail.ru', 3);\n");
-            statement.executeUpdate("INSERT INTO `bildziuh`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'user2', 'user2', 'user2@mail.ru', 3);\n");
-            statement.executeUpdate("INSERT INTO `bildziuh`.`mods` (`ID`, `Game`, `Group`, `Name`, `Description`, `Size`, `Link`, `users_ID`) VALUES (DEFAULT, 'Skyrim', 'User interface', 'Better UI', 'Improve ur interface w/o registration and for free', 42, 'gdisk', 2);\n");
-            statement.executeUpdate("INSERT INTO `bildziuh`.`mods` (`ID`, `Game`, `Group`, `Name`, `Description`, `Size`, `Link`, `users_ID`) VALUES (DEFAULT, 'Witcher 3', 'Animations', 'Killing spree', 'New animations', 84, 'gdisk', 3);\n");
-            statement.executeUpdate("INSERT INTO `bildziuh`.`messages` (`ID`, `users_ID`, `text`, `mods_ID`) VALUES (DEFAULT, '2', 'Awesome mod!!111oneone', '2');\n");
+            statement.executeUpdate("INSERT INTO `bildziuh`.`users` (`id`, `Login`, `Password`, `Email`, `roles_id`) VALUES (DEFAULT, 'admin', 'admin', 'admin@gmail.com', 1);\n");
+            statement.executeUpdate("INSERT INTO `bildziuh`.`users` (`id`, `Login`, `Password`, `Email`, `roles_id`) VALUES (DEFAULT, 'user', 'user', 'user@mail.ru', 3);\n");
+            statement.executeUpdate("INSERT INTO `bildziuh`.`users` (`id`, `Login`, `Password`, `Email`, `roles_id`) VALUES (DEFAULT, 'user2', 'user2', 'user2@mail.ru', 3);\n");
+            statement.executeUpdate("INSERT INTO `bildziuh`.`mods` (`id`, `Game`, `Group`, `Name`, `Description`, `Size`, `Link`, `users_id`) VALUES (DEFAULT, 'Skyrim', 'User interface', 'Better UI', 'Improve ur interface w/o registration and for free', 42, 'gdisk', 2);\n");
+            statement.executeUpdate("INSERT INTO `bildziuh`.`mods` (`id`, `Game`, `Group`, `Name`, `Description`, `Size`, `Link`, `users_id`) VALUES (DEFAULT, 'Witcher 3', 'Animations', 'Killing spree', 'New animations', 84, 'gdisk', 3);\n");
+            statement.executeUpdate("INSERT INTO `bildziuh`.`messages` (`id`, `users_id`, `text`, `mods_id`) VALUES (DEFAULT, '2', 'Awesome mod!!111oneone', '2');\n");
         }
     }
 }

@@ -7,6 +7,7 @@ import by.it.bildziuh.project.java.beans.User;
 import by.it.bildziuh.project.java.dao.Dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class Runner {
     public static void main(String[] args) throws SQLException {
@@ -56,5 +57,10 @@ public class Runner {
         System.out.println(message);
         dao.message.delete(message);
 
+
+        List<Mod> mods = dao.mod.getAll();
+        for (Mod mod1 : mods) {
+            System.out.println(mod1);
+        }
     }
 }

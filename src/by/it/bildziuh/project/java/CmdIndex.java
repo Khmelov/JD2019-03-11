@@ -11,7 +11,7 @@ public class CmdIndex extends Cmd {
     public Cmd execute(HttpServletRequest req) throws Exception {
         Dao dao = Dao.getDao();
         List<Mod> mods = dao.mod.getAll();
-        req.setAttribute("mods",mods);
+        req.setAttribute("Mods",mods);
         return null;
     }
 }

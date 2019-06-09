@@ -11,7 +11,7 @@
         <div class=col-md-2>Email</div>
         <div class=col-md-2>Роль</div>
     </div>
-    <c:forEach items="${users}" var="user">
+    <c:forEach items="${Users}" var="user">
         <form class="form-horizontal-${user.id}" action="do?command=EditUsers" method="post">
             <div class="row">
                 <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
@@ -32,14 +32,6 @@
                 <div class="col-md-2">
                     <input id="email" name="email" type="text" placeholder="" class="form-control input-md"
                            required="" value="${user.email}">
-                </div>
-
-                <div class="col-md-2">
-                    <select id="roles_id" name="roles_id" class="form-control">
-                        <c:forEach items="${roles}" var="role">
-                            <option value="${role.id}" ${user.roles_ID==role.id?"selected":""}>${role.role}</option>
-                        </c:forEach>
-                    </select>
                 </div>
 
                 <!-- Button (Double) -->

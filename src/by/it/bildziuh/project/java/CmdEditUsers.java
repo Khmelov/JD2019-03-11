@@ -1,5 +1,6 @@
 package by.it.bildziuh.project.java;
 
+import by.it.bildziuh.project.java.beans.Role;
 import by.it.bildziuh.project.java.beans.User;
 import by.it.bildziuh.project.java.dao.Dao;
 import by.it.bildziuh.project.java.utils.FormHelper;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class CmdEditUsers extends Cmd {
+
     @Override
     public Cmd execute(HttpServletRequest req) throws Exception {
         Dao dao = Dao.getDao();
@@ -27,24 +29,16 @@ public class CmdEditUsers extends Cmd {
             }
 
             if (FormHelper.contains(req,"delete")){
-                User user = new User(
-                        Validator.getLong(req,"id"),
-                        Validator.getString(req, "login", "[a-zA-Z0-9]{4,}"),
-                        Validator.getString(req, "password"),
-                        Validator.getString(req, "email"),
-                        Validator.getLong(req,"roles_id")
-                );
+                User user = dao.user.read(Validator.getLong(req, "id"));
                 dao.user.delete(user);
                 return this;
             }
         }
 
-
-
-        //show
         List<User> users = dao.user.getAll();
-        req.setAttribute("users",users);
-        //roles - see FrontController init()
+        List<Role> roles = dao.role.getAll();
+        req.setAttribute("Users",users);
+        req.setAttribute("Roles",roles);
         return null;
     }
 }

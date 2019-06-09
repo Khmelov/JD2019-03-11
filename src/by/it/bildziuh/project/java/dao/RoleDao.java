@@ -51,7 +51,7 @@ public class RoleDao extends AbstractDao<Role> {
 
         try (
                 Connection connection = ConnectionCreator.get();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {

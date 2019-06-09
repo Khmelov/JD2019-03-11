@@ -1,12 +1,35 @@
 package by.it.bildziuh.project.java;
 
+import by.it.bildziuh.project.java.beans.Mod;
+import by.it.bildziuh.project.java.beans.Role;
+import by.it.bildziuh.project.java.dao.Dao;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class FrontController extends HttpServlet {
+
+    @Override
+    public void init() throws ServletException {
+        Dao dao = Dao.getDao();
+        List<Role> roles = null;
+        List<Mod> mods = null;
+        try {
+            roles = dao.role.getAll();
+            mods = dao.mod.getAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        ServletContext servletContext = getServletContext();
+        servletContext.setAttribute("Roles", roles);
+        servletContext.setAttribute("Mods", mods);
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -25,8 +48,6 @@ public class FrontController extends HttpServlet {
         try {
             Cmd cmd = Actions.defineCommand(req);
             Cmd next = cmd.execute(req);
-            resp.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
-
             if (next == cmd || next == null) {
                 getServletContext().
                         getRequestDispatcher(cmd.getJsp()).

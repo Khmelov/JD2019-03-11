@@ -9,6 +9,7 @@ import by.it.bildziuh.project.java.utils.Validator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CmdProfile extends Cmd {
@@ -17,7 +18,7 @@ public class CmdProfile extends Cmd {
         HttpSession session = req.getSession();
         Dao dao = Dao.getDao();
 
-        User user= Tools.findUserInSession(req);
+        User user = Tools.findUserInSession(req);
         if (user == null) {
             return Actions.LOGIN.command;
         }
@@ -32,9 +33,8 @@ public class CmdProfile extends Cmd {
                 user.setPassword(password);
                 user.setEmail(email);
                 dao.user.update(user);
-                return this; //PRG go to Get
+                return this;
             }
-
 
             if (FormHelper.contains(req, "logout")) {
                 session.invalidate();
@@ -42,14 +42,26 @@ public class CmdProfile extends Cmd {
             }
         }
 
+
         List<Mod> mods = dao.mod.getAll("WHERE users_id=" + user.getId());
-        req.setAttribute("modsSize",mods.size());
-        int start=0;
-        if (FormHelper.contains(req,"start"))
-            start= Validator.getInt(req,"start");
-        String limit=String.format(" WHERE users_id=%d LIMIT %s,5",user.getId(),start);
-        mods = dao.mod.getAll(limit);
-        req.setAttribute("mods",mods);
+   /*     List<String> mods = new ArrayList<>();
+        mods.add("1");
+        mods.add("2");
+        mods.add("3");*/
+        req.setAttribute("mods", mods);
         return null;
+
     }
 }
+/*
+        List<Mod> mods = dao.mod.getAll("WHERE users_id=" + user.getId());
+        req.setAttribute("modsSiz", mods.size());
+        int start = 0;
+        if (FormHelper.contains(req, "start"))
+            start = Validator.getInt(req, "start");
+        String limit = String.format(" WHERE users_id=%d LIMIT %s,5", user.getId(), start);
+        mods = dao.mod.getAll(limit);
+        req.setAttribute("mods", mods);
+        return null;
+    }*/
+

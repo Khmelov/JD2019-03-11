@@ -64,7 +64,6 @@ public class UserDao extends AbstractDao<User> {
                         resultSet.getString("email"),
                         resultSet.getLong("roles_id")
                 );
-
                 users.add(user);
             }
         }

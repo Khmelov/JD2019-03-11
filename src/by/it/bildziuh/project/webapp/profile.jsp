@@ -45,34 +45,31 @@
                     <button id="logout" name="logout" class="btn btn-danger">Выйти</button>
                 </div>
             </div>
-
         </fieldset>
+
     </form>
 
     <h4>Мои модификации</h4>
 
     <div class="row">
-        <div class="col-md-1">Название игры </div>
-        <div class="col-md-1">Категория модификации</div>
-        <div class="col-md-1">Название модификации</div>
-        <div class="col-md-5">Описание</div>
+        <div class="col-md-2">Название игры</div>
+        <div class="col-md-2">Категория модификации</div>
+        <div class="col-md-2">Название</div>
+        <div class="col-md-3">Описание</div>
         <div class="col-md-1">Размер (Мб)</div>
         <div class="col-md-1">Ссылка</div>
     </div>
 
-    <c:forEach items="${mods}" var="mod">
+    <c:forEach var="mod" items="${modsAll}">
         <div class="row">
-            <div class="col-md-1">${mod.game}</div>
-            <div class="col-md-1">${mod.group}</div>
-            <div class="col-md-1">${mod.name}</div>
-            <div class="col-md-5">${mod.description}</div>
+            <div class="col-md-2">${mod.game}</div>
+            <div class="col-md-2">${mod.group}</div>
+            <div class="col-md-2">${mod.name}</div>
+            <div class="col-md-3">${mod.description}</div>
             <div class="col-md-1">${mod.size}</div>
             <div class="col-md-1">${mod.link}</div>
         </div>
     </c:forEach>
-    <hr>
-    <my:paginator count="${modsSize}" step="5" urlprefix="do?command=profile&start="/>
-    <hr>
 </div>
 </body>
 </html>
