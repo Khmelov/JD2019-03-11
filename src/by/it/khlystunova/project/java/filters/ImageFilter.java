@@ -14,22 +14,17 @@ public class ImageFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest,
-                         ServletResponse servletResponse,
-                         FilterChain filterChain)
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
             throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-        String uri = request.getRequestURI();
-        String[] parts = uri.split("/");
-        String filename = parts[parts.length - 1];
-        filename = request.getServletContext()
-                .getRealPath("/images") + File.separator + filename;
-        if (filename.equals("no-image.jpg") || (new File(filename).exists())){
-            filterChain.doFilter(request,response);
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse resp = (HttpServletResponse) response;
+        String[] parts = req.getRequestURI().split("/");
+        String name = parts[parts.length - 1];
+        String path = req.getServletContext().getRealPath("/images") + File.separator + name;
+        if (name.equals("no-image.jpg") || new File(path).exists()){
+            filterChain.doFilter(req, resp);
         }
-        else
-            response.sendRedirect("no-image.jpg");
+        else req.getRequestDispatcher("/images/no-image.jpg").forward(req,resp);
 
     }
 
