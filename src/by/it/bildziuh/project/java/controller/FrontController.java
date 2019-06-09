@@ -48,7 +48,7 @@ public class FrontController extends HttpServlet {
         try {
             Cmd cmd = Actions.defineCommand(req);
             Cmd next = cmd.execute(req);
-            if (next == null) {
+            if (next == cmd || next == null) {
                 getServletContext().
                         getRequestDispatcher(cmd.getJsp()).
                         forward(req, resp);
