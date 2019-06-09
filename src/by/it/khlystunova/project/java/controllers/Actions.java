@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 public enum Actions {
 
     LOGIN(new CmdLogin()),
-    HOME(new CmdHome()),
     INDEX(new CmdIndex()),
     PROFILE(new CmdProfile()),
     LOGOUT(new CmdLogout()),
@@ -29,9 +28,8 @@ public enum Actions {
 
     static Cmd defineCommand(HttpServletRequest req) {
         String nameCommand = req.getParameter("command").toUpperCase();
-        if (nameCommand==null) return Actions.INDEX.command;
         try {
-            return Actions.valueOf(nameCommand).command;//Возвращает константу перечисления указанного типа перечисления с указанным именем.
+            return Actions.valueOf(nameCommand.toUpperCase()).command;//Возвращает константу перечисления указанного типа перечисления с указанным именем.
         } catch (IllegalArgumentException e) {
             return Actions.ERROR.command;
         }

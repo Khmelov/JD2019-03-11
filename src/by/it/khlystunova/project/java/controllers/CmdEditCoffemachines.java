@@ -5,7 +5,6 @@ import by.it.khlystunova.project.java.beans.User;
 import by.it.khlystunova.project.java.dao.Dao;
 import by.it.khlystunova.project.java.exceptions.WebsiteException;
 import by.it.khlystunova.project.java.util.FormHelper;
-import by.it.khlystunova.project.java.util.Patterns;
 import by.it.khlystunova.project.java.util.Validator;
 
 import javax.servlet.http.HttpServletRequest;

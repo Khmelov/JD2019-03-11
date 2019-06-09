@@ -6,10 +6,10 @@
     <%@ include file="include/menu.jsp" %>
     <h2>Edit coffemachines</h2>
     <div class="row">
-        <div class=col-md-1>Name</div>
+        <div class=col-md-2>Name</div>
         <div class=col-md-2>Firm</div>
         <div class=col-md-2>Power</div>
-        <div class=col-md-2>Size</div>
+        <div class=col-md-1>Size</div>
         <div class=col-md-1>Weight</div>
         <div class=col-md-1>WaterC</div>
         <div class=col-md-1>BeansC</div>
@@ -22,7 +22,7 @@
                 <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                        required="" value="${coffemachine.id}">
 
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <input id="name" name="name" type="text" placeholder="" class="form-control input-md"
                            required="" value="${coffemachine.name}">
 
@@ -39,7 +39,7 @@
                            required="" value="${coffemachine.power}">
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-1">
                  <input id="size" name="size" type="text" placeholder="" class="form-control input-md"
                            required="" value="${coffemachine.size}">
                 </div>
@@ -68,7 +68,7 @@
 
               <!-- Button (Double) -->
             <br>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <button id="update" name="update" class="btn btn-success">Update</button>
                     <button id="delete" name="delete" class="btn btn-danger">Delete</button>
                 </div>

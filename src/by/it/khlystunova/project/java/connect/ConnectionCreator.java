@@ -1,7 +1,9 @@
 package by.it.khlystunova.project.java.connect;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionCreator {
@@ -9,33 +11,14 @@ public class ConnectionCreator {
     private ConnectionCreator() {
     }
 
-    private static Connection connection;
-
-    static {
+    public static Connection get() {
+        Connection connection = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (Exception ex) {
-            // handle the error
-        }
-    }
-
-    private static final String URL = "jdbc:mysql://127.0.0.1:2016/khlystunova?" +
-            "useUnicode=true&" +
-            "characterEncoding=UTF-8&" +
-            "useJDBCCompliantTimezoneShift=true&" +
-            "useLegacyDatetimeCode=false&" +
-            "serverTimezone=UTC";
-
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-
-    public static Connection get() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            synchronized (ConnectionCreator.class) {
-                if (connection == null || connection.isClosed()) {
-                    connection= DriverManager.getConnection(URL,USER,PASSWORD);
-                }
-            }
+            InitialContext ic = new InitialContext();
+            DataSource ds = (DataSource) ic.lookup("java:/comp/env/jdbc/khlystunova");
+            connection = ds.getConnection();
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
         }
         return connection;
     }
