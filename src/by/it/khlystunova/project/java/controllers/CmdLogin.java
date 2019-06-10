@@ -20,7 +20,7 @@ public class CmdLogin extends Cmd {
             List<User> users = Dao.getDao().user.getAll(where);
             if (users.size()>0){
                 HttpSession session = req.getSession();
-                session.setMaxInactiveInterval(1000);
+                //session.setMaxInactiveInterval(30);
                 User user = users.get(0);
                 session.setAttribute("user",user);
 
