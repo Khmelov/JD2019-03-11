@@ -41,12 +41,12 @@
   <a class="nav-link active" href="do?command=Index">Каталог</a>
   <a class="nav-link" href="do?command=AboutUs">О нас</a>
   <a class="nav-link" href="do?command=Contacts">Контакты</a>
+  <a class="nav-link" href="do?command=ResetDB">Сброс базы данных</a>
   <c:if test="${user.roles_ID==1}">
   <a class="nav-link" href="do?command=EditUsers">Администрирование</a>
   <a class="nav-link" href="do?command=EditMat">Изменить материал</a>
   <a class="nav-link" href="do?command=EditGrade">Изменить класс</a>
   <a class="nav-link" href="do?command=EditCategory">Изменить категорию</a>
-  <a class="nav-link" href="do?command=ResetDB">Сброс базы данных</a>
   </c:if>
 </nav>
 </div>
