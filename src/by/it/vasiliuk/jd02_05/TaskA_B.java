@@ -12,7 +12,7 @@ class TaskA_B {
 
     public static void main(String[] args) {
 
-        ResourceManager manager=ResourceManager.INSTANCE;
+        ResourceManager manager_langs=ResourceManager.INSTANCE;
         Scanner scanner = new Scanner(System.in);
         System.out.println("please,choose language:\n" +
                 "en-English\n" +
@@ -43,16 +43,16 @@ class TaskA_B {
             }
 
             Locale locale  = new Locale(language,country);
-            manager.setLocale(locale);
-            Date date = new Date();
+            manager_langs.setLocale(locale);
+            Date date_01 = new Date();
             DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM,locale);
-            String format = df.format(date);
+            String format = df.format(date_01);
             System.out.println(format);
             System.out.printf("%s\n%s\n%s %s\n",
-                    manager.getString(Msg.WELCOME),
-                    manager.getString(Msg.QUESTION),
-                    manager.getString(Msg.FISRTNAME),
-                    manager.getString(Msg.LASTNAME)
+                    manager_langs.getString(Msg.WELCOME),
+                    manager_langs.getString(Msg.QUESTION),
+                    manager_langs.getString(Msg.FISRTNAME),
+                    manager_langs.getString(Msg.LASTNAME)
             );
         }
     }

@@ -1,0 +1,4 @@
+message.welcome=Добрый день!
+message.question=Все в порядке?
+person.firstName=Вадим
+person.lastName=Василюк
