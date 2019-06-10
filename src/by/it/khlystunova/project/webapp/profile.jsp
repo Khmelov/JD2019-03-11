@@ -59,9 +59,7 @@
             <div class="col-md-3">${request.deliveryAddress}</div>
         </div>
     </c:forEach>
-    <hr>
-    <my:paginator count="${adsSize}" step="5" urlprefix="do?command=profile&start="/>
-    <hr>
+
 </div>
 </body>
 </html>

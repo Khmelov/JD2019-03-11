@@ -32,9 +32,9 @@
                   </div>
               </c:forEach>
 
-              <br>
-              <my:paginator count="${coffemachinesSize}" step="10" urlprefix="do?command=index&start="/>
-              <br>
+              <hr>
+              <my:paginator count="${coffemachinesSize}" step="5" urlprefix="do?command=index&start="/>
+
 </div>
 </body>
 </html>
