@@ -17,7 +17,7 @@ public class Tools {
             String path = req.getServletContext().getRealPath("/images") + "/" + filename;
             try(
             InputStream inputStream = photo.getInputStream();
-            OutputStream outputStream=new FileOutputStream(path);
+            OutputStream outputStream = new FileOutputStream(path);
             ){
                 byte[] buffer=new byte[100000];
                 while (inputStream.available()>0){

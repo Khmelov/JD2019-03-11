@@ -22,12 +22,14 @@
     <servlet>
         <servlet-name>FrontController</servlet-name>
         <servlet-class>by.it.khlystunova.project.java.controllers.FrontController</servlet-class>
+        <multipart-config/>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/do</url-pattern>
     </servlet-mapping>
+
     <filter>
         <filter-name>PageEncoder</filter-name>
         <filter-class>by.it.khlystunova.project.java.filters.PageEncoder</filter-class>
@@ -51,4 +53,5 @@
         <filter-name>ImageFilter</filter-name>
         <url-pattern>/images/*</url-pattern>
     </filter-mapping>
+
 </web-app>

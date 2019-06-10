@@ -4,6 +4,7 @@ import by.it.khlystunova.project.java.beans.Coffemachine;
 import by.it.khlystunova.project.java.beans.User;
 import by.it.khlystunova.project.java.dao.Dao;
 import by.it.khlystunova.project.java.exceptions.WebsiteException;
+import by.it.khlystunova.project.java.util.Tools;
 import by.it.khlystunova.project.java.util.Validator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,7 +31,9 @@ class CmdAddCoffemachine extends Cmd{
                 coffemachine.setBeansContainer(Validator.getString(req, "BeansContainer"));
                 coffemachine.setColor(Validator.getString(req, "Color"));
                 coffemachine.setPrice(Validator.getDouble(req, "Price"));
-                if (dao.coffemachine.create(coffemachine)) {
+                boolean create = dao.coffemachine.create(coffemachine);
+                if (create) {
+                    Tools.createImage(req,coffemachine.getId()+".jpg");
                     return Actions.INDEX.command;
                 }
             }
