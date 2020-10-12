@@ -1,4 +1,0 @@
-message.welcome=Wassup!
-message.question=how is it going?
-person.firstName=Vadim
-person.lastName=Vasiliuk
